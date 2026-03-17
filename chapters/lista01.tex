@@ -171,7 +171,7 @@ isto é, $\lim f_n (x) = f(x)$, como queríamos.
 \textbf{Mostre que a soma, o produto, o valor absoluto, e limites de funções mensuráveis
 a valores complexos são mensuráveis.}
 \begin{proof}[\textbf{Dem:}] Por definição, uma função a valores complexos é mensurável se, 
-  e somente se, a parte real e a parte imaginária da função são elementos de $\mathcal M (X, \mathcal F)$. 
+  e somente se, a parte real e a parte imaginária da função são funções mensuráveis. 
   Desse modo, sejam $f, g: X \rightarrow \mathbb C$ funções mensuráveis, tais que 
   $f_1, f_2, g_1, g_2: X \rightarrow \mathbb R$ satisfazem $f(x) = f_1(x)+if_2(x)$
   e $g(x)=g_1(x)+ig_2(x)$ para todo $x \in X$.
@@ -259,3 +259,67 @@ $$\mathcal G = \{E \subset Y; f^{-1}(E)\in \mathcal F\}$$
 \textbf{Seja $(X, \mathcal F)$ um espaço mensurável e $f: X \rightarrow Y$ uma função. Seja $\mathcal C$ uma coleção de 
 subconjuntos de $Y$ tais que $f^{-1}(A) \in \mathcal F$, para todo $A \in \mathcal C$. Mostre que $f^{-1}(E) \in \mathcal F$, 
 para todo $E \in \sigma(\mathcal C)$}.
+\begin{proof}[\textbf{Dem:}]
+  Visto que $\mathcal C = \{E\subseteq Y; f^{-1}(E) \in \mathcal F\}$, onde 
+  $\mathcal F$ é uma $\sigma$-álgebra de $X$, segue do exercício 
+  anterior que $\mathcal C$ é uma $\sigma$-álgebra de $Y$. Daqui, como 
+  $\mathcal C \subseteq \sigma(\mathcal C)$ e toda $\sigma$-álgebra que contenha $\mathcal C$
+  contém $\sigma(\mathcal C)$, temos que $\sigma(\mathcal C) \subseteq \mathcal C$, ou seja, 
+  $\sigma(\mathcal C) = \mathcal C$. Portanto, da definição de $\mathcal C$, 
+  segue que para todo 
+  $E \in \mathcal C =  \sigma(\mathcal C)$, temos $f^{-1}(E) \in \mathcal F$, 
+  como queríamos.
+\end{proof}
+
+
+\bigline
+\newpage
+\mysubsec{Exercício 9}
+\bigline 
+\textbf{Sejam $(X, \mathcal F)$ um espaço mensurável e $f: X \rightarrow \mathbb R$ uma 
+função. Mostre que $f$ é mensurável se, e somente se, $f^{-1}(E) \in \mathcal F$, 
+para todo $E \in \mathcal B(\mathbb R)$. Conclua que as definições de mensurabilidade
+da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B(\mathbb R))$.
+}
+\begin{proof}[\textbf{Dem:}]
+($\implies$) Suponhamos $f$ mensurável, isto é,
+  para todo $\alpha \in \mathbb R$, 
+  $A_{\alpha} = \{x \in X; f(x) > \alpha\} \in \mathcal F$.  
+  Seja  
+  $\mathcal C=\{(\alpha, +\infty)\subset \mathbb R; \alpha \in \mathbb R\}$ uma coleção de 
+  subconjuntos de $\mathbb R$. Visto que para todo $\alpha \in \mathbb R$, segue que 
+  $A_\alpha = f^{-1}((\alpha, +\infty)) \in \mathcal F$, temos do exercício anterior que
+  $f^{-1}(E) \in \mathcal F$, para todo $E \in \sigma(\mathcal C)$. Já que 
+  $\mathcal C$ gera $\mathcal B(\mathbb R)$, então 
+  $\sigma(\mathcal C) = \mathcal B (\mathbb R)$, como queríamos.
+
+  
+  ($\impliedby$) Por outro lado, suponhamos que $f^{-1}(E) \in \mathcal F$ para todo $E \in 
+  \mathcal B(\mathbb R)$.
+\end{proof}
+
+\bigline
+\newpage
+\mysubsec{Exercício 10}
+\bigline 
+\textbf{Sejam $(X, \mathcal F)$ um espaço mensurável, $f:X \rightarrow \mathbb R$ 
+uma função mensurável e $\varphi: \mathbb R \rightarrow \mathbb R$ uma função contínua. 
+Mostre que $\varphi \circ f: X \rightarrow \mathbb R$ é mensurável.}
+
+\bigline
+\newpage
+\mysubsec{Exercício 11}
+\bigline 
+\textbf{Sejam $(X, \mathcal F)$ um espaço mensurável, $f:X \rightarrow \mathbb R$ 
+uma função mensurável e $\psi$}
+
+\bigline
+\newpage
+\mysubsec{Exercício 12}
+\bigline 
+
+\bigline
+\newpage
+\mysubsec{Exercício 13}
+\bigline 
+
