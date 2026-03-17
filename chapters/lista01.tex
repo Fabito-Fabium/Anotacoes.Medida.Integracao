@@ -281,13 +281,15 @@ função. Mostre que $f$ é mensurável se, e somente se, $f^{-1}(E) \in \mathca
 para todo $E \in \mathcal B(\mathbb R)$. Conclua que as definições de mensurabilidade
 da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B(\mathbb R))$.
 }
-\begin{proof}[\textbf{Dem:}]
+\begin{proof}[\textbf{Dem:}]Seja  
+  $\mathcal C=\{(\alpha, +\infty)\subset \mathbb R; \alpha \in \mathbb R\}$ uma coleção de 
+  subconjuntos de $\mathbb R$. 
+
+  \vspace{3mm}
 ($\implies$) Suponhamos $f$ mensurável, isto é,
   para todo $\alpha \in \mathbb R$, 
   $A_{\alpha} = \{x \in X; f(x) > \alpha\} \in \mathcal F$.  
-  Seja  
-  $\mathcal C=\{(\alpha, +\infty)\subset \mathbb R; \alpha \in \mathbb R\}$ uma coleção de 
-  subconjuntos de $\mathbb R$. Visto que para todo $\alpha \in \mathbb R$, segue que 
+   Visto que para todo $\alpha \in \mathbb R$, segue que 
   $A_\alpha = f^{-1}((\alpha, +\infty)) \in \mathcal F$, temos do exercício anterior que
   $f^{-1}(E) \in \mathcal F$, para todo $E \in \sigma(\mathcal C)$. Já que 
   $\mathcal C$ gera $\mathcal B(\mathbb R)$, então 
@@ -295,7 +297,21 @@ da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B
 
   
   ($\impliedby$) Por outro lado, suponhamos que $f^{-1}(E) \in \mathcal F$ para todo $E \in 
-  \mathcal B(\mathbb R)$.
+  \mathcal B(\mathbb R)$. Como $\mathcal C$ gera $\mathcal B(\mathbb R)$, temos 
+  $\mathcal C \subset \mathcal B(\mathbb R)$. Desse modo, para todo $E \in \mathcal C$, 
+  segue da hipótese que $f^{-1}(E) \in \mathcal F$. Daqui, note que para todo 
+  $E \in \mathcal C$, existe $\alpha \in \mathbb R$ tal que $E = (\alpha, +\infty)$, 
+  desse modo, 
+  \begin{align*}
+    f^{-1}(E) = f^{-1}((\alpha, +\infty)) = \{x\in X; f^{-1}(x) > \alpha\}.
+  \end{align*}
+  Portanto, para todo $\alpha \in \mathbb R$, temos 
+  $\{x \in X; f^{-1}(x)>\alpha \} \in \mathcal F$, i.e, $f$ é mensurável, como queríamos.
+
+  Mais ainda, por definição, dizemos que $f: (X,\mathcal F) \rightarrow (Y, \mathcal G)$ é
+  mensurável se $f^{-1}(E) \in \mathcal F$, para todo $E \in \mathcal G$. De fato, ao tomar 
+  $(Y, \mathcal G)$ como sendo $(\mathbb R, \mathcal B(\mathbb R))$, temos a primeira parte
+  da proposição do presente exercício.
 \end{proof}
 
 \bigline
