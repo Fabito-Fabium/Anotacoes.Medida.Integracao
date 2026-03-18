@@ -196,7 +196,30 @@ Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)
 \end{align*}
   e temos $f_n,g_n: X \rightarrow \mathbb R$ mensuráveis para $n=1, 2$, segue que $(f_i\cdot g_j)(x)$ é 
   mensurável para todo par $i, j \in \{1, 2\}$. Sendo assim, $(f_1\cdot g_1)(x) - (f_2\cdot g_2)(x)$ e 
-  $(f_1\cdot g_2)(x) + (f_2 \cdot g_1)(x)$ são também mensuráveis, ou seja $(f\cdot g)(x)$ é mensurável.
+  $(f_1\cdot g_2)(x) + (f_2 \cdot g_1)(x)$ são também mensuráveis, ou seja $(f\cdot g)(x)$ é mensurável. 
+  
+  \vspace{5mm}
+  \noindent
+  (Valor Absoluto:) Dado $r \in \mathbb Q$, considere $S_r = \{x \in X; (f_1(x))^2 > r\} \cap \{x \in X; (f_2(x))^2 > \alpha^2-r\}$.
+
+  Para $\alpha \ge 0$, 
+  \begin{align*}
+    \{x \in X;|f(x)|> \alpha\} = \{ x \in X;(f_1(x))^2 + (f_2(x))^2 > \alpha^2\},
+  \end{align*}
+  Já que $f_1, f_2$ são funções mensuráveis, a soma dos quadrados é mensurável, i.e.
+  \begin{align*}
+   \{x \in X;|f(x)|> \alpha\} = \{ x \in X;(f_1(x))^2 + (f_2(x))^2 > \alpha^2\}\in \mathcal F.
+  \end{align*}
+
+  Para $\alpha < 0$, note que $|f(x)| > \alpha$ para todo $x \in X$. Desse modo,
+  \begin{align*}
+    \{x \in X; |f(x)| > \alpha\} = X \in \mathcal F.
+  \end{align*}
+  Com isso, temos que se $f:X \rightarrow \mathbb C$ é mensurável, segue que $|f|$ também será mensurável.
+
+  \vspace{5mm}
+  \noindent
+  (Limites de Funções:)
 \end{proof}
 
 \bigline 
@@ -226,7 +249,6 @@ Com isso, temos que $\mathcal F$ é uma $\sigma$-álgebra de $X$, como queríamo
 }
 
 \bigline
-\newpage
 \mysubsec{Exercício 7}
 \bigline
 \textbf{Seja $f:X \rightarrow Y$ uma função. Mostre que se $\mathcal F$ 
@@ -272,7 +294,6 @@ para todo $E \in \sigma(\mathcal C)$}.
 
 
 \bigline
-\newpage
 \mysubsec{Exercício 9}
 \bigline 
 \textbf{Sejam $(X, \mathcal F)$ um espaço mensurável e $f: X \rightarrow \mathbb R$ uma 
@@ -335,7 +356,6 @@ Mostre que $\varphi \circ f: X \rightarrow \mathbb R$ é mensurável.}
 \end{proof}
 
 \bigline
-\newpage
 \mysubsec{Exercício 11}
 \bigline 
 \textbf{Sejam $(X, \mathcal F)$ um espaço mensurável, $f:X \rightarrow \mathbb R$ 
@@ -389,11 +409,19 @@ $\mathcal C \subset \mathcal P(Y)$. Mostre que
 \end{proof}
 
 \bigline
-\newpage
 \mysubsec{Exercício 13}
 \bigline 
 \textbf{Sejam $f: X \rightarrow Y$ uma função, $\mathcal F$ uma $\sigma$-álgebra de $X$ e $\mathcal C \subset \mathcal P(Y)$. 
 Mostre que $f: (X, \mathcal F) \rightarrow (Y, \sigma(\mathcal C))$ é mensurável se, e somente se, 
 para todo $A \in \mathcal C$, tem-se que $f^{-1}(A) \in \mathcal F$.}
+\begin{proof}[\textbf{Dem:}]
+  A demonstração será dividida em duas partes, são elas:
 
+  ($\implies$) Se $f: X \rightarrow Y$ é mensurável, segue por definição que, para todo $E \in \sigma(\mathcal C)$, 
+  temos $f^{-1}(E) \in \mathcal F$. Já que $\mathcal C \subseteq \sigma(\mathcal C)$, então para todo $A \in \mathcal C$, 
+  tem-se que $f^{-1}(A) \in \mathcal F$, como queríamos.
 
+  ($\impliedby$) Por outro lado, suponhamos que para todo $A \in \mathcal C$, temos $f^{-1}(A) \in \mathcal F$. Do exercício 
+  8, segue que para todo $E \in \sigma(\mathcal C)$, tem-se que $f^{-1}(E) \in \mathcal F$, ou seja, $f$ é mensurável por 
+  definição, como queríamos.
+\end{proof}
