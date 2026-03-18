@@ -82,7 +82,7 @@ Segue de argumentos similares a (ii) que $E_3$ e $E_4$ geram $\mathcal B(\mathbb
   $\sigma(E_5) = \sigma(E_7)$ por argumentos semelhantes a (i). Daqui, visto que 
 \begin{align*}
   &(a, +\infty) = \bigcup\limits_{n \in \mathbb N} (a, b+n), 
-  &(a, b) = (a, +\infty) \cap \left(\bigcup\limits_{n \in \mathbb N} (b-1/n, +\infty)^C \right)
+  &(a, b) = (a, +\infty) \cap \left(\bigcup\limits_{n \in \mathbb N} (b-1/n, +\infty) \right)^C
 \end{align*}
   temos $\sigma(E_1) = \sigma(E_5)$. Com isso, para todo $n \in \mathbb N_{\le 8}$, $E_n$ gera 
   $\mathcal B(\mathbb R, \tau)$, como queríamos.
@@ -101,17 +101,17 @@ $\{E, E_1, E_2, E_3; E\in \mathcal B(\mathbb R)\}$
 visto que $\emptyset\in \mathcal B(\mathbb R)$, segue que $\emptyset \in \mathcal C$.
 De maneira análoga, temos $\overline{\mathbb R} \in \mathcal C$. Agora, seja $A \in C$, 
 \begin{itemize}
-  \item Para $A \not\supseteq \{-\infty, +\infty\}$, temos $A \in \mathcal B(\mathbb R)$, 
-    desse modo, $\mathbb R\setminus A \in \mathcal B(\mathbb R)$, sendo assim,
+  \item Para  $A \in \mathcal B(\mathbb R)$, 
+    segue que $\mathbb R\setminus A \in \mathcal B(\mathbb R)$, sendo assim,
     $\left(\mathbb R \setminus A \right)\cup \{-\infty, +\infty\} = A^C \in \mathcal C$.
 
-  \item Para $A \supset \{+ \infty\}$ sem conter $\{- \infty\}$,
+  \item Para $A = E \cup \{+ \infty\}$,
     note que $A^C = X \cup \{- \infty\}$ com 
-    $X \in \mathcal B (\mathbb R)$, sendo assim, $A^C \in E_2 \subset \mathcal C$. 
-  \item Para $A \supset \{- \infty\}$ sem conter $\{+ \infty\}$,
+    $X \in \mathcal B (\mathbb R)$, sendo assim, $A^C \in \mathcal C$. 
+  \item Para $A = E \cup \{- \infty\}$,
     segue de maneira análoga ao 
     caso anterior que $A^C \in \mathcal C$. 
-  \item Para $A \supset \{- \infty, + \infty\}$, temos $A^C \in \mathcal B\{\mathbb R\}$, 
+  \item Para $A = E \cup \{- \infty, + \infty\}$, temos $A^C \in \mathcal B(\mathbb R)$, 
     portanto, $A^C \in \mathcal C$
 \end{itemize}
 Para verificar que $\mathcal C$ obedesce a terceira propriedade de $\sigma$-álgebra,
@@ -259,16 +259,15 @@ $$\mathcal G = \{E \subset Y; f^{-1}(E)\in \mathcal F\}$$
 \textbf{Seja $(X, \mathcal F)$ um espaço mensurável e $f: X \rightarrow Y$ uma função. Seja $\mathcal C$ uma coleção de 
 subconjuntos de $Y$ tais que $f^{-1}(A) \in \mathcal F$, para todo $A \in \mathcal C$. Mostre que $f^{-1}(E) \in \mathcal F$, 
 para todo $E \in \sigma(\mathcal C)$}.
-\begin{proof}[\textbf{Dem:}]
-  Visto que $\mathcal C = \{E\subseteq Y; f^{-1}(E) \in \mathcal F\}$, onde 
-  $\mathcal F$ é uma $\sigma$-álgebra de $X$, segue do exercício 
-  anterior que $\mathcal C$ é uma $\sigma$-álgebra de $Y$. Daqui, como 
-  $\mathcal C \subseteq \sigma(\mathcal C)$ e toda $\sigma$-álgebra que contenha $\mathcal C$
-  contém $\sigma(\mathcal C)$, temos que $\sigma(\mathcal C) \subseteq \mathcal C$, ou seja, 
-  $\sigma(\mathcal C) = \mathcal C$. Portanto, da definição de $\mathcal C$, 
-  segue que para todo 
-  $E \in \mathcal C =  \sigma(\mathcal C)$, temos $f^{-1}(E) \in \mathcal F$, 
-  como queríamos.
+\begin{proof}[\textbf{Dem:}] Considere a seguinte coleção de subconjuntos de $Y$:
+  \begin{align*}
+    \mathcal G = \{E\subseteq Y; f^{-1}(E) \in \mathcal F\}.
+  \end{align*}
+  Do exercício 7, temos que $\mathcal G$ é $\sigma$-álgebra de $Y$. Já que 
+  para todo $A \in \mathcal C$ segue que $f^{-1}(A) \in \mathcal F$,
+  então $\mathcal C \subseteq \mathcal G$. Da definição de $\sigma$-álgebra gerada, 
+  temos $\sigma(\mathcal C) \subseteq \mathcal G$, portanto, para todo 
+  $A \in \sigma(\mathcal C)$, segue que $f^{-1}(A) \in \mathcal F$, como queríamos. 
 \end{proof}
 
 
@@ -303,10 +302,10 @@ da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B
   $E \in \mathcal C$, existe $\alpha \in \mathbb R$ tal que $E = (\alpha, +\infty)$, 
   desse modo, 
   \begin{align*}
-    f^{-1}(E) = f^{-1}((\alpha, +\infty)) = \{x\in X; f^{-1}(x) > \alpha\}.
+    f^{-1}(E) = f^{-1}((\alpha, +\infty)) = \{x\in X; f(x) > \alpha\}.
   \end{align*}
   Portanto, para todo $\alpha \in \mathbb R$, temos 
-  $\{x \in X; f^{-1}(x)>\alpha \} \in \mathcal F$, i.e, $f$ é mensurável, como queríamos.
+  $\{x \in X; f(x)>\alpha \} \in \mathcal F$, i.e, $f$ é mensurável, como queríamos.
 
   Mais ainda, por definição, dizemos que $f: (X,\mathcal F) \rightarrow (Y, \mathcal G)$ é
   mensurável se $f^{-1}(E) \in \mathcal F$, para todo $E \in \mathcal G$. De fato, ao tomar 
@@ -378,20 +377,12 @@ $\mathcal C \subset \mathcal P(Y)$. Mostre que
   $\mathcal A$ é $\sigma$-álgebra de Y. Com isso, vejamos que $\mathcal C \subset \mathcal A$. 
   Dado $A \in \mathcal C \subseteq Y$, temos $f^{-1}(A) \in D \subseteq \sigma(D)$, pela definição de $\mathcal A$, 
   segue que $A \in \mathcal A$, isto é, $\mathcal C \subseteq \mathcal A$. Das propriedades de $\sigma$-álgebra gerada, 
-  temos $\sigma(D) \subseteq \mathcal A$. Daqui, segue que, 
+  temos $\sigma(\mathcal C) \subseteq \mathcal A$. Daqui, note que 
   \begin{align*}
-    f^{-1}(\sigma (D)) \subseteq f^{-1}(\mathcal A).
+    \mathcal G = \{f^{-1}(E); E \in \sigma(\mathcal C)\} \subseteq 
+    \{f^{-1}(E); E \in \mathcal A\} \subseteq \sigma(D)
   \end{align*}
-  Já que, 
-  \begin{align*}
-    f^{-1}(\sigma (D)) &= \{f^{-1}(E); E \in \sigma(D)\} = \mathcal G\\
-  \end{align*}
-  e, 
-  \begin{align*}
-    f^{-1}(\mathcal A)&=f^{-1}(\{A \subseteq Y; f^{-1}(A) \in \sigma(D)\}),\\
-    &=\sigma(\{f^{-1}(A); A \in \mathcal C\}) = \sigma(D),
-  \end{align*} 
-  temos que $\mathcal G \subseteq \sigma(D)$. Portanto, $\mathcal G = \sigma(D)$, como queríamos.
+  ou seja $\mathcal G \subseteq \sigma(D)$. Portanto, $\mathcal G = \sigma(D)$, como queríamos.
 
   \href{https://math.stackexchange.com/questions/1620852/how-to-proof-that-
   f-1-sigma-mathcal-c-subseteq-sigmaf-1-mathcal-c?noredirect=1&lq=1}{(Ver dica recebida)}
