@@ -5,6 +5,23 @@
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço mensurável e $A \in \mcal F$. 
 Mostre que a aplicação $\lambda: \mcal F \rightarrow \xbR$ dada por 
 $\lambda(E)\coloneq \mu(E \cap A)$ é uma medida.}
+\begin{proof}[\textbf{Dem:}]
+Ora, sabendo que $\mu$ é uma medida, temos 
+$\lambda(\emptyset) = \mu(\emptyset \cap A) = \mu(\emptyset) = 0$. Mais ainda, 
+visto que para todo $B \in \mathcal F$, $\mu(B) \ge 0$, temos que dado $E \in \mathcal F$,
+$E \cap A \in \mcal F$, ou seja, 
+$$\lambda(E) = \mu(E \cap A) \ge 0.$$ 
+Para verificar a propriedade de $\sigma$-aditividade, considere ${E_n}$ uma família em 
+$\mathcal F$, dois a dois disjuntos. Como consequência da definição de ${E_n}$, temos que 
+$\{E_n \cap A\}$ também é dois a dois disjuntos. Com isso,
+\begin{align*}
+   \lambda\left(\bigcup\limits_{n \in \mathbb N} E_n\right) &= 
+   \mu\left(\left(\bigcup\limits_{n \in \mathbb N} E_n\right)\cap A\right) = 
+   \mu\left(\bigcup\limits_{n \in \mathbb N} (E_n \cap A)\right),\\
+   &=\sum_{n \in \mathbb N}\mu(E_n \cap A)=\sum_{n\in\mbb N}\lambda(E_n).
+\end{align*}
+Desse modo, segue que $\lambda$ é uma medida, como queríamos.
+\end{proof}
 
 \bigline
 \newpage
