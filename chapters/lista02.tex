@@ -131,3 +131,77 @@ Mostre que $\mu$ é uma medida em $\mbb N$. Reciprocamente, mostre que toda medi
 em $(\mbb N, \mcal P(\mbb N))$ é obtida desta maneira, para alguma sequência 
 $(a_n)$ em $\xbR$.
 }
+\begin{proof}[\textbf{Dem:}]
+  Pela definição de $\mu$, temos $\mu(\emptyset) = 0$. Mais ainda, como $a_n \ge 0$ para todo $n \in \mbb N$, dado 
+  $E \in \mcal P(\mbb N)$, temos
+  $\mu(E) = \sum_{n \in E} a_n \ge 0$. Daqui, vejamos que $\mu$ é $\sigma$-aditiva. Dada uma sequência 
+  $\{E_n\}_{n \in \mbb N}$ em $\mcal P(\mbb N)$ disjuto dois a dois. Se $\bigcup E_j = \emptyset$, então $E_j = \emptyset$ para todo 
+  $j \in \mbb N$. Portanto, $\mu(\bigcup E_j) = 0 = \sum \mu(E_j)$. Assumimos então, que $\bigcup E_j \neq \emptyset$, 
+  desse modo,
+  \begin{align*}
+    \mu\left(\bigcup\limits_{j \in \mbb N} E_j\right) &= \sum_{n \in \bigcup E_j} a_n.
+  \end{align*}
+  Considere $J = \{n \in \mbb N; E_n = \emptyset\}$. Visto que $\{E_j\}$ é disjunto dois a dois,
+  para todo $n \in \bigcup E_j$ existe um único $k \in \mathbb N$ tal que 
+  $n \in E_k$, e, como para cada $n \in \bigcup E_j$, temos $a_n \ge 0$, segue que,
+  \begin{align*}
+    &= \sum_{n \in \bigcup E_j} a_n = \sum_{j \in \mbb N \setminus J} \left[\sum_{n \in E_j} a_n\right]
+    = \sum_{j \in \mbb N \setminus J} \mu(E_j).
+  \end{align*}
+  Da definição de $J$, 
+\begin{align*}
+  &= \sum_{j \in \mbb N \setminus J} \mu(E_j) + \sum_{l \in J}\mu(E_l) = \sum_{j \in \mbb N} \mu(E_j).
+\end{align*}
+  Com isso, segue que $\mu$ é $\sigma$-aditiva. Já que $\mcal P (\mbb N)$ é uma $\sigma$-álgebra, $\mu$ é medida em 
+  $(\mbb N, \mcal P (\mbb N))$.
+
+  Agora, vejamos que toda medida em $\mbb N$ pode ser escrita como $\mu$. Considere $\lambda$ 
+  uma medida em $(\mbb N, \mcal P (\mbb N))$. Seja $E \in \mcal P (\mbb N)$ tal que $E \neq \emptyset$.
+  Então, 
+  \begin{align*}
+    \lambda(E) = \lambda\left(\bigcup\limits_{n \in E} \{n\}\right).
+  \end{align*}
+  Como $E \subseteq \mbb N$, $E$ é enumerável. Mais ainda, $\{n\}_{n \in E}$ é disjunto dois a dois, portanto, 
+  da $\sigma$-aditividade, 
+  \begin{align*}
+    &= \lambda\left(\bigcup\limits_{n \in E} \{n\}\right) = \sum_{n \in E} \lambda(\{n\}),
+  \end{align*}
+  definindo $a_n = \lambda(\{n\})$, temos o que queríamos.
+\end{proof}
+
+\bigline
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Seja $X$ um conjunto não-enumerável. Considere a coleção 
+$$\mcal F = \{A \subseteq X; A \text{ ou } A^C \text{ é enumerável}\}.$$ Defina $\mu: \mcal F\rightarrow \mbb R$
+por 
+\begin{align*}
+  \mu(E) = \begin{cases}
+    0, &\text{ se $E$ é enumerável;}\\
+    1, &\text{ se $E^C$ é enumerável.}
+  \end{cases}
+\end{align*}
+Mostre que $\mu$ é uma medida em $(X, \mcal F)$.
+}
+\begin{proof}[\textbf{Dem: }]
+  Ora, visto que $\emptyset$ é enumerável, $\mu(\emptyset) = 0$, e como para todo $E \in \mcal F$, temos $\mu(E) = 0$ 
+  ou $\mu(E) = 1$, segue que $\mu(E) \ge 0$. Daqui, vejamos que $\mu$ é $\sigma$-aditiva. 
+  Considere a sequência $\{E_j\}_{j \in \mbb N}$ em $\mcal F$ disjunto dois a dois. Se $\bigcup E_j$ é enumerável, 
+  então $E_j$ é enumerável para todo $j \in \mbb N$, desse modo, 
+  \begin{align*}
+    \mu\left(\bigcup\limits_{j \in \mbb N} E_j\right) = 0 = \sum_{j \in \mbb N} \mu(E_j)
+  \end{align*}
+  Caso contrário, se $\bigcup E_j$ é não-enumerável, note que existe exatamente um $k \in \mbb N$ tal que $E_k$ é 
+  não-enumerável, pois, supondo por contradição que existe $m \in \mbb N$ tal que $E_m$ é não-enumerável e $k \neq m$. 
+  Como $E_k$ é não-enumerável e $E_k \in \mcal F$, então $E_k^C$ é enumerável. Entretanto, já que a sequência $\{E_j\}$
+  é disjunto dois a dois, $E_m \subset E_k^C$, ou seja, $E_m$ deve ser enumerável, uma contradição. Com isso, garantimos 
+  que existe exatamente um $k \in \mbb N$ tal que $E_k$ é não-enumerável. Daqui, visto que $\mu(E_j) = 0$ para todo 
+  inteiro positivo $j \neq k$, $\mu(E_k) = 1$ e $\bigcup E_j \in \mcal F$, temos
+  \begin{align*}
+    \mu\left(\bigcup\limits_{j \in \mbb N} E_j\right) = 1 = \mu(E_k) + \sum_{j \neq k} \mu(E_j) 
+    = \sum_{j \in \mbb N} \mu(E_j).
+  \end{align*}
+  Ou seja, $\mu$ é $\sigma$-aditiva. Como $\mcal F$ é $\sigma$-álgebra, segue que $\mu$ é uma medida em $(X, \mcal F)$.
+\end{proof}
