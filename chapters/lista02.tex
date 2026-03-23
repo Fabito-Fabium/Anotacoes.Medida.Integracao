@@ -22,8 +22,8 @@ $\{E_n \cap A\}$ também é dois a dois disjuntos. Com isso,
 \end{align*}
 Desse modo, segue que $\lambda$ é uma medida, como queríamos.
 \end{proof}
+\biglinend
 
-\bigline
 \newpage
 \stepcounter{dois}
 \mysubsec{Exercício \thedois}
@@ -69,7 +69,7 @@ Como a soma em $k$ é finita, podemos trocar a ordem das somas, obtendo
   Com isso, temos que $\lambda$ é uma medida em $(X, \mcal F)$.
 \end{proof}
 
-\bigline
+\biglinend
 \newpage 
 \stepcounter{dois}
 \mysubsec{Exercício \thedois}
@@ -116,7 +116,7 @@ então, para todo $E \in \mcal F$,
 Com isso, temos o que queríamos.
 \end{proof}
 
-\bigline
+\biglinend
 \newpage 
 \stepcounter{dois}
 \mysubsec{Exercício \thedois}
@@ -166,10 +166,11 @@ $(a_n)$ em $\xbR$.
   \begin{align*}
     &= \lambda\left(\bigcup\limits_{n \in E} \{n\}\right) = \sum_{n \in E} \lambda(\{n\}),
   \end{align*}
-  definindo $a_n = \lambda(\{n\})$, temos o que queríamos.
+  definindo $a_n = \lambda(\{n\})$, temos que cada $a_n \in \xbR$ é não-negativo, 
+  como queríamos.
 \end{proof}
 
-\bigline
+\biglinend
 \newpage 
 \stepcounter{dois}
 \mysubsec{Exercício \thedois}
@@ -186,7 +187,8 @@ por
 Mostre que $\mu$ é uma medida em $(X, \mcal F)$.
 }
 \begin{proof}[\textbf{Dem: }]
-  Ora, visto que $\emptyset$ é enumerável, $\mu(\emptyset) = 0$, e como para todo $E \in \mcal F$, temos $\mu(E) = 0$ 
+  Primeiro, note que $\mcal F$ de fato é uma $\sigma$-álgebra. E, visto 
+  que $\emptyset$ é enumerável, $\mu(\emptyset) = 0$, e como para todo $E \in \mcal F$, temos $\mu(E) = 0$ 
   ou $\mu(E) = 1$, segue que $\mu(E) \ge 0$. Daqui, vejamos que $\mu$ é $\sigma$-aditiva. 
   Considere a sequência $\{E_j\}_{j \in \mbb N}$ em $\mcal F$ disjunto dois a dois. Se $\bigcup E_j$ é enumerável, 
   então $E_j$ é enumerável para todo $j \in \mbb N$, desse modo, 
@@ -197,11 +199,131 @@ Mostre que $\mu$ é uma medida em $(X, \mcal F)$.
   não-enumerável, pois, supondo por contradição que existe $m \in \mbb N$ tal que $E_m$ é não-enumerável e $k \neq m$. 
   Como $E_k$ é não-enumerável e $E_k \in \mcal F$, então $E_k^C$ é enumerável. Entretanto, já que a sequência $\{E_j\}$
   é disjunto dois a dois, $E_m \subset E_k^C$, ou seja, $E_m$ deve ser enumerável, uma contradição. Com isso, garantimos 
-  que existe exatamente um $k \in \mbb N$ tal que $E_k$ é não-enumerável. Daqui, visto que $\mu(E_j) = 0$ para todo 
-  inteiro positivo $j \neq k$, $\mu(E_k) = 1$ e $\bigcup E_j \in \mcal F$, temos
+  que existe exatamente um $k \in \mbb N$ tal que $E_k$ é não-enumerável. Daqui, como $\bigcup E_j \in \mcal F$ é não enumerável,
+  pela definição de $\mcal F$, segue que 
+  $\left(\bigcup E_j\right)^C$ é enumerável. Desse modo, visto que $\mu(E_j) = 0$ para todo 
+  inteiro positivo $j \neq k$, $\mu(E_k) = 1$, temos
   \begin{align*}
     \mu\left(\bigcup\limits_{j \in \mbb N} E_j\right) = 1 = \mu(E_k) + \sum_{j \neq k} \mu(E_j) 
     = \sum_{j \in \mbb N} \mu(E_j).
   \end{align*}
-  Ou seja, $\mu$ é $\sigma$-aditiva. Como $\mcal F$ é $\sigma$-álgebra, segue que $\mu$ é uma medida em $(X, \mcal F)$.
+  Ou seja, $\mu$ é $\sigma$-aditiva. Portanto, $\mu$ é uma medida em $(X, \mcal F)$.
 \end{proof}
+
+
+\biglinend
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Seja $X$ um conjunto não-enumerável e considere o espaço mensurável $(X, \mcal P(X))$. 
+Mostre que a aplicação $\mu: \mcal P(X) \rightarrow \xbR$ definida por 
+\begin{align*}
+  \mu(E) = \begin{cases}
+    0, &\text{se $E$ é enumerável;}\\
+    +\infty, &\text{se $E$ é não-enumerável.}
+  \end{cases}
+\end{align*}
+Mostre que $\mu$ é uma medida em $(X, \mcal F)$.}
+\begin{proof}[\textbf{Dem:}]
+Visto que $\emptyset$ é enumerável, $\mu(\emptyset) = 0$. Já que para todo $A \in \mcal P(X)$, 
+  $A$ é enumerável ou não-enumerável, temos que $\mu(A) = 0$ ou $\mu(A) = +\infty$, ou seja, 
+  $\mu(A) \ge 0$. Daqui, vejamos que $\mu$ é $\sigma$-aditiva. Considere uma sequência 
+  $\{E_j\}_{j \in \mbb N}$ em $\mcal F$ disjunto dois a dois. Se $\bigcup E_j$ é enumerável, 
+  para todo $k \in \mbb N$, $E_k$ é enumerável. Sendo assim, 
+  \begin{align*}
+    \mu\left(\bigcup\limits_{j \in \mbb N} E_j\right) = 0 
+    = \sum_{j \in \mbb N} 0 = \sum_{j \in \mbb N} \mu(E_j).
+  \end{align*}
+  Caso contrário, se $\bigcup E_j$ é não-enumerável, existe ao menos um $k \in \mbb N$ 
+  tal que $E_k$ é não-enumerável. Portanto, 
+  \begin{align*}
+    \mu\left(\bigcup_{j \in \mbb N} E_j\right) = +\infty = \mu(E_k)
+    = \sum_{j \in \mbb N} \mu(E_j).
+  \end{align*}
+  Com isso, segue que $\mu$ é $\sigma$-aditiva. Mais ainda, $\mu$ é uma medida.
+\end{proof}
+
+
+\biglinend
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Considere no espaço 
+mensurável $(\mbb N, \mcal P(\mbb N))$ a aplicação $\mu: \mcal 
+P(\mbb N) \rightarrow \xbR$
+definida por 
+\begin{align*}
+  \mu(E) = \begin{cases}
+    0, &\text{ se $E$ é finito;}\\
+    +\infty, &\text{ se $E$ é infinito.}
+  \end{cases}
+\end{align*}
+A aplicaçã $\mu$ é uma medida?
+}
+\begin{proof}[\textbf{Dem:}]
+  Visto que $\emptyset \in \mcal P(\mbb N)$ é finito, 
+  $\mu(\emptyset) = 0$, mais ainda, como para todo 
+  $E \in \mcal P (\mbb N)$, $E$ é finito ou infinito, segue que $\mu(E) \ge 0$. Com isso
+  vejamos que $\mu$ obedece a $\sigma$-aditividade. Ora, considere uma sequência  
+  $\{E_j\}_{j \in \mbb N}$ em $\mcal P(\mbb N)$ disjunto dois a dois. Se $\bigcup E_j$
+  é finito, temos que $E_j$ é finito para todo $j \in \mbb N$, portanto, 
+  \begin{align*}
+    \mu\left(\bigcup_{j \in \mbb N} E_j\right) = 0 = \sum_{j \in \mbb N} 0
+    = \sum_{j \in \mbb N} \mu(E_j). 
+  \end{align*}
+  Por outro lado, supondo que $\bigcup E_j$ é infinito, então, existe pelo 
+  menos um $k \in \mbb N$ tal que $E_k$ é infinito. Desse modo, 
+  visto que $\mu(E) \ge 0$ para todo $E \in \mcal P(\mbb N)$,
+  \begin{align*}
+    \mu\left(\bigcup_{j \in \mbb N} E_j\right) = +\infty = \mu(E_k)
+    = \sum_{j \in \mbb N} \mu(E_j).
+  \end{align*}
+  Com isso, temos que $\mu$ é uma medida.
+\end{proof}
+
+\biglinend
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(A_n)_{n \in \mbb N}$
+uma sequência em $\mcal F$.}
+\begin{enumerate}[label=(\alph*), wide, labelwidth=!, labelindent=0pt]
+  \item \textbf{Mostre que o conjunto 
+    $$\lim \sup A_n \coloneq \bigcap_{m=1}^\infty\left
+    [\bigcup\limits_{n = m}^\infty A_n\right]$$ 
+    consiste dos elementos de $X$ que pertencem a infinitos conjuntos da sequência $A_n$.}
+    \begin{proof}[\textbf{Dem:}] Para verificar a proposição, dividiremos a demonstração 
+      em duas partes. \\
+      ($\implies$) Suponha $x \in \lim\sup a_n$, vejamos que $x$ pertence a infinitos 
+      conjuntos da sequência $A_n$. Da hipótese, temos $x \in \bigcap_{m=1}^\infty 
+      \left[\bigcup_{n = m}^\infty A_n\right]$, ou seja, $x \in \bigcup_{n=m}^\infty A_n$
+      para todo $m \in \mbb n$. portanto, para todo $m \in \mbb n$, existe $n \ge m$ tal que 
+      $x \in A_n$, i.e, $x$ pertence a infinitos conjuntos de $\{A_n\}$.\\
+      ($\impliedby$) Suponhamos agora que $x$ pertence a infinitos conjuntos da sequência 
+      $A_n$ e vejamos que $x \in \lim\sup A_n$. ora, considere a sequência 
+      $\{B_n\}_{n \in \mbb n}$ tal que $B_m = \bigcup_{n=m}^\infty A_n$. da hipótese, 
+      segue que $x \in B_n$ para todo $n \in \mbb N$, ou seja, 
+      $x \in \bigcap\limits_{m=1}^\infty B_m = \lim\sup a_n$. 
+    \end{proof}
+  \item \textbf{Se $\mu\left(\bigcup\limits_{n \in \mbb N} A_n\right) < +\infty$, mostre que 
+    $$\lim \sup \mu (A_n) \le \mu(\lim\sup A_n).$$
+  Dê um exemplo em que a desigualdade é falsa quando $\mu\left(\bigcup
+    \limits_{n \in \mbb N} A_n\right) = +\infty$.}
+    \begin{proof}[\textbf{Dem:}] Definindo $F_m = \bigcup\limits_{n = m}^\infty A_n$, temos 
+      $F_{m + 1} \subseteq F_{m}$, ou seja, $\{F_m\}$ é decrescente e mais ainda, 
+        $\mu(F_1) = \mu\left(\bigcup\limits_{n \in \mbb N} A_n\right) < +\infty$. 
+        Portanto, da continuidade da medida, 
+        $$\mu\left(\bigcap_{m \in \mbb N} F_m\right) =
+        \mu\left(\bigcap_{m=1}^\infty\left[\bigcup\limits_{n = m}^\infty A_n\right]\right)
+        = \mu\left(\lim\sup A_n\right) = \lim_{m \rightarrow +\infty} \mu(F_m).$$
+      Visto que cada $A_m \subseteq F_m$, temos $\mu(F_m) \ge \mu(A_m)$. Portanto, 
+      \begin{align*}
+        \mu(\lim\sup A_n) = \lim_{n \rightarrow +\infty}\mu(F_n) = 
+        \lim\sup \mu(F_n) \ge \lim\sup \mu(A_n).
+      \end{align*}
+      Com isso, temos o que queríamos.
+  \end{proof}
+\end{enumerate}
