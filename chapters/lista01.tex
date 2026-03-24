@@ -2,7 +2,7 @@
 \bigline
 \textbf{Seja $X$ um conjunto não-enumerável. Considere a seguinte coleção:
 $$\mathcal F = 
-\{A \subseteq X ; A \text{ ou } A^C \text{ é enumerável}\}.$$ 
+\{A \subseteq X \st  A \text{ ou } A^C \text{ é enumerável}\}.$$ 
   Mostre que $\mathcal F$ é uma $\sigma$-álgebra.}
 \begin{proof}[\textbf{Dem:}]
  Ora, visto que $\emptyset$ é enumerável, $\emptyset \in \mathcal F$. 
@@ -39,10 +39,10 @@ como queríamos.
 \begin{proof}[\textbf{Dem:}]
 Considere os seguintes conjuntos:
 \begin{align*}
-  &E_1 = \{(a, b) ; a<b\}, &&E_2= \{[a, b]; a< b\},\\
-  &E_3 = \{(a, b] ; a<b\}, &&E_4= \{[a, b); a< b\},\\
-  &E_5 = \{(a, +\infty) ; a\in\mathbb R\}, &&E_6= \{(+\infty, a); a \in \mathbb R\}, \\
-  &E_7 = \{[a, +\infty) ; a\in\mathbb R\}, &&E_8= \{(+\infty, a]; a \in \mathbb R\}.
+  &E_1 = \{(a, b) \st  a<b\}, &&E_2= \{[a, b]\st  a< b\},\\
+  &E_3 = \{(a, b] \st  a<b\}, &&E_4= \{[a, b)\st  a< b\},\\
+  &E_5 = \{(a, +\infty) \st  a\in\mathbb R\}, &&E_6= \{(+\infty, a)\st  a \in \mathbb R\}, \\
+  &E_7 = \{[a, +\infty) \st  a\in\mathbb R\}, &&E_8= \{(+\infty, a]\st  a \in \mathbb R\}.
 \end{align*}
 Vejamos que para cada $n \in \mathbb N_{\leq 8}$, $\mathcal B(\mathbb R, \tau)$
 é gerada por $E_n$.
@@ -90,9 +90,9 @@ Segue de argumentos similares a (ii) que $E_3$ e $E_4$ geram $\mathcal B(\mathbb
 \bigline 
 \textbf{Para $E \in \mathcal B(\mathbb R)$, considere $E_1 = E \cup \{+\infty\}$, 
 $E_2 = E \cup \{-\infty\}$ e $E_3 = E \cup \{-\infty, +\infty\}$. Prove que 
-$\{E, E_1, E_2, E_3; E\in \mathcal B(\mathbb R)\}$ 
+$\{E, E_1, E_2, E_3\st  E\in \mathcal B(\mathbb R)\}$ 
 é uma $\sigma$-álgebra de $\overline{\mathbb R}$}. 
-\begin{proof}[\textbf{Dem:}] Defina $\mathcal C = \{E, E_1, E_2, E_3; E
+\begin{proof}[\textbf{Dem:}] Defina $\mathcal C = \{E, E_1, E_2, E_3\st  E
 \in \mathcal B(\mathbb R)\}$,
 visto que $\emptyset\in \mathcal B(\mathbb R)$, segue que $\emptyset \in \mathcal C$.
 De maneira análoga, temos $\overline{\mathbb R} \in \mathcal C$. Agora, seja $A \in C$, 
@@ -144,12 +144,12 @@ para todo $x \in X$.}
 \begin{proof}[\textbf{Dem:}] Fixado $n \in \mathbb N$, seja $\alpha \in \mathbb R$. 
 
 \begin{itemize}
-  \item Para $\alpha < -n$, temos $\{x \in X; f_n(x) > \alpha\}
+  \item Para $\alpha < -n$, temos $\{x \in X\st  f_n(x) > \alpha\}
   = X \in \mathcal F$;
-  \item   Para $-n \le \alpha < n$, $f_n = f$, sendo assim, $\{x \in X; f_n(x) > \alpha\} = 
-    \{x \in X; f(x) > \alpha\}$. Visto que $f$ é mensurável, 
-    $\{x \in X; f_n(x) > \alpha\} \in \mathcal F$;
-  \item Por fim, para $\alpha \ge n$, $\{x \in X; f(x) > \alpha\} = \emptyset \in \mathcal F$.
+  \item   Para $-n \le \alpha < n$, $f_n = f$, sendo assim, $\{x \in X\st  f_n(x) > \alpha\} = 
+    \{x \in X\st  f(x) > \alpha\}$. Visto que $f$ é mensurável, 
+    $\{x \in X\st  f_n(x) > \alpha\} \in \mathcal F$;
+  \item Por fim, para $\alpha \ge n$, $\{x \in X\st  f(x) > \alpha\} = \emptyset \in \mathcal F$.
 \end{itemize}
 Portanto, para todo $n \in \mathbb N$ temos $f_n$ mensurável. 
 
@@ -200,16 +200,16 @@ Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)
 
   Para $\alpha \ge 0$, 
   \begin{align*}
-    \{x \in X;|f(x)|> \alpha\} = \{ x \in X;(f_1(x))^2 + (f_2(x))^2 > \alpha^2\},
+    \{x \in X\st |f(x)|> \alpha\} = \{ x \in X\st (f_1(x))^2 + (f_2(x))^2 > \alpha^2\},
   \end{align*}
   Já que $f_1, f_2$ são funções mensuráveis, a soma dos quadrados é mensurável, i.e.
   \begin{align*}
-   \{x \in X;|f(x)|> \alpha\} = \{ x \in X;(f_1(x))^2 + (f_2(x))^2 > \alpha^2\}\in \mathcal F.
+   \{x \in X\st |f(x)|> \alpha\} = \{ x \in X\st (f_1(x))^2 + (f_2(x))^2 > \alpha^2\}\in \mathcal F.
   \end{align*}
 
   Para $\alpha < 0$, note que $|f(x)| > \alpha$ para todo $x \in X$. Desse modo,
   \begin{align*}
-    \{x \in X; |f(x)| > \alpha\} = X \in \mathcal F.
+    \{x \in X\st  |f(x)| > \alpha\} = X \in \mathcal F.
   \end{align*}
   Com isso, temos que se $f:X \rightarrow \mathbb C$ é mensurável, segue que $|f|$ também será mensurável.
 
@@ -233,7 +233,7 @@ Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)
 \bigline 
 \textbf{Seja $f: X \rightarrow Y$ uma função. Mostre que se $\mathcal G$ 
 for uma $\sigma$-álgebra de Y, então 
-$$\mathcal F= \{f^{-1}(E);E\in\mathcal G\} $$
+$$\mathcal F= \{f^{-1}(E)\st E\in\mathcal G\} $$
 é uma $\sigma$-álgebra de X.
 \begin{proof}[\textbf{Dem:}]
 Ora, como $\emptyset \in \mathcal G$, então $f^{-1}(\emptyset) = \emptyset \in \mathcal F$. E, visto que 
@@ -258,7 +258,7 @@ Com isso, temos que $\mathcal F$ é uma $\sigma$-álgebra de $X$, como queríamo
 \bigline
 \textbf{Seja $f:X \rightarrow Y$ uma função. Mostre que se $\mathcal F$ 
 for uma $\sigma$-álgebra de $X$, então 
-$$\mathcal G = \{E \subset Y; f^{-1}(E)\in \mathcal F\}$$ 
+$$\mathcal G = \{E \subset Y\st  f^{-1}(E)\in \mathcal F\}$$ 
 é uma $\sigma$-álgebra de Y.
 }
 \begin{proof}[\textbf{Dem:}]
@@ -288,7 +288,7 @@ subconjuntos de $Y$ tais que $f^{-1}(A) \in \mathcal F$, para todo $A \in \mathc
 para todo $E \in \sigma(\mathcal C)$}.
 \begin{proof}[\textbf{Dem:}] Considere a seguinte coleção de subconjuntos de $Y$:
   \begin{align*}
-    \mathcal G = \{E\subseteq Y; f^{-1}(E) \in \mathcal F\}.
+    \mathcal G = \{E\subseteq Y\st  f^{-1}(E) \in \mathcal F\}.
   \end{align*}
   Do exercício 7, temos que $\mathcal G$ é $\sigma$-álgebra de $Y$. Já que 
   para todo $A \in \mathcal C$ segue que $f^{-1}(A) \in \mathcal F$,
@@ -307,13 +307,13 @@ para todo $E \in \mathcal B(\mathbb R)$. Conclua que as definições de mensurab
 da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B(\mathbb R))$.
 }
 \begin{proof}[\textbf{Dem:}]Seja  
-  $\mathcal C=\{(\alpha, +\infty)\subset \mathbb R; \alpha \in \mathbb R\}$ uma coleção de 
+  $\mathcal C=\{(\alpha, +\infty)\subset \mathbb R\st  \alpha \in \mathbb R\}$ uma coleção de 
   subconjuntos de $\mathbb R$. 
 
   \vspace{3mm}
 ($\implies$) Suponhamos $f$ mensurável, isto é,
   para todo $\alpha \in \mathbb R$, 
-  $A_{\alpha} = \{x \in X; f(x) > \alpha\} \in \mathcal F$.  
+  $A_{\alpha} = \{x \in X\st  f(x) > \alpha\} \in \mathcal F$.  
    Visto que para todo $\alpha \in \mathbb R$, segue que 
   $A_\alpha = f^{-1}((\alpha, +\infty)) \in \mathcal F$, temos do exercício anterior que
   $f^{-1}(E) \in \mathcal F$, para todo $E \in \sigma(\mathcal C)$. Já que 
@@ -328,10 +328,10 @@ da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B
   $E \in \mathcal C$, existe $\alpha \in \mathbb R$ tal que $E = (\alpha, +\infty)$, 
   desse modo, 
   \begin{align*}
-    f^{-1}(E) = f^{-1}((\alpha, +\infty)) = \{x\in X; f(x) > \alpha\}.
+    f^{-1}(E) = f^{-1}((\alpha, +\infty)) = \{x\in X\st  f(x) > \alpha\}.
   \end{align*}
   Portanto, para todo $\alpha \in \mathbb R$, temos 
-  $\{x \in X; f(x)>\alpha \} \in \mathcal F$, i.e, $f$ é mensurável, como queríamos.
+  $\{x \in X\st  f(x)>\alpha \} \in \mathcal F$, i.e, $f$ é mensurável, como queríamos.
 
   Mais ainda, por definição, dizemos que $f: (X,\mathcal F) \rightarrow (Y, \mathcal G)$ é
   mensurável se $f^{-1}(E) \in \mathcal F$, para todo $E \in \mathcal G$. De fato, ao tomar 
@@ -355,7 +355,7 @@ Mostre que $\varphi \circ f: X \rightarrow \mathbb R$ é mensurável.}
   \mathcal F$. Dito isso, note que 
   \begin{align*}
     f^{-1}(\varphi^{-1}((\alpha, +\infty))) &= (\varphi \circ f)^{-1}((\alpha, +\infty)),\\
-    &=\{x \in X; (\varphi \circ f)(x) > \alpha\} = A_{\alpha}.
+    &=\{x \in X\st  (\varphi \circ f)(x) > \alpha\} = A_{\alpha}.
   \end{align*}
   Já que para todo $\alpha \in \mathbb R$ temos $A_{\alpha} \in \mathcal F$, então $\varphi \circ f$ é mensurável.
 \end{proof}
@@ -385,27 +385,27 @@ mensurável. Mostre que $\psi \circ f: X \rightarrow \mathbb R$ é mensurável.}
 \textbf{Sejam $f: X \rightarrow Y$ uma função, $\mathcal F$ uma $\sigma$-álgebra de $X$ e 
 $\mathcal C \subset \mathcal P(Y)$. Mostre que 
 \begin{align*}
-  \sigma(\{f^{-1}(A); A \in \mathcal C\}) = \{f^{-1}(E); E \in \sigma(\mathcal C)\}
+  \sigma(\{f^{-1}(A)\st  A \in \mathcal C\}) = \{f^{-1}(E)\st  E \in \sigma(\mathcal C)\}
 \end{align*}
 }
 \begin{proof}[\textbf{Dem:}] 
-  Sejam $D = \{f^{-1}(A) ; A \in \mathcal C\}$ e $\mathcal G = \{f^{-1}(E); E \in \sigma(\mathcal C)\}$.
+  Sejam $D = \{f^{-1}(A) \st  A \in \mathcal C\}$ e $\mathcal G = \{f^{-1}(E)\st  E \in \sigma(\mathcal C)\}$.
   Vejamos que $\sigma(D) = \mathcal G$.
   \vspace{3mm}
 
   ($\subseteq$) Visto que $\mathcal C \subseteq \sigma(\mathcal C)$, então 
-  $$D = \{f^{-1}(E); E \in \mathcal C\} \subseteq \{f^{-1}(E); E \in \sigma(\mathcal C)\} = \mathcal G.$$
+  $$D = \{f^{-1}(E)\st  E \in \mathcal C\} \subseteq \{f^{-1}(E)\st  E \in \sigma(\mathcal C)\} = \mathcal G.$$
   Pelo exercício 6, temos que $\mathcal G$ é uma $\sigma$-álgebra de $X$. Visto que $D$ é uma 
   coleção de subconjuntos de $X$, temos $\sigma(D) \subseteq \mathcal G$. 
 
-  ($\supseteq$) Seja $\mathcal A = \{E \subseteq Y; f^{-1}(E) \in \sigma(D)\}$. Do exercício 7, temos que 
+  ($\supseteq$) Seja $\mathcal A = \{E \subseteq Y\st  f^{-1}(E) \in \sigma(D)\}$. Do exercício 7, temos que 
   $\mathcal A$ é $\sigma$-álgebra de Y. Com isso, vejamos que $\mathcal C \subset \mathcal A$. 
   Dado $A \in \mathcal C \subseteq Y$, temos $f^{-1}(A) \in D \subseteq \sigma(D)$, pela definição de $\mathcal A$, 
   segue que $A \in \mathcal A$, isto é, $\mathcal C \subseteq \mathcal A$. Das propriedades de $\sigma$-álgebra gerada, 
   temos $\sigma(\mathcal C) \subseteq \mathcal A$. Daqui, note que 
   \begin{align*}
-    \mathcal G = \{f^{-1}(E); E \in \sigma(\mathcal C)\} \subseteq 
-    \{f^{-1}(E); E \in \mathcal A\} \subseteq \sigma(D)
+    \mathcal G = \{f^{-1}(E)\st  E \in \sigma(\mathcal C)\} \subseteq 
+    \{f^{-1}(E)\st  E \in \mathcal A\} \subseteq \sigma(D)
   \end{align*}
   ou seja $\mathcal G \subseteq \sigma(D)$. Portanto, $\mathcal G = \sigma(D)$, como queríamos.
 

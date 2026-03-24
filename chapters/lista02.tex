@@ -141,7 +141,7 @@ $(a_n)$ em $\xbR$.
   \begin{align*}
     \mu\left(\bigcup\limits_{j \in \mbb N} E_j\right) &= \sum_{n \in \bigcup E_j} a_n.
   \end{align*}
-  Considere $J = \{n \in \mbb N; E_n = \emptyset\}$. Visto que $\{E_j\}$ é disjunto dois a dois,
+  Considere $J = \{n \in \mbb N\st  E_n = \emptyset\}$. Visto que $\{E_j\}$ é disjunto dois a dois,
   para todo $n \in \bigcup E_j$ existe um único $k \in \mathbb N$ tal que 
   $n \in E_k$, e, como para cada $n \in \bigcup E_j$, temos $a_n \ge 0$, segue que,
   \begin{align*}
@@ -176,7 +176,7 @@ $(a_n)$ em $\xbR$.
 \mysubsec{Exercício \thedois}
 \bigline
 \textbf{Seja $X$ um conjunto não-enumerável. Considere a coleção 
-$$\mcal F = \{A \subseteq X; A \text{ ou } A^C \text{ é enumerável}\}.$$ Defina $\mu: \mcal F\rightarrow \mbb R$
+$$\mcal F = \{A \subseteq X\st  A \text{ ou } A^C \text{ é enumerável}\}.$$ Defina $\mu: \mcal F\rightarrow \mbb R$
 por 
 \begin{align*}
   \mu(E) = \begin{cases}
@@ -290,23 +290,23 @@ A aplicaçã $\mu$ é uma medida?
 \bigline 
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(A_n)_{n \in \mbb N}$
 uma sequência em $\mcal F$.}
-\begin{enumerate}[label=(\alph*), wide, labelwidth=!, labelindent=0pt]
+\begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
   \item \textbf{Mostre que o conjunto 
     $$\lim \sup A_n \coloneq \bigcap_{m=1}^\infty\left
     [\bigcup\limits_{n = m}^\infty A_n\right]$$ 
     consiste dos elementos de $X$ que pertencem a infinitos conjuntos da sequência $A_n$.}
     \begin{proof}[\textbf{Dem:}] Para verificar a proposição, dividiremos a demonstração 
       em duas partes. \\
-      ($\implies$) Suponha $x \in \lim\sup a_n$, vejamos que $x$ pertence a infinitos 
+      ($\implies$) Suponha $x \in \lim\sup A_n$, vejamos que $x$ pertence a infinitos 
       conjuntos da sequência $A_n$. Da hipótese, temos $x \in \bigcap_{m=1}^\infty 
       \left[\bigcup_{n = m}^\infty A_n\right]$, ou seja, $x \in \bigcup_{n=m}^\infty A_n$
-      para todo $m \in \mbb n$. portanto, para todo $m \in \mbb n$, existe $n \ge m$ tal que 
+      para todo $m \in \mbb N$. portanto, para todo $m \in \mbb N$, existe $n \ge m$ tal que 
       $x \in A_n$, i.e, $x$ pertence a infinitos conjuntos de $\{A_n\}$.\\
       ($\impliedby$) Suponhamos agora que $x$ pertence a infinitos conjuntos da sequência 
-      $A_n$ e vejamos que $x \in \lim\sup A_n$. ora, considere a sequência 
-      $\{B_n\}_{n \in \mbb n}$ tal que $B_m = \bigcup_{n=m}^\infty A_n$. da hipótese, 
+      $A_n$ e vejamos que $x \in \lim\sup A_n$. Ora, considere a sequência 
+      $\{B_n\}_{n \in \mbb N}$ tal que $B_m = \bigcup_{n=m}^\infty A_n$. Da hipótese, 
       segue que $x \in B_n$ para todo $n \in \mbb N$, ou seja, 
-      $x \in \bigcap\limits_{m=1}^\infty B_m = \lim\sup a_n$. 
+      $x \in \bigcap\limits_{m=1}^\infty B_m = \lim\sup A_n$. 
     \end{proof}
   \item \textbf{Se $\mu\left(\bigcup\limits_{n \in \mbb N} A_n\right) < +\infty$, mostre que 
     $$\lim \sup \mu (A_n) \le \mu(\lim\sup A_n).$$
@@ -324,6 +324,107 @@ uma sequência em $\mcal F$.}
         \mu(\lim\sup A_n) = \lim_{n \rightarrow +\infty}\mu(F_n) = 
         \lim\sup \mu(F_n) \ge \lim\sup \mu(A_n).
       \end{align*}
-      Com isso, temos o que queríamos.
-  \end{proof}
+      Com isso, temos o que queríamos. Como exemplo em que a desigualdade é falsa, 
+      considere $A_n = (n, +\infty)$. Já que $\mu(A_n) = +\infty$ para todo $n \in \mbb N$,
+      então, $\lim\sup \mu(A_n) = +\infty$. Entretanto, visto que para todo $x \in \mbb R$,
+      existe $M \in \mbb N$ tal que $x < M$, segue que $\lim\sup A_n = \emptyset$, ou seja, 
+      $\mu(\lim\sup A_n) = 0$.
+    \end{proof}
+  \item \textbf{Mostre que o conjunto 
+    $$\lim \inf A_n \coloneq \bigcup\limits_{m=1}^\infty\left[\bigcap\limits_{n=m}^\infty 
+    A_n\right]$$
+    consiste dos elementos de $X$ que não pertencem a apenas finitos conjuntos da  
+    sequência $A_n$.}
+    \begin{proof}[\textbf{Dem:}] Para verificar a proposição, dividiremos a demonstração 
+      em duas partes.\\
+      ($\implies$) Suponhamos que $x \in \lim\inf A_n$, vejamos que $x$ não pertence a apenas 
+      finitos conjuntos da sequência $A_n$, i.e, existe $m \in \mbb N$ tal que para 
+      inteiros $n \ge m$, temos $x \in A_n$. Ora, já que
+      $$x \in \lim\inf A_n = \bigcup\limits_{m=1}^\infty\left[\bigcap\limits_{n=m}^\infty 
+    A_n\right],$$
+      segue que existe $m \in \mbb N$ tal que para inteiros $n \ge m$, temos $x \in A_n$,
+      como queríamos.\\
+      ($\impliedby$) Suponhamos que $x$ não pertence a apenas finitos conjuntos da sequência 
+      $\{A_n\}$, vejamos que $x \in \lim\inf A_n$. Ora, da hipótese, temos que existe 
+      $m \in \mbb N$ tal que para inteiros $n \ge m$ temos $x \in A_n$. Desse modo, 
+      $$x \in \bigcup\limits_{m \in \mbb N}\left[\bigcap\limits_{n=m}^\infty A_n\right]
+      = \lim \inf A_n$$
+      como queríamos.
+    \end{proof}
+  \item \textbf{Mostre que $\mu(\lim \inf A_n) \le \lim\inf \mu(A_n)$.}
+    \begin{proof}[\textbf{Dem:}] Definindo $F_m = \bigcap\limits_{n = m}^\infty A_n$,
+      note que $F_m \subset F_{m+1}$, sendo assim, $\{F_m\}_{m \in \mbb N}$ é crescente. 
+      Da continuidade da medida, segue que 
+      \begin{align*}
+        \mu\left(\bigcup_{m \in \mbb N} F_m\right)
+        = \mu(\lim\inf A_n)
+        = \lim_{m \rightarrow +\infty} \mu(F_m) = \lim\inf \mu(F_n).
+      \end{align*}
+      Já que $F_n \subset A_n$, temos $\mu(F_n) \le \mu(A_n)$, ou seja,
+      \begin{align*}
+        \mu(\lim\inf A_n) \le \lim\inf \mu(A_n),
+      \end{align*}
+      como queríamos.
+    \end{proof}
 \end{enumerate}
+\biglinend
+
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Prove o \textit{Lema de Borel-Cantelli}: Sejam $(X, \mcal F, \mu)$ um espaço 
+de medida e $(E_n)_{n \in \mbb N}$ uma sequência em $\mcal F$ tal que 
+$\sum_{n \in \mbb N} \mu(E_n) < +\infty$. Então quase-$\mu$ todo ponto $x \in X$ pertence a, 
+no máximo, um número finito de conjuntos da sequência $(E_n)_{n \in \mbb N}$}
+\begin{proof}[\textbf{Dem:}] Note que, $x\in X$ pertence a, no máximo, um número 
+  finito de conjuntos da sequência $(E_n)_{n \in \mbb N}$ $\mu$-q.t.p se 
+  $\mu(\lim\sup E_n) = 0$. Daqui, visto que 
+  \begin{align*}
+    \mu\left(\bigcup\limits_{n \in \mbb N}
+    E_n\right) \le \sum_{n \in \mbb N} \mu(E_n) < +\infty,
+  \end{align*}
+  definindo $F_m = \bigcup_{n = m}^\infty E_n$, 
+  segue que $\{F_m\}$ é decrescente, ou seja, 
+  pela continuidade da medida que $\lim \mu (F_n) = \mu(\bigcap F_m) = \mu(\lim\sup E_n)$. 
+  Mais ainda, definindo $S_m = \sum_{n = m}^\infty \mu(E_n)$, como $\sum \mu(E_n) < +\infty$,
+  segue que $\lim S_m = 0$. Portanto, da subaditividade, 
+  \begin{align*}
+    \mu(F_n) = \mu\left(\bigcup\limits_{n = m}^\infty E_n\right)
+    \le \sum_{n = m}^\infty \mu(E_n) = S_m,
+  \end{align*}
+  ou seja, $\lim S_m = \lim \mu\left(\bigcup\limits_{n = m}^\infty E_n\right) 
+  = \mu(\lim\sup E_n) = 0$.
+\end{proof}
+\biglinend
+
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida finito.} 
+\begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
+  \item \textbf{Mostre que se $E, F \in \mcal F$ e $\mu(E \Delta F) = 0$, 
+    então $\mu(E) = \mu(F)$.}
+    \begin{proof}[\textbf{Dem:}] Ora, visto que 
+      $E \Delta F = (E \setminus F) \cup (F \setminus E)$ e 
+      $(E\setminus F)\cap (F \setminus E) = \emptyset$, entâo, 
+      \begin{align*}
+        0 = \mu(E\Delta F) = \mu((E \setminus F) \cup (F \setminus E))
+        = \mu(E\setminus F) + \mu(F\setminus E).
+      \end{align*}
+      Já que o espaço de medida é finito, temos $\mu(X)<+\infty$(E \setminus F) \cup (F \setminus E), ou seja, $\mu(A) < +\infty$
+      para todo $A \in \mcal F$. Com isso, 
+      \begin{align*}
+        \mu(E\setminus F) = -\mu(F\setminus E)
+      \end{align*}
+  \end{proof}
+  \item \textbf{Defina $E\sim F$ se $\mu(E \Delta F) = 0$. Mostre que $\sim$ é uma 
+    relação de equivalência.} 
+  \item \textbf{Considere $Y = X/\sim $ o conjunto quociente da 
+    relação acima. Mostre que a função 
+    $d: Y \times Y \rightarrow \mbb R$ definida por 
+    $d([E], [F])\coloneq \mu(E \Delta F)$ define uma métrica.}
+\end{enumerate}
+
+
