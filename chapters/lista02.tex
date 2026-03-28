@@ -413,18 +413,123 @@ no máximo, um número finito de conjuntos da sequência $(E_n)_{n \in \mbb N}$}
         0 = \mu(E\Delta F) = \mu((E \setminus F) \cup (F \setminus E))
         = \mu(E\setminus F) + \mu(F\setminus E).
       \end{align*}
-      Já que o espaço de medida é finito, temos $\mu(X)<+\infty$(E \setminus F) \cup (F \setminus E), ou seja, $\mu(A) < +\infty$
-      para todo $A \in \mcal F$. Com isso, 
+      Já que o espaço de medida é finito, temos $\mu(X)<+\infty$, ou seja $\mu(A) < +\infty$
+      para todo $A \in \mcal F$, $(1)$. Com isso, 
       \begin{align*}
         \mu(E\setminus F) = -\mu(F\setminus E)
       \end{align*}
+      Note que, se $\mu(F\setminus E) \neq 0$, teremos $\mu(F \setminus E) > 0$, i.e, 
+      $\mu(E \setminus F) < 0$, uma contradição. Sendo assim, $\mu(F \setminus E) = 0$. 
+      Com isso, já que 
+      \begin{align*}
+        F\setminus E = F \cap E^C = (F \cap E^C) \cup (F \cap F^C) = F\cap(E \cap F)^C
+      \end{align*}
+      de temos (1) e $(E\cap F) \subset F$, segue que diretamente de $\mu(F\E) = 0$,
+      que $\mu(F) = \mu(E \cap F)$. Analogamente, temos $\mu(E) = \mu(F \cap E)$, 
+      ou seja, $\mu(F) = \mu(E)$.
   \end{proof}
   \item \textbf{Defina $E\sim F$ se $\mu(E \Delta F) = 0$. Mostre que $\sim$ é uma 
-    relação de equivalência.} 
+    relação de equivalência.}
+    \begin{proof}[\textbf{Dem:}]
+      Vejamos que vale a reflexiva, simétrica e transitiva. 
+     
+      \noindent
+      (Reflexiva:) Já que para todo $A \in \mcal F$, $A \Delta A = (A\setminus A) \cup (A \setminus A) = \emptyset$, 
+      então $\mu(A\Delta A) = 0$, i.e, $A \sim A$;
+      
+      \noindent 
+      (Simétrica:) Suponhamos que, dados $A, B \in \mcal F$, temos $A \sim B$. Ora, como $A \sim B$, 
+      $\mu(A\Delta B) = 0$, entrentanto,
+      \begin{align*}
+        A\Delta B = (A\setminus B) \cup (B \setminus A) = (B \setminus A) \cup (A \setminus B) = B\Delta A,
+      \end{align*}
+      logo, $\mu(A\Delta B) = \mu(B\Delta A) = 0$, i.e, $B \sim A$.
+
+      \noindent 
+      (Transitiva:) Sejam $A, B, C \in \mcal F$, vejamos que se $A\sim B$ e $B \sim C$, então $A \sim C$, ou seja,  
+      $\mu (A\Delta C) = 0$. Note que, 
+      \begin{align*}
+        A\Delta C &= (A\cap C^C) \cup (C \cap A^C) = (A \cap C^C\cap(B \cup B^C)) \cup (C \cap A^C\cap(B \cup B^C))\\
+        &=((A\cap C^C\cap B) \cup (A \cap C^C \cap B^C)) \cup ((C\cap A^C \cap B)\cup (C\cap A^C \cap B^C))\\
+        &=((A\cap(B \setminus C))\cup(C^C\cap(A\setminus B)))\cup((C\cap(B\setminus A))\cup (A^C \cap (C \setminus B)))\\
+        &\subseteq ((B\setminus C)\cup (A\setminus B))\cup ((B\setminus A) \cup (C\setminus B)) = (A\Delta B) \cup (B \Delta C).
+      \end{align*}    
+      Portanto, $\mu(A\Delta C) \le \mu((A\Delta B) \cup (B\Delta C)) $, $(2)$, ou seja 
+      \begin{align*}
+        0 \le \mu(A\Delta C) \le \mu((A\Delta B) \cup (B\Delta C)) \le \mu(A\Delta B) + \mu(B \Delta C) = 0 + 0 = 0,
+      \end{align*}
+      ou seja $\mu(A \Delta C) = 0$, isto é, $A \sim C$, como queríamos.
+    \end{proof}
   \item \textbf{Considere $Y = X/\sim $ o conjunto quociente da 
     relação acima. Mostre que a função 
     $d: Y \times Y \rightarrow \mbb R$ definida por 
     $d([E], [F])\coloneq \mu(E \Delta F)$ define uma métrica.}
+    \begin{proof}[\textbf{Dem:}]
+      Ora, visto que $\sim$ é reflexiva, $\mu(A \Delta A) = 0$ para todo $A \in \mcal F$, ou seja $d([A], [A]) = 0$ para
+      todo $[A] \in Y$. Mais ainda, se $[A] \neq [B]$, i.e, $A \not \sim B$, então $\mu(A\Delta B)\neq 0$, ou mais, 
+      $d([A], [B]) = \mu(A \Delta B) > 0$. Da transitividade de $\sim$, $d([A], [B]) = \mu(A \Delta B) = 
+      \mu(B \Delta A) = d([B], [A])$. Por fim,  de $(2)$, para cada $[A], [B], [C] \in Y$, 
+      \begin{align*}
+        d([A], [C]) = \mu(A \Delta C) \le \mu(A \Delta B) + \mu(B \Delta C) = d([A], [B]) + d([B], [C]).
+      \end{align*}
+      Com isso, temos o que queríamos.
+    \end{proof}
 \end{enumerate}
-
-
+\biglinend
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida completo e $(f_n)_{n \in \mbb N}$ uma sequência de funções mensuráveis 
+$f_n: X \rightarrow \xbR$. Mostre que se $f_n \rightarrow f$, em quase-$\mu$ todo ponto para uma função 
+$f: X \rightarrow \xbR$, então $f$ é mensurável.}
+\begin{proof}[\textbf{Dem:}]Como a propriedade vale $\mu$-q.t.p, então, existe $N \in \mcal F$ tal que $\mu(N) = 0$ e 
+  vale que $f_n \rightarrow f$ para $x \in N^C$. Considere $A = \{x \in X\st f_n\text{ não converge para }f\}$. Visto que 
+  $A \subset N$ e $\mu(N) = 0$, da completude do espaço, temos $A \in \mcal F$. Mais ainda, dado $\alpha \in \mbb R$
+  \begin{align*}
+    \{x \in A \st f(x) > \alpha\} \subset A \subseteq N
+  \end{align*}
+  temos novamente da completude do espaço que $\{x \in A \st f(x)>\alpha\} \in \mcal F$. Dito isso, 
+  \begin{align*}
+    \{x \in X \st f(x)> \alpha \} &= \{x \in A \st f(x)>\alpha\}\cup \{x \in A^C \st f(x) > \alpha\}\\
+    &= \{x \in A \st f(x)>\alpha\}\cup \left(\bigcup\limits_{m \in \mbb N} \left[
+      \bigcap\limits_{n = m}^{\infty}\{x \in A^C \st f_n(x) > \alpha\} \right]\right)\\
+    &= \{x \in A \st f(x)>\alpha\}\cup \left(\bigcup\limits_{m \in \mbb N} \left[
+      \bigcap\limits_{n = m}^{\infty}A^C\cap\{x \in X \st f_n(x) > \alpha\} \right]\right)\\
+    &= \{x \in A \st f(x)>\alpha\}\cup \left(A^C \cap \bigcup\limits_{m \in \mbb N} \left[
+      \bigcap\limits_{n = m}^{\infty}\{x \in X \st f_n(x) > \alpha\} \right]\right). 
+  \end{align*}
+  Visto que $A \in \mcal F$, temos $A^C \in \mcal F$. Mais ainda, $\lim \inf \{x \in X; f_n(x)> \alpha\} \in \mcal F$, 
+  ou seja, $f$ é mensurável.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida e considere $\mcal Z\coloneq \{N \in \mcal F\st \mu(N) = 0\}$. 
+Mostre que se $N \in \mcal Z$ e $F \in \mcal F$, então $N \cap F \in \mcal Z$. Além disso, mostre que se 
+$(N_k)_{k \in \mbb N}$ é uma sequência em $\mcal Z$, então $\bigcup_{k \in \mbb N} N_k \in \mcal Z$.}
+\begin{proof}[\textbf{Dem:}]
+ Já que $N \cap F \subset N$, 
+  \begin{align*}
+    \mu(N \cap F) \le \mu(N) = 0 \implies N\cap F \in \mcal Z. 
+  \end{align*}
+  Vejamos que $\bigcup N_k \in \mcal Z$. Ora, da subaditividade, 
+  \begin{align*}
+    \mu\left(\bigcup\limits_{k \in \mbb N} N_k\right) \le \sum_{k \in \mbb N} \mu(N_k)
+  \end{align*}
+  Já que $(N_k)$ é uma sequência em $\mcal Z$, $\mu(N_k) = 0$ para todo $k \in \mbb N$. Ou seja, 
+  $\bigcup N_k \in \mcal Z$, como queríamos.
+\end{proof}
+\biglinend 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Seja $\overline{\mcal F} \coloneq \{E\cup Z\st E \in \mcal F, Z \subset N\text{ para algum }N\in \mcal Z\}$.
+Mostre que $\overline{\mcal F}$ é uma $\sigma$-álgebra, chamada de complemento de $\mcal F$ com respeito a $\mu$}.
+\begin{proof}[\textbf{Dem:}]
+Visto que $\mu(\emptyset) = 0$, temos $\emptyset \in \mcal Z$. E, como $\emptyset \in \mcal F$, segue que 
+  $\emptyset \cup \emptyset = \emptyset \in \overline{\mcal F}$. Mais ainda, visto que $X \in \mcal F$ e, 
+  para todo $Z \subset N \in \mcal Z \subset \mcal F$, temos $X \cup Z = X$, então $X \in \overline{\mcal F}$. 
+  Daqui, vejamos que se $A \in \overline{\mcal F}$, então $A^C \in \overline{\mcal F}$.
+\end{proof}
