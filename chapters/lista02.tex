@@ -672,3 +672,161 @@ então $m^*(A\cup B) = m^*(B)$.}
     com $H \subseteq E$, tal que $m^*(E\setminus H) = 0$
 \end{enumerate}}
 \bigline
+\begin{proof}[\textbf{Dem:}] Considere $A \in \xbR$ e seja $E = A^C$. 
+
+\noindent
+  $((1) \implies (2))$ Se $E$ é mensurável, então $A$ também o é. Desse modo, 
+  para todo $\epsilon > 0$, existe um aberto $\mcal O$, com $A \subseteq \mcal O$, 
+  tal que $m^*(\mcal O \setminus A) < \epsilon$. Agora, considere $F = \mcal O^C$. 
+  Como $F \subseteq A^C = E$, e, 
+  \begin{align*}
+    \mcal O \setminus A = \mcal O \cap A^C = \mcal O \cap E = E\cap F^C = E\setminus F
+  \end{align*}
+  temos $m^*(E\setminus F) < \epsilon$, como queríamos.
+
+  \noindent
+  $((2) \implies (3))$ Suponhamos que para todo $\epsilon > 0$ existe um fechado $F$,
+  com $F \subseteq E$, tal que $m^*(E\setminus F) < \epsilon$. Então, para cada $k \in \mbb N$,
+  tome $F_k$ fechados com $F_k \subseteq E$, tais que $m^*(E\setminus F_k)< 
+  \frac{1}{k}$. Daqui, tomando $H = \bigcup F_k$, note que $H \subseteq E$, pois caso contrário
+  existiria $F_k \not \subseteq E$, uma contradição. Já que $E\setminus H 
+  \subseteq E\setminus F_k$, para todo $k \in \mbb N$
+  \begin{align*}
+    m^*(E\setminus H) < m^*(E\setminus F_k) < \frac{1}{k}. 
+  \end{align*}
+  sendo assim, $m^*(E\setminus H) = 0$, como queríamos.
+  
+  \noindent
+  $((3) \implies (1))$ Suponhamos que existe um conjunto $F_\sigma$, denotado 
+  por $H$, com $H \subseteq E$, tal que $m^*(E\setminus H) = 0$. Visto que $H$ pode 
+  ser escrito por uniões de intervalos, e, todo intervalo é mensurável, temos 
+  que $H$ é mensurável. Mais ainda, visto que $m^*(E \setminus H) = 0$, 
+  temos $E\setminus H$ mensurável. Daqui, vejamos que $E$ é mensurável. Para isso, 
+  note que, 
+  \begin{align*}
+    (E\setminus H)^C\cap H^C = (E \cap H^C)^C \cup H^C = (E^C \cup H) \cap H^C
+    = E^C,
+  \end{align*}
+  visto que $H\subseteq E \implies E^C \subseteq H^C$. Com isso, $E^C$ é mensurável,
+  portanto $E$ é mensurável.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Mostre que um conjunto $E$ é mensurável se, e somente se, para cada $\epsilon > 0$, 
+existe um conjunto fechado $F$ e um conjunto aberto $\mcal O$, tais que 
+$F \subseteq E \subseteq \mcal O$ e $m^*(\mcal O\setminus F) < \epsilon$.}
+\bigline
+\begin{proof}[\textbf{Dem:}]
+  \hfill 
+  
+  \noindent 
+  $(\implies)$ Ora, visto que $E$ é mensurável, para todo $\epsilon > 0$, exisem conjuntos 
+  $\mcal O$ e $F$, aberto e fechado, respectivamente, tais que 
+  $F\subseteq E \subseteq \mcal O$ e $m^*(\mcal O\setminus E) < \frac{\epsilon}{2}$
+  e $m^*(E\setminus F) < \frac{\epsilon}{2}$. Daqui, temos
+  \begin{align*}
+    \epsilon \ge m^*(\mcal O\setminus E) + m^*(E\setminus F) \ge m^*(\mcal O \setminus F), 
+  \end{align*}
+  visto que, 
+  \begin{align*}
+    (\mcal O \setminus E) \cup (E \setminus F) &= 
+    (\mcal O \cap E^C) \cup (E \cap F^C) = [\mcal O \cup (E \cap F^C)] \cap [\E^C \cup 
+    (E \cap F^C)]\\ 
+    &= [\mcal O\cup \emptyset] \cap [\xbR \cap F^C]
+    = \mcal O \cap F^C = \mcal O \setminus F.
+  \end{align*}
+  Como queríamos.
+
+  \noindent 
+  $(\impliedby)$ Por outro lado, suponhamos que para todo $\epsilon>0$ existe 
+  um conjunto fechado $F$ e um conjunto aberto $\mcal O$, tais que 
+  $F \subseteq E \subseteq \mcal O$ e $m^*(\mcal O\setminus F) < \epsilon$.
+  Visto que $(\mcal O\setminus E) \cap (E\setminus F) = \emptyset$, segue que 
+  \begin{align*}
+    \epsilon &> m^*(\mcal O\setminus F) = m^*(\mcal O \setminus E) + m^*(E \setminus F)\\
+    &\ge m^*(\mcal O\setminus E).
+  \end{align*}
+  Com isso, temos $E$ mensurável.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Considere a reta real $\mbb R$ munida da $\sigma$-álgebra de Borel 
+$\mcal B (\mbb R)$ e seja $\mu_B$ a restrição da medida exterior $m^*$ aos 
+conjuntos de Borel. Seja $(\mbb R, \overline{\mcal B (\mbb R)}, \overline{\mu}_b)$, conforme 
+construído nos Exercícios $12$ a $14$. O objetivo deste exercício é mostrar que 
+o espaço de medida de Lebesgue $(\mbb R, \mcal M, m)$ é precisamente este complemento. 
+Prove os seguintes itens:
+\begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
+  \item Mostre que $\overline{\mcal B(\mbb R)} \subseteq \mcal M$. 
+  \begin{proof}[\textbf{Dem:}]
+   Por definição, 
+    \begin{align*}
+      \overline{\mcal B(\mbb R)} = \{E \cup Z\st E\in \mcal B(\mbb R), Z\subset N 
+      \text{ para algum } N\in\mcal Z\},
+    \end{align*}
+    onde $\mcal Z = \{N \in \mcal B(\mbb R)\st \mu_B(N) = 0\}$. Visto que 
+    $\mcal B(\mbb R) \subseteq \mcal M$, temos que todo elemento da $\sigma$-álgebra 
+    de Borel é mensurável. Daqui, tome $A \in \overline{\mcal B(\mbb R)}$, desse modo
+    existem $E \in \mcal B(\mbb R)$ e $Z \subset N \in \mcal Z$ tais que $A = E \cup Z$.
+    Já que $\overline{\mcal B(\mbb R)}$ é completo, $\mu_B(Z) = m^*(Z) = 0$, ou seja $Z$ é 
+    mensurável. Como $A$ pode ser escrito como a união de elementos de $\mcal M$ 
+    e $\mcal M$ é $\sigma$-álgebra, temos $A \in \mcal M$, portanto, 
+    $\overline{\mcal B (\mbb R)} \subseteq \mcal M$. 
+  \end{proof}
+\item Utilizando o exercício anterior, mostre que todo conjunto $E \in \mcal M$ 
+  pode ser escrito na forma $A = F\cup Z$, em que $F \in \mcal B(\mbb R)$ e $Z \subset N$ 
+    para algum $N \in \mcal B(\mbb R)$ com $\mu_B(N) = 0$. Conclua que 
+    $\mcal M = \overline{\mcal B(\mbb R)}$ e que $m(E) = \overline{\mu}_B(E)$ para todo 
+    $E \in \mcal M$.
+    \begin{proof}[\textbf{Dem:}] Considere $E$ mensurável. Visto que existe $F_\sigma$
+      denotado por $H$, com $H \subseteq E$, tal que $m^*(E\setminus H) = 0$, segue que 
+      $C = E\setminus H$  é mensurável. 
+      Daqui, para cada $k \in \mbb N$, considere abertos $U_k \supset C$, tais que 
+      $m^*(U_k\setminus C) < \frac{1}{k}$. Note que, 
+      \begin{align*}
+        \frac{1}{k}>m^*(U_k\setminus C) = m^*(U_k) - m^*(C) = m^*(U_k).
+      \end{align*}
+      Com isso, $m^*(\bigcap U_k) = \mu_B(\cap U_k) < 1/k$ para todo $k$, ou 
+      seja, $\mu_B(\bigcap U_k) = 0$. Mais ainda $D = \bigcap U_k$ é $G_\delta$
+      e portanto elemento da $\sigma$-álgebra de 
+      Borel. Desse modo, já que, 
+      \begin{align*}
+        H \cup C = H \cup E\setminus H = H \cup (E \cap H^C) = E,
+      \end{align*}
+      e, $C \subset U_k$ para todo $k \in \mbb N$, i.e, $C \subset \bigcap U_k = D$, 
+      temos $E \in \overline{\mcal B(\mbb R)}$. Para mostrar que $m = \overline \mu_B$ em 
+      $\mcal M$, considere $A \in \mcal M$. Já que existem $E \in \mbb R$ e $Z \subset 
+      N \in \mcal Z$ tais que $A = E \cup Z$, então, 
+      \begin{align*}
+        \overline \mu_B(A) = \mu_B(E) = m^*(E) = m(E) \le m(E\cup Z) = m(A).
+      \end{align*}
+      Por outro lado,
+      \begin{align*}
+        m(A) = m(E \cup Z) = m^*(E \cup Z) \le m^*(E) + m^*(Z) = m^*(E) = \mu_B(E) = 
+        \overline \mu_B(E \cup Z) = \overline \mu(A),
+      \end{align*}
+      como queríamos.
+    \end{proof}
+\end{enumerate}}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Mostre que se $E_1$ e $E_2$ são conjuntos Lebesgue mensuráveis, então 
+\begin{align*}
+  m(E_1 \cup E_2) + m(E_1 \cap E_2) = m(E_1) + m(E_2).
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Ora, da hipótese, segue que $E_1 \cup E_2$ e $E_1 \cap E_2$
+  também são mensuráveis. Desse modo, 
+  \begin{align*}
+    m(E_1) = m(E_1 \cap E_2) + m(E_1 \cap E_2^C) = m(E_1 \cap E_2) 
+    + m([E_1 \cap E_2^C]\cap (E_1 \cup E_2))
+  \end{align*}
+\end{proof}
