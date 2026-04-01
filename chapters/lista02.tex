@@ -780,38 +780,30 @@ Prove os seguintes itens:
     $\overline{\mcal B (\mbb R)} \subseteq \mcal M$. 
   \end{proof}
 \item Utilizando o exercício anterior, mostre que todo conjunto $E \in \mcal M$ 
-  pode ser escrito na forma $A = F\cup Z$, em que $F \in \mcal B(\mbb R)$ e $Z \subset N$ 
+  pode ser escrito na forma $E = F\cup Z$, em que $F \in \mcal B(\mbb R)$ e $Z \subset N$ 
     para algum $N \in \mcal B(\mbb R)$ com $\mu_B(N) = 0$. Conclua que 
     $\mcal M = \overline{\mcal B(\mbb R)}$ e que $m(E) = \overline{\mu}_B(E)$ para todo 
     $E \in \mcal M$.
     \begin{proof}[\textbf{Dem:}] Considere $E$ mensurável. Visto que existe $F_\sigma$
-      denotado por $H$, com $H \subseteq E$, tal que $m^*(E\setminus H) = 0$, segue que 
-      $C = E\setminus H$  é mensurável. 
-      Daqui, para cada $k \in \mbb N$, considere abertos $U_k \supset C$, tais que 
-      $m^*(U_k\setminus C) < \frac{1}{k}$. Note que, 
+      denotado por $H\in \mcal B(\mbb R)$, com $H \subseteq E$, tal que $m^*(E\setminus H) = 0$, segue que 
+      $C = E\setminus H$  é mensurável e $E = H \cup C$. 
+      Daqui, note que existe $G_\delta$ denotado por $\mcal O$ tal que $\mcal O \supset C$
+      e $m(\mcal O\setminus C) = 0$. Com isso, visto que $\mcal O \in \mcal B(\mbb R)$,
       \begin{align*}
-        \frac{1}{k}>m^*(U_k\setminus C) = m^*(U_k) - m^*(C) = m^*(U_k).
+        m(\mcal O \setminus C) = m(\mcal O) - m(C) = m(\mcal O) = \mu_B(\mcal O) = 0,
       \end{align*}
-      Com isso, $m^*(\bigcap U_k) = \mu_B(\cap U_k) < 1/k$ para todo $k$, ou 
-      seja, $\mu_B(\bigcap U_k) = 0$. Mais ainda $D = \bigcap U_k$ é $G_\delta$
-      e portanto elemento da $\sigma$-álgebra de 
-      Borel. Desse modo, já que, 
+      ou seja, $E\in \mcal M$ pode ser escrito na forma $E = H \cup C$ tal que $H \in \mcal B(\mbb R)$
+      e $C\subset \mcal O$ tal que $\mcal O \in \mcal B(\mbb R)$ com $\mu_B(\mcal O) = 0$, i.e, 
+      $E \in \overline{\mcal B(\mbb R)}$. Por fim, tome $A \in \mcal M$, portanto, existem 
+      $E$ e $Z$ satisfazendo as condições do enunciado. Daqui, note que
       \begin{align*}
-        H \cup C = H \cup E\setminus H = H \cup (E \cap H^C) = E,
+        m(A) = m(E\cup Z) \le m(E) + m(Z) = m(E) = m^*(E) = \mu_B(E) = \overline\mu_B(E\cup Z) = \overline\mu_B(A).
       \end{align*}
-      e, $C \subset U_k$ para todo $k \in \mbb N$, i.e, $C \subset \bigcap U_k = D$, 
-      temos $E \in \overline{\mcal B(\mbb R)}$. Para mostrar que $m = \overline \mu_B$ em 
-      $\mcal M$, considere $A \in \mcal M$. Já que existem $E \in \mbb R$ e $Z \subset 
-      N \in \mcal Z$ tais que $A = E \cup Z$, então, 
+      Por outro lado, 
       \begin{align*}
-        \overline \mu_B(A) = \mu_B(E) = m^*(E) = m(E) \le m(E\cup Z) = m(A).
-      \end{align*}
-      Por outro lado,
-      \begin{align*}
-        m(A) = m(E \cup Z) = m^*(E \cup Z) \le m^*(E) + m^*(Z) = m^*(E) = \mu_B(E) = 
-        \overline \mu_B(E \cup Z) = \overline \mu(A),
-      \end{align*}
-      como queríamos.
+        \overline\mu_B(A) = \overline\mu_B(E\cup Z) = \mu_B(E) = m^*(E) = m(E) \le m(E\cup Z) = m(A).
+      \end{align*} 
+      Ou seja, $m = \overline \mu_B$ em $\mcal M$.
     \end{proof}
 \end{enumerate}}
 \biglinend
@@ -823,10 +815,63 @@ Prove os seguintes itens:
 \begin{align*}
   m(E_1 \cup E_2) + m(E_1 \cap E_2) = m(E_1) + m(E_2).
 \end{align*}}
-\begin{proof}[\textbf{Dem:}] Ora, da hipótese, segue que $E_1 \cup E_2$ e $E_1 \cap E_2$
-  também são mensuráveis. Desse modo, 
+\begin{proof}[\textbf{Dem:}] Ora, se $m(E_1 \cap E_2) = +\infty$, segue que $E_1$ 
+  e $E_2$ tem medida infinita, portanto vale a igualdade. Suponhamos que $m(E_1 \cap E_2)<+\infty$,
+  então, 
   \begin{align*}
-    m(E_1) = m(E_1 \cap E_2) + m(E_1 \cap E_2^C) = m(E_1 \cap E_2) 
-    + m([E_1 \cap E_2^C]\cap (E_1 \cup E_2))
+    m(E_1\cup E_2) &= m([E_1 \cup E_2]\cap E_1) + m([E_1 \cup E_2]\cap E_1^C)\\
+    &= m(E_1) + m(E_2 \cap E_1^C).\\
   \end{align*}
+  Já que, 
+  \begin{align*}
+    E_2 \setminus (E_1 \cap E_2) = E_2 \cap (E_1^C \cup E_2^C) = E_2\cap E_1^C,
+  \end{align*}
+  segue do fato que $(E_1 \cap E_2) \subset E_2$ que
+  \begin{align*}
+    m(E_1 \cup E_2) = m(E_1) + m(E_2 \setminus(E_1 \cap E_2)) = m(E_1) + m(E_2) - m(E_1 \cap E_2).
+  \end{align*}
+  Como $m(E_1 \cap E_2)<+\infty$, temos o que queríamos.
 \end{proof}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Seja $(E_n)_{n \in \mbb N}$ uma coleção enumerável de conjuntos Lebesgue mensuráveis disjuntos. Prove 
+que para todo $A \in \mcal P(\mbb R)$ vale 
+\begin{align*}
+  m^*\left(A\cap \bigcup\limit_{n \in \mbb N} E_n\right) = \sum_{n \in \mbb N} m^*(A \cap E_n).
+\end{align*}}
+\begin{proof}[\textbf{Dem:}]
+  Ora, se $m^*(A \cap \bigcup E_n) = +\infty$, a igualdade segue diretamente da $\sigma$-subaditividade. Suponhamos 
+  que $m^*(A \cap \bigcup E_n) < +\infty$. Seja $(S_k)_{k \in \mbb N}$ tal que $S_k = m^*(A\cap \bigcup_{n=1}^k E_n)$,
+  então,
+  \begin{align*}
+    S_k = m^*\left(\bigcup_{n=1}^k A \cap E_n\right) \le m^*\left(\bigcup_{n \in \mbb N} A\cap E_n\right).
+  \end{align*}
+  Como $(E_n)$ é composto por conjuntos disjuntos, 
+  temos que $(A \cap E_n)_{n \in \mbb N}$ é disjunto, portanto, para todo $k \in \mbb N$ temos,
+  \begin{align*}
+    S_k = \sum_{n = 1}^k m^*(A \cap E_n) \le m^*\left(\bigcup_{n \in \mbb N} A\cap E_n\right).
+  \end{align*}
+  Já que $S_k$ é não-decrescente e limitada superiormente por $m^*(\bigcup A\cap E_n)$, temos que 
+  o limite e limitado pelo mesmo, portanto, com a $\sigma$-subaditividade, segue que
+  \begin{align*}
+    \sum_{n \in \mbb N} m^*(A\cap E_n) =  m^*\left(\bigcup_{n \in \mbb N} A\cap E_n\right),
+  \end{align*}
+  como queríamos.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{Seja $E \subseteq \mbb R$ um conjunto Lebesgue mensurável com $m(E)>0$. Fixe um número real $L$ tal que 
+$0 < L < m(E)$. Defina a função $f: [0, +\infty) \rightarrow \mbb R$ dada por $f(x) = m(E\cap[-x, x])$
+\begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
+  \item Mostre que $f$ é uma função Lipschitziana.
+    \begin{proof}[\textbf{Dem:}]
+      Sejam $x, a \in [0, +\infty)$. Visto que, 
+    \end{proof}
+\end{enumerate}
+}
