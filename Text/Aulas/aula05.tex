@@ -3,10 +3,10 @@ Todo intervalo é mensurável.
 \end{prop*}{}
 
 \begin{proof}[\textbf{Dem:}]
-Como $\mathcal{M}$ é uma $\sigma$-álgebra, basta provar que $(a, +\infty) \in \mathcal{M}$, 
+Como $\mcal{M}$ é uma $\sigma$-álgebra, basta provar que $(a, +\infty) \in \mcal{M}$, 
  para todo $a \in \mathbb{R}$.
 
-Seja $A \in \mathcal{P}(\mathbb{R})$. Como $m^*(A) = m^*(A \setminus \{a\})$, podemos supor que $a \notin A$. Mostremos que
+Seja $A \in \mcal{P}(\mathbb{R})$. Como $m^*(A) = m^*(A \setminus \{a\})$, podemos supor que $a \notin A$. Mostremos que
 $$ m^*(A \cap (a, +\infty)) + m^*(A \cap (-\infty, a)) \le m^*(A). $$
 Seja $\{I_k\}_{k \in \mathbb{N}}$ uma cobertura por intervalos abertos limitados de $A$. Considere $I_k' = I_k \cap (-\infty, a)$ e $I_k'' = I_k \cap (a, +\infty)$.
 Assim, $I_k'$ e $I_k''$ são intervalos e $l(I_k) = l(I_k') + l(I_k'')$.
@@ -19,8 +19,8 @@ $$ m^*(A \cap (-\infty, a)) + m^*(A \cap (a, +\infty)) \le m^*(A) \implies (a, +
 \end{proof}
 
 \noindent
-\textbf{Conclusão:} $\mathcal{B}(\mathbb{R}) \subseteq \mathcal{M}$.
-De fato, como $\mathcal{B}(\mathbb{R}) = \sigma(\{(a, +\infty) ; a \in \mathbb{R}\}) \implies \mathcal{B}(\mathbb{R}) \subseteq \mathcal{M}$. 
+\textbf{Conclusão:} $\mcal{B}(\mathbb{R}) \subseteq \mcal{M}$.
+De fato, como $\mcal{B}(\mathbb{R}) = \sigma(\{(a, +\infty) ; a \in \mathbb{R}\}) \implies \mcal{B}(\mathbb{R}) \subseteq \mcal{M}$. 
 Portanto todo conjunto aberto, fechado, $G_\delta$, e $F_\sigma$ são mensuráveis!
 
 \begin{prop*}{10}
@@ -28,7 +28,7 @@ A translação de conjuntos mensuráveis é mensurável.
 \end{prop*}{}
 
 \begin{proof}[\textbf{Dem:}]
-Seja $E$ um conjunto mensurável e $y \in \mathbb{R}$. Assim, para $A \in \mathcal{P}(\mathbb{R})$, temos
+Seja $E$ um conjunto mensurável e $y \in \mathbb{R}$. Assim, para $A \in \mcal{P}(\mathbb{R})$, temos
 \begin{align*}
 m^*(A) &= m^*(A - y) = m^*([A - y] \cap E) + m^*([A - y] \cap E^c) \\
 &= m^*([A - y] \cap E + y) + m^*([A - y] \cap E^c + y) \\
@@ -39,7 +39,7 @@ m^*(A) &= m^*(A - y) = m^*([A - y] \cap E) + m^*([A - y] \cap E^c) \\
 \mysec{Medida de Lebesgue}
 
 \begin{definition*}{}
-A restrição da medida exterior para os conjuntos mensuráveis é chamada de medida de Lebesgue, $m: \mathcal{M} \rightarrow \overline{\mathbb{R}}$, $m(E) := m^*(E)$.
+A restrição da medida exterior para os conjuntos mensuráveis é chamada de medida de Lebesgue, $m: \mcal{M} \rightarrow \overline{\mathbb{R}}$, $m(E) := m^*(E)$.
 \end{definition*}
 
 \begin{prop*}{11}
@@ -59,11 +59,11 @@ Portanto $m\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \sum_{k \in \mathbb{N}}
 \end{proof}
 
 \begin{prop*}{12}
-O espaço de medida $(\mathbb{R}, \mathcal{M}, m)$ é completo.
+O espaço de medida $(\mathbb{R}, \mcal{M}, m)$ é completo.
 \end{prop*}{}
 
 \begin{proof}[\textbf{Dem:}]
-Seja $A \subseteq E$, com $E \in \mathcal{M}$ e $m(E) = 0$. Assim, $m^*(E) = 0$, e como $A \subseteq E$, $m^*(A) \le m^*(E) = 0$. Logo $m^*(A) = 0$ e, pela Proposição 5, concluímos que $A \in \mathcal{M}$.
+Seja $A \subseteq E$, com $E \in \mcal{M}$ e $m(E) = 0$. Assim, $m^*(E) = 0$, e como $A \subseteq E$, $m^*(A) \le m^*(E) = 0$. Logo $m^*(A) = 0$ e, pela Proposição 5, concluímos que $A \in \mcal{M}$.
 \end{proof}
 
 \mysubsec{Aproximação de Conjuntos Mensuráveis}
@@ -71,7 +71,7 @@ Seja $A \subseteq E$, com $E \in \mathcal{M}$ e $m(E) = 0$. Assim, $m^*(E) = 0$,
 Vimos que se $E$ é mensurável, $m^*(E) < +\infty$ e $E \subseteq A$, então $m^*(A) = m^*(A \cap E) + m^*(A \cap E^c) \implies m^*(A \setminus E) = m^*(A) - m^*(E)$.
 
 \begin{theorem*}{}
-Seja $E \in \mathcal{P}(\mathbb{R})$. São equivalentes:
+Seja $E \in \mcal{P}(\mathbb{R})$. São equivalentes:
 \begin{itemize}
     \item[i)] $E$ é mensurável.
     \item[ii)] $\forall \epsilon > 0$, existe um aberto $\mcal O$, 
@@ -123,7 +123,7 @@ $(iii) \Rightarrow (i)$ Temos que todo $G_\delta$ é mensurável. Além disso, c
 O próximo teorema segue diretamente das leis de De Morgan e do teorema anterior (Lista 2).
 
 \begin{theorem*}{}
-Seja $E \in \mathcal{P}(\mathbb{R})$. São equivalentes:
+Seja $E \in \mcal{P}(\mathbb{R})$. São equivalentes:
 \begin{itemize}
     \item[i)] $E$ é mensurável.
     \item[ii)] $\forall \epsilon > 0$, existe um fechado $F$, com $F \subseteq E$, tal que $m^*(E \setminus F) < \epsilon$.

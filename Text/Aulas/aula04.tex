@@ -8,19 +8,19 @@ Nosso objetivo será construir uma medida $m$ em $\mathbb{R}$ que satisfaz as se
     \item[iii)] $m(\emptyset) = 0$; $m(E) \ge 0$ e $m\left(\bigcup E_k\right) = \sum m(E_k)$ (é de fato uma medida).
 \end{itemize}
 
-Infelizmente tal medida não existe ao considerar $\mathcal{P}(\mathbb{R})$ como domínio. Primeiro construiremos uma $\sigma$-álgebra em que (i), (ii) e (iii) serão satisfeitas.
+Infelizmente tal medida não existe ao considerar $\mcal{P}(\mathbb{R})$ como domínio. Primeiro construiremos uma $\sigma$-álgebra em que (i), (ii) e (iii) serão satisfeitas.
 
 \mysubsec{Medida Exterior de Lebesgue}
 
 Para um intervalo $I$ de $\mathbb{R}$, definimos seu comprimento $l(I) = b-a$, se $I = (a,b), (a,b], [a,b), [a,b]$, e $l(I) = +\infty$ se $I$ não for limitado.
 
 \begin{definition*}{}
-Para um conjunto $A \in \mathcal{P}(\mathbb{R})$, definimos sua medida exterior como
+Para um conjunto $A \in \mcal{P}(\mathbb{R})$, definimos sua medida exterior como
 $$ m^*(A) = \inf \left\{ \sum_{k \in \mathbb{N}} l(I_k) ; A \subseteq \bigcup_{k \in \mathbb{N}} I_k \right\} $$
 (Podemos restringir para que todos os $I_k$ sejam abertos).
 \end{definition*}
 
-Segue imediatamente da definição que $m^*(A) \ge 0, \forall A \in \mathcal{P}(\mathbb{R})$, $m^*(\emptyset) = 0$ e que se $A \subseteq B$, então $m^*(A) \le m^*(B)$, uma vez que toda cobertura por intervalos de $B$ também cobrirá $A$.
+Segue imediatamente da definição que $m^*(A) \ge 0, \forall A \in \mcal{P}(\mathbb{R})$, $m^*(\emptyset) = 0$ e que se $A \subseteq B$, então $m^*(A) \le m^*(B)$, uma vez que toda cobertura por intervalos de $B$ também cobrirá $A$.
 
 \textbf{Exemplo:} Todo conjunto enumerável possui medida exterior zero. De fato, se $C = \{c_k\}_{k \in \mathbb{N}}$, dado $\epsilon > 0$ defina
 $$ I_k := \left(c_k - \frac{\epsilon}{2^{k+1}}, c_k + \frac{\epsilon}{2^{k+1}}\right). $$
@@ -92,18 +92,18 @@ $$ m^*\left(\bigcup_{k=1}^n E_k\right) = m^*\left(\bigcup_{k \in \mathbb{N}} E_k
 Embora $m^*$ possua todas essas boas propriedades, ela falha em ser aditiva! Veremos nas próximas aulas que existem conjuntos disjuntos $A$ e $B$ tais que $m^*(A \cup B) < m^*(A) + m^*(B)$. Assim, precisaremos restringir o domínio de $m^*$ para conseguirmos a propriedade da aditividade enumerável.
 
 \begin{definition*}{}
-Dizemos que $E \in \mathcal{P}(\mathbb{R})$ é (Lebesgue) mensurável se
-$$ m^*(A) = m^*(A \cap E) + m^*(A \cap E^c), \quad \forall A \in \mathcal{P}(\mathbb{R}) $$
+Dizemos que $E \in \mcal{P}(\mathbb{R})$ é (Lebesgue) mensurável se
+$$ m^*(A) = m^*(A \cap E) + m^*(A \cap E^c), \quad \forall A \in \mcal{P}(\mathbb{R}) $$
 (Condição de Carathéodory).
 \end{definition*}
 
 \noindent
 Note que se $A$ e $B$ forem disjuntos e um deles for mensurável (digamos $A$ mensurável), então
 $$ m^*(A \cup B) = m^*((A \cup B) \cap A) + m^*((A \cup B) \cap A^c) = m^*(A) + m^*(B). $$
-Além disso, note que $A = (A \cap E) \cup (A \cap E^c), \forall A \in \mathcal{P}(\mathbb{R})$, e portanto,
+Além disso, note que $A = (A \cap E) \cup (A \cap E^c), \forall A \in \mcal{P}(\mathbb{R})$, e portanto,
 $$ m^*(A) \le m^*(A \cap E) + m^*(A \cap E^c). $$
 Assim, para verificar se $E$ é mensurável, basta apenas mostrar que
-$$ m^*(A) \ge m^*(A \cap E) + m^*(A \cap E^c), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+$$ m^*(A) \ge m^*(A \cap E) + m^*(A \cap E^c), \quad \forall A \in \mcal{P}(\mathbb{R}). $$
 Como a desigualdade é satisfeita para $m^*(A) = +\infty$, basta se restringir para conjuntos com $m^*(A) < +\infty$.
 
 \begin{prop*}{4}
@@ -111,10 +111,10 @@ Temos que $\emptyset$ e $\mathbb{R}$ são mensuráveis e se $E$ é mensurável, 
 \end{prop*}
 
 \begin{proof}[\textbf{Dem:}]
-$$ m^*(A \cap \emptyset) + m^*(A \cap \emptyset^c) = m^*(\emptyset) + m^*(A) = m^*(A), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
-$$ m^*(A \cap \mathbb{R}) + m^*(A \cap \mathbb{R}^c) = m^*(A) + m^*(\emptyset) = m^*(A), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+$$ m^*(A \cap \emptyset) + m^*(A \cap \emptyset^c) = m^*(\emptyset) + m^*(A) = m^*(A), \quad \forall A \in \mcal{P}(\mathbb{R}). $$
+$$ m^*(A \cap \mathbb{R}) + m^*(A \cap \mathbb{R}^c) = m^*(A) + m^*(\emptyset) = m^*(A), \quad \forall A \in \mcal{P}(\mathbb{R}). $$
 Como $(E^c)^c = E$, segue que se $E$ é mensurável, então
-$$ m^*(A \cap E^c) + m^*(A \cap (E^c)^c) = m^*(A \cap E^c) + m^*(A \cap E) = m^*(A), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+$$ m^*(A \cap E^c) + m^*(A \cap (E^c)^c) = m^*(A \cap E^c) + m^*(A \cap E) = m^*(A), \quad \forall A \in \mcal{P}(\mathbb{R}). $$
 \end{proof}
 
 \begin{prop*}{5}
@@ -122,7 +122,7 @@ Se $m^*(E) = 0$, então $E$ é mensurável.
 \end{prop*}
 
 \begin{proof}[\textbf{Dem:}]
-Seja $A \in \mathcal{P}(\mathbb{R})$. Como $A \cap E \subseteq E$, então $m^*(A \cap E) \le m^*(E) = 0 \implies m^*(A \cap E) = 0$.
+Seja $A \in \mcal{P}(\mathbb{R})$. Como $A \cap E \subseteq E$, então $m^*(A \cap E) \le m^*(E) = 0 \implies m^*(A \cap E) = 0$.
 Além disso, $A \cap E^c \subseteq A \implies m^*(A \cap E^c) \le m^*(A)$.
 Assim,
 $$ m^*(A \cap E) + m^*(A \cap E^c) \le 0 + m^*(A) = m^*(A). $$
@@ -134,7 +134,7 @@ A união finita de conjuntos mensuráveis é mensurável.
 \end{prop*}
 
 \begin{proof}[\textbf{Dem:}]
-Inicialmente, provaremos que se $E_1, E_2$ são mensuráveis, então $E_1 \cup E_2$ é mensurável. Seja $A \in \mathcal{P}(\mathbb{R})$. Então
+Inicialmente, provaremos que se $E_1, E_2$ são mensuráveis, então $E_1 \cup E_2$ é mensurável. Seja $A \in \mcal{P}(\mathbb{R})$. Então
 $$ m^*(A) = m^*(A \cap E_1) + m^*(A \cap E_1^c) = m^*(A \cap E_1) + m^*([A \cap E_1^c] \cap E_2) + m^*([A \cap E_1^c] \cap E_2^c) $$
 Como $(A \cap E_1^c) \cap E_2^c = A \cap (E_1 \cup E_2)^c$ e $(A \cap E_1) \cup (A \cap E_1^c \cap E_2) = A \cap (E_1 \cup E_2)$, temos pela subaditividade que
 $$ m^*(A \cap (E_1 \cup E_2)) + m^*(A \cap (E_1 \cup E_2)^c) \le m^*(A \cap E_1) + m^*(A \cap E_1^c \cap E_2) + m^*(A \cap E_1^c \cap E_2^c) = m^*(A). $$
@@ -142,7 +142,7 @@ Portanto $E_1 \cup E_2$ é mensurável. O caso geral segue por indução no núm
 \end{proof}
 
 \begin{prop*}{7}
-Seja $A \in \mathcal{P}(\mathbb{R})$ e $\{E_k\}_{k=1}^n$ uma coleção finita de conjuntos disjuntos mensuráveis. Então
+Seja $A \in \mcal{P}(\mathbb{R})$ e $\{E_k\}_{k=1}^n$ uma coleção finita de conjuntos disjuntos mensuráveis. Então
 $$ m^*\left(A \cap \left(\bigcup_{k=1}^n E_k\right)\right) = \sum_{k=1}^n m^*(A \cap E_k). $$
 Em particular, $m^*\left(\bigcup_{k=1}^n E_k\right) = \sum_{k=1}^n m^*(E_k)$.
 \end{prop*}
@@ -167,7 +167,7 @@ A união enumerável de conjuntos mensuráveis é mensurável.
 Seja $\{B_k\}_{k \in \mathbb{N}}$ uma coleção enumerável de conjuntos mensuráveis. Pela mesma construção do lema da aula passada, existe uma coleção enumerável disjunta $\{E_k\}_{k \in \mathbb{N}}$ mensurável tal que $E_k \subseteq B_k, \forall k \in \mathbb{N}$ e $\bigcup_{k \in \mathbb{N}} B_k = \bigcup_{k \in \mathbb{N}} E_k = E$.
 
 Para cada $n \in \mathbb{N}$, defina $F_n = \bigcup_{k=1}^n E_k$. Assim, cada $F_n$ é mensurável e $F_n \subseteq E \implies E^c \subseteq F_n^c$.
-Assim, para $A \in \mathcal{P}(\mathbb{R})$,
+Assim, para $A \in \mcal{P}(\mathbb{R})$,
 $$ m^*(A) = m^*(A \cap F_n) + m^*(A \cap F_n^c) \ge m^*(A \cap F_n) + m^*(A \cap E^c). $$
 Pela Proposição 7, $m^*(A \cap F_n) = \sum_{k=1}^n m^*(A \cap E_k)$. Assim, 
 $$ m^*(A) \ge \sum_{k=1}^n m^*(A \cap E_k) + m^*(A \cap E^c). $$
@@ -179,4 +179,4 @@ Portanto $E$ é mensurável.
 
 \bigline
 \noindent
-\textbf{Conclusão:} A coleção $\mathcal{M} = \{E \in \mathcal{P}(\mathbb{R}) ; E \text{ é Lebesgue mensurável}\}$ é uma $\sigma$-álgebra.
+\textbf{Conclusão:} A coleção $\mcal{M} = \{E \in \mcal{P}(\mathbb{R}) ; E \text{ é Lebesgue mensurável}\}$ é uma $\sigma$-álgebra.
