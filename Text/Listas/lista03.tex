@@ -44,7 +44,7 @@ $\mcal M^+(X, \mcal F)$. Demonstre que:
   Visto que $f_N = \sum_{n=1}^N g_n$ é não-decrescente e 
   converge para $f = \sum_{n=1}^\infty g_n$, do Teorema da Convergência Monótona, 
 \begin{align*}
-  \int f d\mu = \lim_{N \rightarrow \infty} \int f_n d\mu \implies 
+  \int f d\mu = \lim_{N \rightarrow \infty} \int f_N d\mu \implies 
   \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
   \int \parth{\sum_{n=1}^N g_n} d\mu.
 \end{align*}
@@ -71,6 +71,73 @@ em que $b_k \in \bR$ e $F_k \in \mcal F$, para todo $k=1, \cdots, m$. Mostre que
   \int \varphi d\mu = \sum_{k=1}^m b_k \mu(F_k).
 \end{align*}}
 \begin{proof}[\textbf{Dem:}]
-  Sabemos que existe uma sequência $\{E_k\}_{k \in \bN}$ em $\mcal F$ disjunta satisfazendo $E_k \subseteq F_k$, 
-  para todo $k \in \bN$ e $\bigcup E_k =\bigcup F_k$
+  Note que, para cada $x \in X$, temos $\varphi(x) = \sum_{k \st x\in F_k} b_k$.
+  Visto que $$\Im(\varphi)\subseteq \set{\sum_{k \in J} b_k \st J \subseteq \{1, \cdots, m\}},$$
+  segue que existe uma sequência finita de valores distintos 
+  $\{a_j\}_{j=1}^p = \Im(\varphi)$. Daqui, considere 
+  uma sequência $\{E_j\}_{j=1}^p$ em $\mcal F$, tal que, 
+  $E_j = \{x \in X \st \varphi(x) = a_j\}.$
+  Desse modo, $\bigcup E_j = X$ e $\set{E_j}$ é disjunto pela definição de $\{a_j\}$.
+  Sendo assim, como $\set{E_j}$ cobre $X$, cada $F_k$
+  pode ser escrito como $F_k = \bigcup_{j = 1}^p (F_k \cap E_j)$. Visto que $E_j$ é disjunto,
+  fixado $k \in \bN$, temos $\set{F_k \cap E_j}$ disjunto, ou seja, 
+  $$\mu(F_k) = \mu\parth{\bigcup_{j=1}^p (F_k \cap E_j)} = \sum_{j=1}^p \mu(F_k \cap E_j).$$
+  Portanto, 
+  \begin{align*}
+    \sum_{k=1}^m b_k \mu(F_k) = \sum_{k=1}^m b_k \sum_{j=1}^p \mu(F_k \cap E_j)
+    =\sum_{j=1}^p \cparth{\sum_{k= 1}^m b_k\mu(F_k \cap E_j)}.
+  \end{align*}
+  Agora, note que pela definição de $\set{a_j}$, para cada $x \in E_j$,
+  segue que 
+    $\varphi(x) = a_j = \sum_{k=1}^m b_k \chi_{F_k}(x)$, 
+    desse modo, 
+    $$a_j\chi_{E_j} = \sum_{k=1}^m b_k \chi_{F_k}\chi_{E_j} 
+    = \sum_{k=1}^m b_k \chi_{E_j \cap F_k}.$$
+  Portanto, $a_j \mu(E_j) = \sum_{k=1}^m b_k\mu(E_j \cap F_k)$, e, já que 
+  $\varphi = \sum_{j=1}^p a_j \chi_{E_j}$ é representação padrão de $\varphi$,
+  \begin{align*}
+    \sum_{k=1}^m b_k \mu(F_k) = \sum_{j=1}^p\cparth{\sum_{k=1}^m b_k \mu(F_k \cap E_j)}
+    = \sum_{j=1}^p a_j\mu(E_j) = \int \varphi d\mu,
+  \end{align*}
+  como queríamos.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Considere o espaço de medida $(\bN, \mcal P(\bN), \mu)$ em que $\mu$
+é a medida da contagem. Se $f$ é uma função não negativa em $\bN$, 
+então $f \in \mcal M^+(\bN, \mcal P(\bN))$ e 
+\begin{align*}
+  \int f d\mu = \sum_{n=1}^\infty f(n).
+\end{align*}}
+\begin{proof}[\textbf{Dem:}]
+  Seja $f: \bN \rightarrow \xbR$ não negativa. Visto que para todo $E \in \overline \borelR$,
+  temos $\preim f (E) \in \mcal P (\bN)$, segue que $f \in \mcal M^+(\bN, \mcal P (\bN))$.
+  Mais ainda, dado qualquer $\varphi \in \mcal M^+(\bN, \mcal P (\bN))$ simples 
+  satisfazendo $0 \le \varphi \le f$ pontualmente, note que,
+  $\varphi = \sum_{n \in \bN} \varphi(n)\chi_{\set{n}}$
+  com $\varphi(n) \neq 0$ para finitos $n \in \bN$, é uma representação de $\varphi$. 
+  Do exercício anterior,  $\int \varphi d\mu = \sum_{n \in \bN} \varphi(n)\mu(\set{n})$, 
+  e, como $\mu$ é a medida da contagem, $\int \varphi d\mu = \sum_{n \in \bN} \varphi(n)$. 
+  Daqui, como $\varphi \le f$ e ambos são não negativos,
+  \begin{align*}
+    \sum_{n \in \bN} \varphi = \int \varphi d\mu \le \sum_{n \in \bN} f,
+  \end{align*}
+  já que $\int f d\mu$ é o supremo de $\int \varphi d\mu$, segue que 
+  \begin{align*}
+    \int f d\mu \le \sum_{n \in \bN} f.
+  \end{align*}
+  Por outro lado, note que $f_N = \sum_{n = 1}^N f(n)\chi_{\set{n}}$ são funções simples 
+  não negativas satisfazendo $0 \le f_N \le f$, para todo $N \in \bN$. Desse modo,
+  \begin{align*}
+    \sum_{n=1}^N f(n) = \int f_N d\mu \le \int f d\mu, \forall N \in \bN.
+  \end{align*}
+  Portanto, 
+  \begin{align*}
+    \lim_{N \rightarrow \infty} \sum_{n=1}^N f(n) = \sum_{n\in \bN} f(n) \le \int f d\mu.
+  \end{align*}
+  Com isso, temos o que queríamos.
+
 \end{proof}
