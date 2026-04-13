@@ -716,8 +716,8 @@ considere $g(x) = e^{-i\theta}f(x)$.
   segue que $r = e^{-i\theta}\int f d\mu = \int e^{-i\theta} fd\mu = \int g d\mu$. 
   Com isso, 
   \begin{align*}
-    \mparth{\int f d\mu} = r = \Re \int g d\mu = \int \Re g d\mu \le 
-    \int |g| d\mu = \int |f| d\mu.
+    \mparth{\int f d\mu} &= r = \int g d\mu = \int \Re g d\mu + i\int \Im g d\mu \\
+    &= \int \Re g d\mu \le \int |g| d\mu = \int |f| d\mu.
   \end{align*}
 \end{proof}
 
@@ -743,7 +743,7 @@ Se existe uma função $g \in L(X, \mcal F, \mu)$, tal que $|f_n| \le g$, mostre
   \end{align*}
   Daqui, 
   \begin{align*}
-    \int f d\mu &= \Re \int f d\mu + i \Im\int fd\mu = \int u d\mu + i\int v d\mu \\
+    \int f d\mu &= \int \Re f d\mu + i \int\Im fd\mu = \int u d\mu + i\int v d\mu \\
     &= \lim_{n \rightarrow \infty} \int u_n d\mu 
     + i \lim_{n \rightarrow \infty} \int v_n d\mu\\
     &= \lim_{n \rightarrow \infty} \int (u_n + iv_n) d\mu = \lim \int f_n d\mu.
@@ -752,16 +752,56 @@ Se existe uma função $g \in L(X, \mcal F, \mu)$, tal que $|f_n| \le g$, mostre
 
 \nextexe{tres}
 \textbf{Sejam $(\bR, \mathcal M, m)$ o espaço de medida de Lebesgue 
-e $f: \bR \rightarrow \bC$ uma função integrável. Para cada $\zeta \in \bR$, 
+e $f: \bR \rightarrow \bC$ uma função integrável. Para cada $\xi \in \bR$, 
 defina $g_{\xi}(x) = e^{ix\xi}$. Definimos a \textit{Transformada de Fourier de $f$} 
 como a função $\widehat f: \bR \rightarrow \bC$ dada por 
 \begin{align*}
   \widehat f(\xi) \coloneq \int g_\xi f dm
 \end{align*}
 \begin{enumerate}[label=\alph*)]
-  \item Mostre que a função $\widhat f$ está bem-definida e é limitada.
+  \item Mostre que a função $\widehat f$ está bem-definida e é limitada.
+    \begin{proof}[\textbf{Dem:}] Visto que $f$ é integrável, segue que $|f|$ também é. 
+      E, como $|f| = |g_\xi f|$, do Exercício 17, temos $g_\xi f$ integrável, sendo assim, 
+      $\Re g_\xi f, \Im g_\xi f \in L(\bR, \mathcal M, m)$, e, com isso, segue que 
+      $\widehat f(\xi)$ é bem-definido. Ou seja, 
+      \begin{align*}
+         \mparth{\widehat f(\xi)}= \mparth{\int g_\xi f dm} \le \int \mparth{g_\xi f}dm 
+        = \int \mparth{f} dm < \infty,
+      \end{align*}
+      isto é, $\widehat f$ é limitado.
+    \end{proof}
   \item Mostre que $\widehat f$ é uma função sequencialmente contínua, isto é, 
     se $(\xi_n)$ converge para $\xi$, então $(\widehat f (\xi_n))$ converge 
     para $\widehat f(\xi)$.
+    \begin{proof}[\textbf{Dem:}] Suponhamos que $\xi_n \rightarrow \xi$. Já que,
+      fixado $x \in \bR$, dado $|\xi_n - \xi| < \delta_0$,
+      \begin{align*}
+        \mparth{g_{\xi_n} - g_\xi}=\mparth{e^{i \xi_n x} - e^{i \xi x}} = \mparth{1 - e^{i(\xi_n - \xi)x}} < 
+        \mparth{1 - e^{i\delta_0x}} = 2\mparth{\sin(2\delta_0x)}.
+      \end{align*}
+      Se $x = 0$ temos que para todo $\epsilon>0$, $\mparth{g_{\xi_n} - g_\xi}< \epsilon$. Suponhamos 
+      que $x \in \bR\setminus\set{0}$, então, tomando $\delta_0 = \frac{1}{2} \arcsin (\frac{\epsilon \mod \frac{\pi}{2}}{2x})$,
+      segue que $|g_{\xi_n} - g_\xi| < \epsilon$. Analogamente temos $fg_{\xi_n} \rightarrow fg_\xi$ pontualmente sempre que 
+      $\xi_n \rightarrow \xi$. Portanto, como $f \in L(X,\mathcal M, m)$, então $|f|$ é integrável, mais ainda, 
+      para todo $n \in \bN$,
+      \begin{align*}
+        |fg_{\xi_n}| \le |f|.
+      \end{align*}
+      Sendo assim, do Teorema da Convergência Dominada,
+      \begin{align*}
+        \widehat f(\xi)= \int fg_{\xi} dm = \lim_{n \rightarrow \infty} \int fg_{\xi_n} dm 
+        = \lim_{n \rightarrow \infty} \widehat f (\xi_n),
+      \end{align*}
+      ou seja, $\widehat f$ é uma função sequencialmente contínua.
+      \end{proof}
 \end{enumerate}
 }
+
+\nextexe{tres}
+\textbf{Considere o espaço de medida $(\bN, \mcal P(\bN), \mu)$, em que $\mu$ é a medida da contagem. 
+Mostre que $f$ pertence a $L(\bN, \mcal P(\bN), \mu)$ se, e somente se, a série $\sum f(n)$ é 
+absolutamente convergente, neste caso, 
+$$\int f d\mu = \sum_{n=1}^\infty f(n).$$}
+\begin{proof}[\textbf{Dem:}]
+  
+\end{proof}
