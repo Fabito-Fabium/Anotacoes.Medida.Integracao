@@ -1026,3 +1026,60 @@ todo $n \in \bN$, e se $\int g_n d\mu$ converge para $\int g d\mu$, então
 \begin{align*}
   \lim \int f_n d\mu = \int f d\mu.
 \end{align*}}
+\begin{proof}[\textbf{Dem:}] Para todo $n \in \bN$, visto que $g_n \ge |f_n|$,
+  segue que $g_n \ge f_n \ge -g_n$. Desse modo, defina $\varphi_n = g_n - f_n \ge 0$
+  e $\psi_n = g_n + f_n \ge 0$. Já que existe $N \in \mcal F$ de medida nula 
+  tal que para cada $x \in N^C$ temos $f_n(x) \rightarrow f(x)$
+  e $g_n(x) \rightarrow g(x)$, segue que para todo 
+  $x \in X$ que $(g_n\chi_{N^C})(x) \rightarrow (g\chi_{N^C})(x)$ e 
+  $(f_n\chi_{N^C})(x) \rightarrow (f\chi_{N^C})(x)$. Desse modo $\varphi_n\chi_{N^C}$ 
+  e $\psi_n\chi_{N^C}$ são sequências em $L(X, \mcal F, \mu)$ não-negativas que 
+  convergem pontualmente para $\{(g - f)\chi_{N^C}\}$ e $\{(g + f)\chi_{N^C}\}$, 
+  respectivamente. Do Lema de Fatou, 
+  \begin{align*}
+    \int \lim\inf \varphi_n\chi_{N^C} d\mu \le \lim \inf \int \varphi_n\chi_{N^C} d\mu,
+  \end{align*}
+  portanto, 
+  \begin{align*}
+    \int \lim \inf \varphi_n\chi_{N^C} d\mu &= \int \lim \varphi_n\chi_{N^C} d\mu 
+    = \int (g - f)\chi_{N^C} d\mu
+    = \int_{N^C} (g-f)d\mu + 0\\
+    &= \int_{N^C} (g-f)d\mu + \int_{N} (g-f) d\mu 
+    = \int (g-f)d\mu
+  \end{align*}
+  e, 
+  \begin{align*}
+    \lim \inf \int_{N^C} \varphi_n d\mu 
+    &= \lim \inf \cparth{\int_{N^C} g_n d\mu - \int_{N^C} f_n d\mu} 
+    = \lim \inf  \cparth{\int g_n d\mu - \int f_n d\mu}\\
+    &\le \lim\inf \int g_n d\mu - \lim\sup \int f_n d\mu 
+    = \int g d\mu - \lim\sup \int f_n d\mu.
+  \end{align*}
+  Portanto, $\int g d\mu - \int f d\mu \le \int gd\mu - \lim\sup\int f_n d\mu$, 
+  isto é, $\int f d\mu \ge \lim\sup \int f_n d\mu$. Aplicando o Lema de Fatou para 
+  $\psi_n\chi_{N^C}$, segue que $\lim\inf \int f_n d\mu \ge \int f d\mu$. Com isso, 
+  segue que 
+  \begin{align*}
+    \lim \int f_n d\mu = \int f d\mu.
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida. Seja 
+$f: X \times [a, b] \rightarrow \bR$ e suponha que a função $x \rightarrow f(t,x)$
+é mensurável para cada $t \in [a, b]$. Suponha ainda que para alguns $t_0$ 
+e $t_1$ em $[a, b]$ a função $x \rightarrow f(x, t_0)$ é integrável em $X$, 
+que $\partial_t f(x, t_0)$ e que existe uma função integrável $g$ em 
+$L(X, \mcal F, \mu)$ tal que 
+\begin{align*}
+  \mparth{\frac{f(x, t) - f(x, t_1)}{t - t_1}} \le g(x),
+\end{align*}
+para todo $x \in X$ e $t \in [a, b]$, $t \neq t_1$. Mostre que 
+\begin{align*}
+  \cparth{\partial_t \int f(x, t) d\mu}_{t = t_1} = \int \partial_t f(x, t_1) d\mu.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}]Considere as sequências $(t_n)$ em $[a, b]\setminus{t_1}$
+  e $h_n(x) = \frac{f(x,t_n) - f(x, t_1)}{t_n-t_1}$ com $x \in X$ tal que 
+  $t_n \rightarrow t_1$. Como $f$ é mensurável para cada $t \in [a,b]$, segue que 
+  $h_n(x) \in \mathcal M(X, \mal F)$
+\end{proof}

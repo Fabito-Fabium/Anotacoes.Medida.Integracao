@@ -274,14 +274,13 @@ A aplicaçã $\mu$ é uma medida?
     \mu\left(\bigcup_{j \in \mbb N} E_j\right) = 0 = \sum_{j \in \mbb N} 0
     = \sum_{j \in \mbb N} \mu(E_j). 
   \end{align*}
-  Por outro lado, supondo que $\bigcup E_j$ é infinito, então, existe pelo 
-  menos um $k \in \mbb N$ tal que $E_k$ é infinito. Desse modo, 
-  visto que $\mu(E) \ge 0$ para todo $E \in \mcal P(\mbb N)$,
+  Por outro lado, a igualdade pode não ser satisfeita quando 
+  $\bigcup E_j$ é infinito. Tomando a sequência $\set{E_j}$
+  definido por $E_j = \{j\}$ para cada $j \in \bN$, como $\bigcup E_j = \bN$, segue que, 
   \begin{align*}
-    \mu\left(\bigcup_{j \in \mbb N} E_j\right) = +\infty = \mu(E_k)
-    = \sum_{j \in \mbb N} \mu(E_j).
+    \mu\parth{\bigcup E_j} = +\infty \neq 0 = \sum_{j \in \bN} 0 = \sum_{j \in \bN} E_j.
   \end{align*}
-  Com isso, temos que $\mu$ é uma medida.
+  Já que $\mu$ não é $\sigma$-aditiva, temos que $\mu$ não é medida.
 \end{proof}
 
 \biglinend
