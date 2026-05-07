@@ -101,5 +101,26 @@ ou seja, da convergência das $p$-séries, segue que $\int |f|^p d\mu < +\infty$
 %ex 5
 \nextexe{quatro}
 \textbf{Sejam $X = \bN$ e $\mu$ a medida da contagem em $\bN$. 
-Prove que $f \in L^p(\bN, \mu)$ para todo $1 \le p \le q < \infty$, 
+Prove que se $f \in L^p(\bN, \mu)$, então $f \in L^q(\bN, \mu)$ para todo $1 \le p \le q < \infty$, 
 e $||f||_q \le ||f||_p$.}
+\begin{proof}[\textbf{Dem:}] Note que para $p = q$ segue diretamente o resultado. 
+  Desse modo, suponhamos que $f \in L^p(\bN, \mu)$. Já que $\mu$ é a medida da contagem 
+  em $\bN$, 
+  \begin{align*}
+    ||f||_p = \parth{\int |f|^p d\mu}^{1/p} = \parth{\sum_{k \in \bN} |f(k)|^p}^{1/p}
+    \ge |f(n)|, \quad \forall n \in \bN.
+  \end{align*}
+  Daqui, note que, para cada $n \in \bN$, dado $q-p > 0$, 
+  \begin{align*}
+    |f(n)|^q = |f(n)|^p\cdot |f(n)|^{q-p} \le |f(n)|^p \cdot ||f||_p^{q-p}
+  \end{align*}
+  Ou seja, 
+  \begin{align*}
+    \parth{\int |f|^q d\mu}^{1/q} \le \parth{\int |f|^p\cdot ||f||_p^{q-p} d\mu}^{1/q}
+    = \parth{||f||_p^{q-p}\int |f|^pd\mu}^{1/q} = ||f||_p,
+  \end{align*}
+  isto é, $||f||_q \le ||f||_p$. Mais ainda, segue diretamente da desigualdade 
+  que $f \in L^q(\bN, \mu)$.
+
+\end{proof}
+
