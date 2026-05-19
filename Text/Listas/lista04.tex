@@ -146,7 +146,110 @@ Considere $f: \bN \rightarrow \bR$ dada por $f(n)= \sqrt{n}$.
       com $p=2$, segue que $\lambda(\bN) < +\infty$.
     \end{proof}
   \item Mostre que $f \in L^p(\bN, \lambda)$ se, e somente se, $1\le p < 2$.
-  \begin{proof}[\textbf{Dem:}]. \\ 
-      ($\implies$) teste
+  \begin{proof}[\textbf{Dem:}] Seja $p \ge 1$. Dado qualquer 
+    $f: \bN \rightarrow \bR$ segue que para todo $E \subset \bR$, 
+    $f^{-1}(E) \in \mathcal P (\bN)$, isto é, toda função $f: \bN \rightarrow \bR$
+    é mensurável em $(X, \mathcal P(\bN))$. Daqui, note que dos exercícios anteriores,
+    dado $|f|^p \in M(\bN, \mathcal P(\bN))$,
+    \begin{align*}
+      \int |f|^p d\lambda &= \sum_{n \in \bN} |f(n)|^p \lambda(\set{n})
+      = \sum_{n \in \bN}  \cparth{|f(n)|^p \sum_{k \in \set{n}} \frac{1}{k^2}}\\
+      &= \sum_{n \in \bN} \frac{|f(n)|^p}{n^2} = \sum_{n \in \bN} \frac{n^{p/2}}{n^2}
+      = \sum_{n \in \bN} \frac{1}{n^{2-p/2}}.
+    \end{align*}
+    Da convergência das p-séries, segue que $\sum_{n \in \bN} \frac{1}{n^p}$ converge
+    para algum número real se, 
+    e somente se $p>1$. Desse modo, $\int |f|^p d\lambda < + \infty$ se, e somente se 
+    $2-p/2 > 1$, isto é, $p < 2$. Portanto, $f \in L^P(\bN, \lambda)$ se, e somente se 
+    $1\le p < 2$.
   \end{proof}
 \end{enumerate}}
+
+\nextexe{quatro}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida finita. Se $f$ é mensurável em $X$, 
+defina $E_n = \set{x \in X \st (n - 1) \le |f(x)| < n}$. Mostre que $f \in L^1(X, \mu)$ 
+se, e somente se, 
+\begin{align*}
+  \sum_{n \in \bN} n \mu(E_n) < +\infty.
+\end{align*}
+Generalize para $1 \le p < +\infty$, isto é, mostre que $f \in L^p(X, \mu)$, se 
+e somente se 
+\begin{align*}
+  \sum_{n \in \bN} n^p \mu(E_n) < + \infty.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Definindo $N = \{x \in X \st |f(x)| = +\infty \}$, segue que 
+  $N^C = \{x \in X \st |f(x)| < +\infty\}$. E, como $N^C = \bigcup E_n$ onde para 
+  cada $k, l \in \bN$, $E_k \cap E_l = \emptyset$ sempre que $k \neq l$, temos que 
+  $\mu\parth{N^C} = \mu\parth{\bigcup E_n} = \sum \mu(E_n)$. Com isso, vejamos a 
+  ida e a volta da proposição.\\
+$(\implies)$ Suponhamos que $f \in L^1(X, \mu)$. Então, $|f| < +\infty$ $\mu$-q.t.p.. Mais 
+  precisamente $\mu(N) = 0$. Daqui, note que,
+\begin{align*}
+  \int |f| d\mu &= \int_N |f| d\mu + \int_{N^C} |f| d\mu = \int_{N^C} |f| d\mu 
+  = \int |f| \chi_{N^C} d\mu\\
+  &= \int |f| \chi_{\bigcup E_n} d\mu = \int |f| \parth{\sum_{n \in \bN} \chi_{E_n}}d\mu < +\infty.
+\end{align*}
+Ou seja, 
+\begin{align*}
+  \int |f| d\mu = \int |f| \parth{\sum_{n \in \bN} \chi_{E_n}} = \sum_{n \in \bN} \int |f| \chi_{E_n} d\mu.
+\end{align*}
+Pela definição de $E_n$, temos,
+\begin{align*}
+  +\infty > \int |f| d\mu \ge \sum_{n \in \bN} \int (n-1) \chi_{E_n} d\mu = \sum_{n \in \bN} (n-1) \chi_{E_n}.
+\end{align*}
+  Como $N^C \subset X$ e $\mu(X) < +\infty$,
+  \begin{align*}
+    +\infty > \cparth{\sum_{n \in \bN} (n - 1) \chi_{E_n}} + \cparth{\sum_{n \in \bN} \chi_{E_n}} 
+    = \sum_{n \in \bN} n\chi_{E_n}.
+  \end{align*}
+  $(\impliedby)$
+\end{proof}
+
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida finita e $f \in L^p(X, \mcal F, \mu)$, $1 \le p < \infty$, 
+e $\epsilon > 0$. Mostre que existe um conjunto $E_\epsilon \in \mcal F$ com $\mu(E_\epsilon) < +\infty$ 
+tal que se $F \in \mcal F$ e $F \cap E_\epsilon = \emptyset$, então $\pnorm p {f \chi_F} < \epsilon$.}
+\begin{proof}[\textbf{Dem:}] Ora, como $(X, \mcal F, \mu)$ é um espaço de medida finita, então, 
+  para todo $A \in \mcal F$, segue que $\mu(A) < +\infty$. Agora, como $f \in L^p(X, \mcal F, \mu)$, 
+  todo representante de $|f|^p \in L^1(X, \mu)$ é mensurável. Portanto, temos que 
+  \begin{align*}
+    E_\epsilon = \set{x \in X \st |f(x)|^p \ge \frac{\epsilon^p}{\mu(X)}} \in \mcal F.
+  \end{align*}
+  Agora, se $F \in \mcal F$ e $F \cap E_\epsilon = \emptyset$, segue que, 
+  \begin{align*}
+    F \subset \set{x \in X \st |f(x)|^p < \frac{\epsilon^p}{\mu(X)}}.
+  \end{align*}
+  E, como os representantes de $|f|^p$ são 
+  mensuráveis, segue que os representantes de $|f|^p\chi_F = |f \chi_F|^p$ também são. Portanto, 
+  \begin{align*}
+    \int |f \chi_F|^p d\mu = \int | f |^p \chi_F d\mu < \int \frac{\epsilon^p}{\mu(X)} \chi_F d\mu 
+    = \epsilon^p \frac{\int_F d\mu}{\mu(X)} = \epsilon^p \cparth{\frac{\mu(F)}{\mu(X)}} \le \epsilon^p.
+  \end{align*}
+Ou seja, 
+\begin{align*}
+  \pnorm p {f\chi_F} = \cparth{\int |f\chi_F|^p d\mu}^{1/p} < \epsilon.
+\end{align*}
+\end{proof}
+
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^\infty(X, \mu)$. 
+Mostre que se $A < \pnorm \infty f$, então existe um conjunto 
+$E \in \mcal F$ com $\mu(E) > 0$ tal que $|f(x)| > A$ para todo $x \in E$.}
+\begin{proof}[\textbf{Dem:}] Por definição, 
+  \begin{align*}
+    \pnorm \infty f = \inf \set{\alpha \ge 0 \st \mu(\set{x \in X \st |f(x)| > \alpha}) = 0}
+  \end{align*}  
+  Desse modo, como $\alpha = ||f||_\infty$ é o menor real extendido satisfazendo 
+  \begin{align*}
+    \mu(\set{x \in X \st |f(x)| > \alpha}) = 0,
+  \end{align*}
+  já que $\pnorm \infty f > A$, então $\mu(\set{x \in X \st |f(x)| > A}) > 0$. Definindo 
+  $E = \set{x \in X \st |f(x)| > A}$, segue que para todo $x \in E$, temos $|f(x)| > A$,
+  mais ainda, o conjunto satisfaz $\mu(E) > 0$, como queríamos.
+\end{proof}
+
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida. Mostre que se $f \in L^P(X, \mu)$, $1 \le p \le \infty$, 
+e $g \in L^\infty(X, \mu)$, então $fg \in L^p(X, \mu)$ e $\pnorm p {fg} \le \pnorm p f \pnorm \infty g$.}
+\begin{proof}[\textbf{Dem:}] Para $p = \infty$ 
+\end{proof}
