@@ -208,7 +208,19 @@ Pela definição de $E_n$, temos,
     \cparth{\sum_{n \in \bN} \mu\parth{E_n}} 
     = \sum_{n \in \bN} n\mu\parth{E_n}.
   \end{align*}
-  $(\impliedby)$ 
+  $(\impliedby)$ Como $f: X \rightarrow \bR$, note que $\mu({x \in X \st |f(x)| = +\infty}) = 0$. Portanto, 
+  temos da definição de $f$ que $X = \bigcup E_n$. Já que $f$ é mensurável e limitada por $n$ em $E_n$
+  para todo $n \in \bN$,
+  \begin{align*}
+    \int |f| d\mu = \int |f| \chi_X d\mu = \int |f| \chi_{\bigcup E_n} d\mu = \int \sum_{n \in \bN} |f| \chi_{E_n} d\mu 
+    \le \int \sum_{n \in \bN} n \chi_{E_n} d\mu.
+  \end{align*}
+  Já que para cada $n \in \bN$, $n \chi_{E_n} \in \mathcal M^+(X, \mu)$,
+  \begin{align*}
+    \int |f| d\mu \le \int \sum_{n \in \bN} n \chi_{E_n} d\mu = \sum_{n \in \bN} \int n \chi_{E_n}d \mu, 
+    = \sum_{n \in \bN} n \mu(E_n) < +\infty
+  \end{align*}
+  ou seja, $f \in L^1(X, \mu)$.
 \end{proof}
 
 %ex 8
@@ -342,7 +354,24 @@ Vejamos primeiro que $\pnorm {} {\, \cdot \,}$ é uma norma em $L^p(X, \mu) \cap
     \end{align*}
 \end{itemize}
   Com isso, segue que $\snorm {\, \cdot \,}$ é norma em $L^p(X, \mu) \cap L^r(X, \mu)$.
-  Daqui, vejamos que é também um Espaço de Banach quando munido com a norma $\snorm {\, 
+  Daqui, vejamos que é também um Espaço de Banach quando munido da norma $\snorm {\, 
   \cdot \,}$. Para tal, vejamos que é completo, isto é, toda sequência 
-  de Cauchy em $\parth{L^p(X, \mu) \cap L^r(X, \mu), }$
+  de Cauchy em $(L^p(X, \mu) \cap L^r(X, \mu), \snorm {\, \cdot \,})$ converge 
+  no sentido $\snorm {\, \cdot \,}$ para alguém em $L^p(X, \mu) \cap L^r(X, \mu)$.
+  Considere $(f_n)_{n \in \bN}$ uma sequência de Cauchy em $(L^p(X, \mu) \cap L^r(X, \mu), \snorm {\, \cdot \,})$, 
+  ou seja, para todo $\epsilon > 0$, existe $N \in \bN$ tal que dados inteiros $n, m \ge N$, temos,
+  \begin{align*}
+    \snorm{f_n - f_m} < \epsilon.
+  \end{align*}
+  Ora, por definição, 
+  \begin{align*}
+    \pnorm p {f_n - f_m} &\le \pnorm p {f_n - f_m} + \pnorm r {f_n - f_m}  = \snorm {f_n - f_m} < \epsilon, \text{ e também, } \\
+    \pnorm r {f_n - f_m} &\le \pnorm p {f_n - f_m}  + \pnorm r {f_n - f_m} = \snorm {f_n - f_m} < \epsilon.
+  \end{align*}
+  ou seja, $(f_n)_{n \in \bN}$ é Cauchy tanto em $(L^p(X, \mu), \pnorm p {\, \cdot \,})$, quanto 
+  em $(L^r(X, \mu), \pnorm r {\, \cdot \,})$. Como ambos são Espaços de Banach, temos que, 
+  $(f_n)_{n \in \bN}$ converge para $f \in L^p(X, \mu)\cap L^r(X, \mu)$, isto é, 
+  \begin{align*}
+   tes 
+  \end{align*}
 \end{proof}
