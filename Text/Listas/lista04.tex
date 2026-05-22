@@ -370,8 +370,30 @@ Vejamos primeiro que $\pnorm {} {\, \cdot \,}$ é uma norma em $L^p(X, \mu) \cap
   \end{align*}
   ou seja, $(f_n)_{n \in \bN}$ é Cauchy tanto em $(L^p(X, \mu), \pnorm p {\, \cdot \,})$, quanto 
   em $(L^r(X, \mu), \pnorm r {\, \cdot \,})$. Como ambos são Espaços de Banach, temos que, 
-  $(f_n)_{n \in \bN}$ converge para $f \in L^p(X, \mu)\cap L^r(X, \mu)$, isto é, 
+  $(f_n)_{n \in \bN}$ converge para $g \in L^p(X, \mu)$ e $h \in L^r(X, \mu)$  
+  simultaneamente. Por modos de convergência,
+  sabemos que, $(f_n)$ converge em medida 
+  para $g$ e $h$ simultaneamente. Das propriedades de convergência em medida, 
+  segue que $g = h$ $\mu$-q.t.p.. Desse modo, $g = h = f \in L^p(X, \mu)\cap L^r(X, \mu)$.
+  Daqui, note que, para todo $\epsilon > 0$ existe $N \in \bN$ tal que 
+  $\pnorm p {f_n - f} < \epsilon/2$ e $\pnorm r {f_n - f}< \epsilon /2 $, ou seja,
   \begin{align*}
-   tes 
+    \snorm {f_n - f} = \pnorm p {f_n - f} + \pnorm r {f_n - f} < \epsilon,
   \end{align*}
+  isto é, $(f_n)$ converge no sentido $\snorm {\, \cdot \,}$ para 
+  $f \in L^p(X, \mu) \cap L^r(X, \mu)$, i.e., 
+  $(L^p(X, \mu)\cap L^r(X, \mu), \snorm {\, \cdot \,})$ 
+  é um Espaço Completo.
 \end{proof}
+
+%ex 12 
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 \le p < r \le +\infty$. 
+Defina em $L^p(X, \mu) + L^r(X, \mu)$ a função 
+$\snorm {\, \cdot \,}: L^p(X, \mu) + L^r(X, \mu) \rightarrow \bR$ dada por 
+\begin{align*}
+  \snorm f \coloneq \inf \set{\pnorm p g + \pnorm r g \st 
+  g \in L^p(X, \mu), h \in L^r (X, \mu), \text{ e } f = g+ h}
+\end{align*}
+Mostre que $\snorm {\, \cdot \,}$ é uma norma e 
+que $L^p(X, \mu) + L^r(X, \mu)$ é um Espaço de Banach com esta norma.}
