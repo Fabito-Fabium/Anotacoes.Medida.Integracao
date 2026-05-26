@@ -861,3 +861,48 @@ para $p=1$ e $p = +\infty$ no espaço de medida de Lebesgue em $\bR$.}
     = \pnorm \infty { (1-\lambda)\chi_{(1, 2)} + \chi_{[2, 3]} + \lambda \chi_{(3, 4)}} = 1.
   \end{align*}
 \end{proof}
+
+%ex 21 
+\nextexe{quatro}
+\textbf{Sejam $(\bR, \mcal M, m)$ o espaço de medida de Lebesgue e $f: \bR \rightarrow \bR$
+uma função mensurável tal que $f \not \in L^\infty(\bR, m)$. 
+\begin{enumerate}[label=\alph*)]
+  \item Defina os conjuntos de nível $A_n = \set{ x \in \bR \st \mparth{f(x)} > n}$. 
+    Mostre que $m(A_n) > 0$, para todo $n \in \bN$.
+    \begin{proof}[\textbf{Dem:}]
+      Como $f \not \in L^\infty(\bR, m)$, segue que para todo $\alpha \ge 0$, 
+      $m(\set{x \in \bR \st \mparth{f(x)} > \alpha}) > 0$, com isso, 
+      segue diretamente que para todo $n \in \bN$, $m(A_n) > 0$.
+    \end{proof}
+  \item Considere os conjuntos $D_n = \set{x \in \bR \st n < \mparth{f(x)} \le n+1}$. 
+    Mostre que existe uma sequência estritamente crescente de índices $(n_k)_{k \in \bN}$
+    tal que $m(D_{n_k}) > 0$ para todo $k$.
+    \begin{proof}[\textbf{Dem:}] Note que, 
+      para todo $k \in \bN$, temos $A_k = \bigcup_{j = k}^\infty D_j$. Como 
+      $m(A_k)> 0, \forall k \in \bN$, existe $j \in [k, \infty)\cap \bN$ 
+      tal que $m(D_j) > 0$. Para 
+      cada $k \in \bN$, defina $n_1 = \min \set{j \in [1, \infty)\cap \bN \st m(D_j) > 0}$ 
+      e, para $k \neq 1$, $n_k = \min \set{j \in (n_{k-1}, \infty)\cap \bN \st m(D_j) > 0}$.
+      Note que cada $n_k$ está bem definido, pois, 
+      $A_{n_{k}+1} = \bigcup_{j = n_{k}+1}^\infty D_j$ e 
+      $m(A_{n_{k}+1}) > 0$, portanto, existe $j \in (n_{k}, \infty) \cap \bN$ 
+      tal que $m(D_j)> 0$.
+      Com isso, segue por construção que para todo $k \in \bN$, temos $n_k < n_{k+1}$ e 
+      $m(D_{n_k}) > 0$.
+    \end{proof}
+  \item Mostre que é possível escolher subconjuntos mensuráveis $F_k \subset D_{n_k}$
+    tais que $0 < m(F_k) < \frac{1}{2^k}$.
+    \begin{proof}[\textbf{Dem:}]
+     aa 
+    \end{proof}
+  \item Defina a sequência $E_k = \bigcup_{j = k}^\infty F_j$. Prove 
+    que $\set{E_k}_{k \in \bN}$ satisfaz simultaneamente as seguintes 
+    condições: 
+    \begin{enumerate}[label=\roman*)]
+      \item $0 < m(E_k) < +\infty$;
+      \item $E_{k+1} \subset E_k$;
+      \item $m(E_k \setminus E_{k+1}) > 0$;
+      \item $\lim m(E_k) = 0$;
+      \item $E_k \subset \set{x \in \bR \st \mparth{f(x)} > k}$.
+    \end{enumerate}
+\end{enumerate}}
