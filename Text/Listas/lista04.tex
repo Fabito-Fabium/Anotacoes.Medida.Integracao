@@ -221,6 +221,42 @@ Pela definição de $E_n$, temos,
     = \sum_{n \in \bN} n \mu(E_n) < +\infty
   \end{align*}
   ou seja, $f \in L^1(X, \mu)$.
+
+  Agora, vejamos que vale a generalização. \\
+  $(\implies)$ Suponhamos $f \in L^p(X, \mu)$ e vejamos que 
+  $\sum\limits_{n \in \bN} n^p \mu(E_n) < +\infty$. Como $f \in L^p(X, \mu)$, 
+  $\mparth{f}^p < +\infty$ $\mu$-q.t.p., ou seja, $\mu(N) = 0$. Portanto,
+  \begin{align*}
+    \int \mparth{f} d\mu &= \int_{N} \mparth{f}^p d\mu + \int_{N^C} \mparth{f}^p d\mu 
+    = \int_{N^C} \mparth{f}^p d\mu\\ 
+    &= \int \mparth{f}^p \parth{\sum_{n \in \bN} \chi_{E_n}} d\mu < +\infty.
+  \end{align*}
+  Dito isso, 
+  \begin{align*}
+    +\infty &>\int \mparth{f}^p d\mu = 
+    \int \mparth{f}^p \parth{\sum_{n \in \bN} \chi_{E_n}} d\mu 
+    = \sum_{n \in \bN} \int \mparth{f}^p\chi_{E_n} d\mu\\ 
+    &\ge \sum_{n \in \bN} \int (n-1)^p \chi_{E_n}d\mu = \sum_{n \in \bN} (n-1)^p \mu(E_n).
+  \end{align*}
+  Sendo assim, note que para $n \ge 2$, temos $n \le 2(n-1)$, ou seja, $n^p \le 2^p(n-1)^p$. 
+  Daqui, já que o espaço é finito, $E_1 \subseteq X$ tem medida finita, e, portanto,
+  \begin{align*}
+    \sum_{n \in \bN} n^p\mu(E_n) &= \mu(E_1) + \sum_{n = 2}^\infty n^p\mu(E_n)
+    \le \mu(E_1) + \sum_{n = 2}^\infty 2^p(n-1)^p \mu(E_n)\\ 
+    &= \mu(E_1) + 2^p \sum_{n = 2}^\infty (n-1)^p \mu(E_n) < +\infty.
+  \end{align*}
+  $(\impliedby)$ Suponhamos que $\sum\limits_{n \in \bN} n^p \mu(E_n) < +\infty$. 
+  Por hipótese, $f: X \rightarrow \bR$, ou seja, $\bigcup E_n = X$. Com isso, 
+  como $f$ é mensurável, temos $\mparth{f}$ mensurável e, já que $\phi(x) = x^p$ é 
+  contínua para cada $p \in [1, +\infty)$, temos $\mparth{f}^p \in \mcal M^+(X, \mu)$. 
+  Sendo assim, 
+  \begin{align*}
+    \int \mparth{f}^p d\mu &= \int \mparth{f}^p \chi_{X} d\mu 
+    = \int \mparth{f}^p \parth{\sum_{n \in \bN} \chi_{E_n}} d\mu 
+    = \sum_{n \in \bN} \int \mparth{f}^p \chi_{E_n} d\mu \\
+    &= \sum_{n \in \bN} \int n^p \chi_{E_n} d\mu = \sum_{n \in \bN} n^p \mu(E_n)<+\infty. 
+  \end{align*}
+  Ou seja, $f \in L^p(X, \mu)$.
 \end{proof}
 
 %ex 8
@@ -569,6 +605,8 @@ define uma métrica em $L^p(X, \mu)$ que é completa.}
   ou seja, $g \in L^p(X, \mu)$, como queríamos.
 \end{proof}
 
+
+%ex 15
 \nextexe{quatro}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, 
 $(f_n)$ uma sequência em $L^p(X, \mu)$ que converge em quase todo ponto 
@@ -605,15 +643,221 @@ para uma função $f \in L^p(X, \mu)$, com $1\le p < +\infty$. Mostre que
   sabemos que $(f_n)$ converge em quase todo ponto para $f \in L^p(X, \mu)$, sendo assim,
   $(g_n)$ converge para $2^{p+1}\mparth{f}^p$. Portanto, do Lema de Fatou, 
   \begin{align*}
-    2^{p+1} \pnorm p f^p&= \int 2^{p+1}\mparth{f}^p d\mu =\int \lim \inf g_n d\mu \le \lim \inf \int g_n d\mu \\ 
-    &= \lim \inf \int 2^p(\mparth{f_n}^p + \mparth{f}^p) - \mparth{f_n - f}^p d\mu\\
-    &= \lim \inf 2^p \cparth{\int \mparth{f_n}^p d\mu + \int \mparth{f} d\mu} - \int \mparth{f_n - f}^p d\mu\\
-    &= 2^{p + 1} \pnorm p f^p - \lim\inf \pnorm p {f_n - f}^p. 
+    2^{p+1} \pnorm p f^p&= \int 2^{p+1}\mparth{f}^p d\mu =\int \lim \inf g_n d\mu \le
+    \lim \inf \int g_n d\mu \\ 
+    &\le \lim \sup \int g_n d\mu 
+    = \lim \sup \int 2^p(\mparth{f_n}^p + \mparth{f}^p) - \mparth{f_n - f}^p d\mu\\
+    &= \lim \sup \cparth{2^p \parth{\int \mparth{f_n}^p d\mu + \int \mparth{f}^p d\mu}
+    - \int \mparth{f_n - f}^p d\mu}\\
+    &= 2^{p + 1} \pnorm p f^p - \lim\sup \pnorm p {f_n - f}^p. 
   \end{align*}
   Como $f \in L^p(X, \mu)$, 
   \begin{align*}
-    2^{p+1}\pnorm p f^p \le 2^{p+1}\pnorm p f^p - \lim \inf \pnorm p {f_n - f}^p \implies
-    \lim \inf \pnorm p {f_n - f}^p \le 0.
+    2^{p+1}\pnorm p f^p \le 2^{p+1}\pnorm p f^p - \lim \sup \pnorm p {f_n - f}^p \implies
+    \lim \sup \pnorm p {f_n - f}^p \le 0.
   \end{align*}
-  Como $\pnorm p {f_n - f}^p \ge 0$ para todo $n \in \bN$, segue que $\lim \inf \pnorm p {f_n - f}^p = 0$.
+  Como $\pnorm p {f_n - f}^p \ge 0$ para todo $n \in \bN$, segue que 
+  $\lim \sup \pnorm p {f_n - f}^p = 0 \ge \lim \inf \pnorm p {f_n - f}^p \ge 0$, 
+  ou seja, $\lim \pnorm p {f_n - f}^p = 0$, sendo assim, $\lim \pnorm p {f_n - f} = 0$.
+\end{proof}
+
+%ex 16
+\nextexe{quatro}
+\textbf{Seja $(\bR, \mcal M, m)$ o espaço de medida de Lebesgue. Fixado $1 \le r < +\infty$, 
+mostre que a função $f: \bR \rightarrow \bR$ dada por 
+\begin{align*}
+  f(x) = \parth{\frac{1}{x\mparth{\log x}^2}}^{1/r} \chi_{(0, 1/2) \cup (2, +\infty)}(x)
+\end{align*}
+pertence a $L^p(\bR, m)$ se, e somente se, $r=p$.}
+\begin{proof}[\textbf{Dem:}]
+  Suponhamos que $f \in L^p(\bR, m)$, então, 
+  \begin{align*}
+    \int f dm &= \int \parth{\frac{1}{x\mparth{\log x}^2}}^{1/r} 
+    \chi_{(0, 1/2) \cup (2, +\infty)}(x) dm \\
+    &= \int_{(0, 1/2)} \parth{\frac{1}{x\mparth{\log x}^2}}^{1/r}dm
+    + \int_{(2, \infty)} \parth{\frac{1}{x\mparth{\log x}^2}}^{1/r} dm
+  \end{align*}
+\end{proof}
+
+%ex 17 
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F ,\mu)$ um espaço de medida e 
+$1 \le r, p, q \le +\infty$ tais que $\frac{1}{p} + \frac{1}{q} = \frac{1}{r}$. 
+Prove que se $f \in L^p(X, \mu)$ e $g \in L^q(X, \mu)$, então $fg \in L^r(X, \mu)$ 
+\begin{align*}
+  \pnorm r {fg} \le \pnorm p f \pnorm q g.
+\end{align*}
+Generalize para uma soma finita $\sum \frac{1}{p_k} = \frac{1}{r}$.}
+\begin{proof}[\textbf{Dem:}] Note que, se $p = q = \infty$ temos $r = \infty$,
+  e por conseguinte, a 
+  desigualdade segue de maneira direta. Mais ainda, se $q = \infty$ e $p \neq \infty$,
+  temos $p = r \neq \infty$. Por definição, $g \le \pnorm \infty g$ $mu$-q.t.p., 
+  portanto, 
+  \begin{align*}
+    \int \mparth{fg}^r d\mu \le \pnorm \infty g^r \int \mparth{f}^r d\mu, 
+  \end{align*}
+  Como $p = r$,
+  \begin{align*}
+    \pnorm r {fg}= \parth{\int \mparth{fg}^r d\mu}^{1/r} 
+    \le \pnorm \infty g \parth{\int \mparth{f}^r d\mu}^{1/r} = \pnorm \infty g \pnorm r f 
+    = \pnorm \infty g \pnorm p f.
+  \end{align*}
+  Sendo assim, suponhamos $p \neq \infty$ e $q \neq \infty$. Note que se $f= 0$ ou $g =0$
+  a desigualdade segue diretamente. Com isso, suponhamos também que $f\neq 0$ e $g \neq 0$. 
+  Daqui, visto que 
+  $\frac{r}{p} + \frac{r}{q} = 1$, ou seja, $u = \frac{p}{r}$ é conjugado de 
+  $v = \frac{q}{r}$, da Desigualdade de Young, definindo $a = \frac{|f|^r}{\pnorm p f^r}$
+  e $b =\frac{|g|^r}{\pnorm q g^r}$,
+  \begin{align*}
+    \int \frac{\mparth{fg}^r}{\pnorm p f^r \pnorm q g^r} d\mu &\le 
+    \int \frac{1}{u}\parth{\frac{\mparth{f}^r}{\pnorm p f^r}}^u +
+    \frac{1}{v}\parth{\frac{\mparth{g}^r}{\pnorm q g^r}}^v d\mu \\
+    &= \frac{r}{p} \frac{\int \mparth{f}^p d\mu}{\pnorm p f^p}  
+    + \frac{r}{q} \frac{\int \mparth{g}^q d\mu}{\pnorm q g^q} \\ 
+    &= \frac{r}{p} + \frac{r}{q} = 1. 
+  \end{align*}
+  Ou seja, 
+  \begin{align*}
+    \int \frac{\mparth{fg}^r}{\pnorm p f^r \pnorm q g^r} d\mu \le 1 
+    &\implies \int \mparth{fg}^r d\mu \le \pnorm p f^r \pnorm q g^r \\
+    &\implies \pnorm r {fg} \le \pnorm p f \pnorm q g. 
+  \end{align*}
+  Para a generalização utilizando a soma finita 
+  $\sum\limits_{k = 1}^n \frac{1}{p_k} = \frac{1}{r}$, com $1\le p_k \le +\infty$
+  para todo $k \in [1, n] \cap \mbb Z$,
+  seguem as desigualdades para o caso $n \le 2$. Suponhamos por indução em $n$ que, dada 
+  uma sequência $(f_k)_{k=1}^n$ de funções satisfazendo $f_k \in L^{p_k}(X, \mu)$ para 
+  todo $k \in [1, n] \cap \mbb Z$, 
+  para todo inteiro $m$ satisfazendo $1 \le m < n$, temos 
+  $\pnorm r {\prod\limits_{k = 1}^m f_k} \le \prod\limits_{k = 1}^m \pnorm {p_k} {f_k}$
+  e $\prod_{k = 1}^m f_k \in L^r(X, \mu)$ sempre
+  que $\sum\limits_{k = 1}^{m}\frac{1}{p_k} = \frac{1}{r}$. Desse modo, 
+  se $p_n = \infty$, 
+  \begin{align*}
+    \int \mparth{\prod_{k = 1}^n f_k}^r d\mu 
+    \le \pnorm \infty {f_n}^r \int \mparth{\prod_{k = 1}^{n-1} f_k}^r d\mu
+    \le \pnorm \infty {f_n}^r \parth{\prod_{k = 1}^{n - 1}\pnorm {p_k}{f_k}}^r = 
+    \parth{\prod_{k=1}^n \pnorm {p_k}{f_k}}^r.
+  \end{align*}
+  Agora, suponha $p_n \neq \infty$. Definindo 
+  $\frac{1}{v_1} = \sum\limits_{k = 1}^{n-1} \frac{1}{p_k}$
+  e $\frac{1}{v_2} = \frac{1}{p_n}$, temos $\frac{1}{v_1}+ \frac{1}{v_2} = \frac{1}{r}$. 
+  Mais ainda, defina $f = f_n$ e $g = \prod\limits_{k=1}^{n-1} f_k$ e note que 
+  $|f|$ e $|g|$ são mensuráveis não-negativos.  
+  Como $\sum\limits_{k=1}^{n-1} \frac{1}{p_k} = \frac{1}{v_1}$ e 
+  $f_k \in L^{p_k}(X, \mu)$ para $k \in [1, n]\cap \mbb Z$, da hipótese de indução 
+  segue que $\prod\limits_{k=1}^{n-1} f_k \in L^{v_1}(X, \mu)$, e,
+  \begin{align*}
+    \pnorm {v_1} g = \pnorm {v_1} {\prod_{k=1}^{n-1} f_k} 
+    \le \prod_{k=1}^{n-1}\pnorm {p_k} {f_k} 
+  \end{align*}  
+  Com isso, da primeira parte do 
+  exercício, temos $\prod_{k=1}^n f_k = fg \in L^r(X, \mu)$, e,
+  \begin{align*}
+    \pnorm r {\prod_{k = 1}^n f_k} = \pnorm r {fg} \le 
+    \pnorm {v_2} f \pnorm {v_1} g 
+    \le \pnorm {p_n} {f_n} \prod\limits_{k=1}^{n-1} \pnorm {p_k}{f_k} = 
+    \prod_{k = 1}^n \pnorm {p_k} {f_k},
+  \end{align*}
+  como queríamos.
+\end{proof}
+
+%ex 18
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 \le r, p, q \le +\infty$
+tais que $\frac{1}{p} + \frac 1 q + \frac 1 r = 1$. Prove que 
+se $f \in L^p (X, \mu)$, $g \in L^q(X, \mu)$ e $h \in L^r(X, \mu)$, 
+então $fgh \in L^1(X, \mu)$ e 
+\begin{align*}
+  \pnorm 1 {fgh} \le \pnorm p f \pnorm q g \pnorm r h.
+\end{align*}
+Generalize para uma soma finita $\sum \frac{1}{p_k} = 1$.}
+\begin{proof}[\textbf{Dem:}]Note que o resultado segue de maneira direta pelo 
+  exercício anterior. 
+\end{proof}
+
+%ex 19
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, considere 
+$p \in \bR$ tal que $1 \le p < +\infty$ e $q$ o seu conjugado. Prove que para 
+toda $f \in L^p(X, \mu)$ vale que 
+\begin{align*}
+  \pnorm p f = \sup \set{\int \mparth{fg} d\mu \st g\in L^q(X, \mu) \text{ e } 
+  \pnorm q g \le 1}.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Ora, dados 
+  $f \in L^p(X, \mu)$ e qualquer $g \in L^q(X, \mu)$ satisfazendo $\pnorm q g \le 1$,
+  temos, 
+  \begin{align*}
+    \pnorm 1 {fg} \le \pnorm p f \pnorm q g \le \pnorm p f.
+  \end{align*}
+  Desse modo, 
+  \begin{align*}
+    \sup\set{\pnorm 1 {fg} \st g\in L^q(X, \mu), \pnorm q g \le 1} \le \pnorm p f.
+  \end{align*}
+  Mais ainda, note que a função conjugada de $f$ definida como 
+  \begin{align*}
+    f^* \coloneq \pnorm p f^{1-p} \sgn(f)\mparth{f}^{p-1},
+  \end{align*}
+  em que $\sgn(f)(x) = \begin{cases}
+    \frac{f(x)}{\mparth{f(x)}}, & \text{se } f(x) \neq 0;\\
+    0, &\text{se } f(x) = 0.
+  \end{cases}$, satisfaz as seguintes propriedades: $f^* \in L^q(X, \mu)$, 
+  $\int f\cdot f^* d\mu = \pnorm p f$ e $\pnorm q {f^*} = 1$. Ou seja, 
+  \begin{align*}
+    \pnorm p f = \int f\cdot f^* d\mu \le \sup \set{\int \mparth{fg}d\mu \st 
+    g \in L^q(X, \mu), \pnorm q g \le 1}.
+  \end{align*}
+  Com isso, temos $\pnorm p f = \sup\set{\int \mparth{fg} d\mu st g \in L^q(X, \mu), 
+  \pnorm q g \le 1}$.
+\end{proof}
+
+%ex 20 
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 < p < +\infty$. 
+Mostre que o espaço $L^p(X, \mu)$ é estritamente convexo, ou seja, 
+se $f, g \in L^p(X, \mu)$ são tais que $\pnorm p f = 1$, $\pnorm p g = 1$ e 
+$f \neq g$, então 
+\begin{align*}
+  \pnorm p {(1-\lambda)f + \lambda g}< 1, \quad \forall \lambda \in (0, 1).
+\end{align*}
+Mostre também, através de contraexemplos, que o resultado não é válido 
+para $p=1$ e $p = +\infty$ no espaço de medida de Lebesgue em $\bR$.}
+\begin{proof}[\textbf{Dem:}] Visto que 
+  $f, g \in L^p(X, \mu)$, então 
+  $(1 - \lambda)f, \lambda g, (1-\lambda)f + \lambda g \in L^p(X, \mu)$.
+  Desse modo, da desigualdade de Minkowski, para todo $\lambda \in (0, 1)$, temos
+  \begin{align*}
+    \pnorm p {(1-\lambda)f + \lambda g} &\le \pnorm p {(1-\lambda) f} + \pnorm p {\lambda g}
+    = \mparth{1 - \lambda} \pnorm p f + \mparth{\lambda} \pnorm p g
+    = \mparth{1 - \lambda} + \mparth{\lambda} = 1. 
+  \end{align*}
+  Vejamos que $\pnorm p {(1 - \lambda) f + \lambda g} \neq 1$. Note que a igualdade
+  é satisfeita se, e somente se, $|f| = \alpha |g|$ $\mu$-q.t.p. para algum  $\alpha \ge 0$. 
+  Entretanto, 
+  \begin{align*}
+    1 = \pnorm p f = \alpha \pnorm p g = \alpha,
+  \end{align*}
+  isto é, $f = g$, o que contradiz o fato de que $f \neq g$.\\
+  Considere o seguinte contraexemplo para $p=1$: Sejam $n \in \bN$, 
+  $f = n \chi_{(1/n, 2/n)}$, $g = n \chi_{(2/n, 3/n)}$ 
+  e $\lambda \in (0 , 1)$, então
+  \begin{align*}
+    \int \mparth{(1- \lambda) f + \lambda g}^p dm 
+    &= \int (1-\lambda) n \chi_{(1/n, 2/n)} + \lambda n\chi_{(2/n, 3/n)} dm\\ 
+    &= (1-\lambda) n \cdot m((1/n, 2/n)) + \lambda n \cdot m((2/n, 3/n))\\ 
+    &= (1 - \lambda) + \lambda = 1
+  \end{align*}
+  Considere o seguinte contraexemplo para $p = \infty$: Seja $f=\chi_{[2, 4)}$
+  e $g = \chi_{(1, 3]}$. Note que, 
+  \begin{align*}
+    \pnorm \infty f = \inf \set{\alpha\ge 0 \st 
+    \m\parth{\set{x \in X \st \mparth{f(x)} > \alpha}} = 0} = \inf A = 1,
+  \end{align*}
+  Pois, para todo $x \ge 1$, temos $x \in A$ e $x < 1$, segue que $x \not \in A$. 
+  Semelhantemente, segue que $\pnorm \infty g = 1$. Com isso, 
+  \begin{align*}
+    \pnorm \infty {(1-\lambda) \chi_{(1, 3]}+ \lambda \chi_{[2, 4)}} 
+    = \pnorm \infty { (1-\lambda)\chi_{(1, 2)} + \chi_{[2, 3]} + \lambda \chi_{(3, 4)}} = 1.
+  \end{align*}
 \end{proof}
