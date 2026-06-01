@@ -80,9 +80,9 @@ $f+g$. Além disso, se o espaço for de medida finita, então $(f_ng_n)$ converg
 Dê um contra-exemplo que a última propriedade não vale para o caso de um espaço de medida 
 qualquer.}
 \begin{proof}[\textbf{Dem:}] Defina 
-$A_\alpha^{(n)} = \set{x \in X \st \mparth{f(x) - f_n(x)} \ge \frac{\alpha}{2}}$
+  $A_\alpha^{(n)} = \set{x \in X \st \mparth{f(x) - f_n(x)} \ge \alpha}$
 e 
-$B_\alpha^{(n)} = \set{x \in X \st \mparth{g(x) - g_n(x)} \ge \frac{\alpha}{2}}$.
+  $B_\alpha^{(n)} = \set{x \in X \st \mparth{g(x) - g_n(x)} \ge \alpha}$.
 Como $(f_n)$ e $(g_n)$ convergem em medida para $f$ e $g$,
 respectivamente, para todo $\alpha, \epsilon>0$, existe $N = N(\alpha, \epsilon) \in \bN$
 tal que,
@@ -91,7 +91,7 @@ n \ge N &\implies \mu\parth{A_\alpha^{(n)}}<\frac{\epsilon}{2} \text{ e }
 \mu\parth{B_\alpha^{(n)}}< \frac{\epsilon}{2}
 \end{align*}
 Note que, para todo $x \in X$ satisfazendo $|(f(x) + g(x)) - (f_n(x) + g_n(x))| \ge \alpha$,
-temos $x \in A_\alpha^{(n)}\cup B_\alpha^{(n)}$, pois, caso contrário, temos 
+  temos $x \in A_{\alpha/2}^{(n)}\cup B_{\alpha/2}^{(n)}$, pois, caso contrário, temos 
 $\mparth{f(x) - f_n(x)} < \frac{\alpha}{2}$ e $\mparth{g(x) - g_n(X)} <\frac{\alpha}{2}$,
 ou seja,
 \begin{align*}
@@ -103,36 +103,772 @@ ou seja,
 uma contradição. Com isso, dado $n \ge N$,
 \begin{align*}
   \mu(\set{x \in X \st |(f(x) + g(x)) - (f_n(x) + g_n(x))| \ge \alpha})
-  &\le \mu(A_\alpha^{(n)} \cup B_\alpha^{(n)})\\
-  &\le \mu(A_\alpha^{(n)}) + \mu(B_\alpha^{(n)})\\
+  &\le \mu(A_{\alpha/2}^{(n)} \cup B_{\alpha/2}^{(n)})\\
+  &\le \mu(A_{\alpha/2}^{(n)}) + \mu(B_{\alpha/2}^{(n)})\\
   &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon,
 \end{align*}
-isto é, $(f_n + g_n)$ converge em medida para $f+g$. Vejamos que, 
-dado um espaço de medida finita, $(f_ng_n)$ converge em medida para $fg$ assumindo
-que $(f_n)$ e $(g_n)$ convergem em medida para $f$ e $g$, respectivamente. Note que, 
+isto é, $(f_n + g_n)$ converge em medida para $f+g$.\\
+  Dado $P_\alpha^{(n)} = \set{x \in X \st \mparth{(f_n g_n)(x) - (fg)(x)} \ge \alpha}$,
+  vejamos que se $f_n \cvex{\mu} f$ e $g_n \cvex{\mu} g$, então $f_ng_n \cvex{\mu} fg$.
+  Dados $\epsilon, \alpha> 0$, para cada $n \in \bN$ 
+  defina
+  \begin{align*}
+    A_\alpha^{(n)} &= \set{x \in X \st \mparth{f(x) - f_n(x)} \ge \alpha};\\
+    B_\alpha^{(n)} &= \set{x \in X \st \mparth{g(x) - g_n(x)} \ge \alpha};\\
+    F_\alpha^{(n)} &= \set{x \in X \st \mparth{f_n(x)} \ge \alpha};\\
+    G_n &= \set{x \in X \st \mparth{g(x)} \ge n}.
+  \end{align*}
+  Note que, $G_n \supseteq G_{n+1}$ e $\mu(G_1)\le \mu(X) <+\infty$, portanto,
+  da continuidade da medida
+  e sabendo que $g: X \rightarrow \bR$, 
+  \begin{align*}
+    \lim_{n \rightarrow \infty} \mu(G_n) = \mu(\set{x \in X \st |g(x)| = +\infty})
+    =\mu\parth{\bigcap_{n \in \bN} G_n} =\mu(\emptyset) = 0.
+  \end{align*}
+  Ou seja, existe $N_g \in \bN$ tal que 
+  \begin{align*}
+    m \ge N_g \implies \mu(G_m) = \mu(\set{x \in X \st g(x) \ge m}) < \epsilon/8.
+    \tag{I}
+    \label{eq:5.5.1}
+  \end{align*}
+  Mais ainda, dado $m \in \bN$ qualquer,
+  se $x \in \parth{A_{\alpha/m}^{(n)} \cup G_m}^C$, $|g(x)| < m$ 
+  e $\mparth {f_n(x) - f(x)} < \alpha/m$,
+  \begin{align*}
+    |g(x)||f_n(x) - f(x)| < m\frac{\alpha}{m} = \alpha,
+  \end{align*}
+  portanto, $E_\alpha^{(n)} 
+  = \set{x \in X \st |g(x)||f_n(x) - f(x)|\ge \alpha} \subseteq A_{\alpha/m}^{(n)} \cup G_m$. 
+  Com isso, dado \eqref{eq:5.5.1} e sabendo que $g_n \cvex \mu g$,
+  existe $N_0 \in \bN$ tal que, 
+  \begin{align*}
+    n \ge N_0 \implies \mu(E_{\alpha}^{n}) \le \mu(A_{\alpha/m}^{(n)}) + \mu(G_m) < 
+    \frac{\epsilon}{8} + \frac{\epsilon}{8} = \frac{\epsilon}{4}.
+    \tag{II}
+    \label{eq:5.5.2}
+  \end{align*}
+  Agora, definindo $F_{n} = \set{x \in X \st \mparth{f(x)}\ge n}$, temos
+  $F_n \supseteq F_{n+1}$ e $\mu(F_1) \le \mu(X)<+\infty$. Da continuidade 
+  da medida e sabendo que $f: X \rightarrow \bR$, 
+  \begin{align*}
+    \lim_{n \rightarrow \infty} \mu(F_{n}) 
+    = \mu(\set{x \in X \st \mparth{f(x)}= +\infty})
+    =\mu\parth{\bigcap_{n \in \bN} F_n} =\mu(\emptyset) = 0.
+  \end{align*}
+  ou seja, como foi argumentado em $\eqref{eq:5.5.1}$, existe $N_f \in \bN$ 
+  tal que, 
+  \begin{align*}
+      m \ge N_f \implies \mu(F_{m/2}) 
+      = \mu(\set{x \in X \st \mparth{f(x)}\ge m/2}) < \epsilon/8.
+    \tag{III}
+    \label{eq:5.5.3}
+  \end{align*}
+  Dado $m \in \bN$ se $x \in \parth{A_{m/2}^{(n)} \cup F_{m/2}}^C$,
+  temos $\mparth{f(x)} < m/2$ 
+  e $\mparth{f_n(x) - f(x)}<m/2$, ou seja,
+  \begin{align*}
+    \mparth{f_n(x)} \le \mparth{f(x)} + \mparth{f_n(x) - f(x)} < \frac m 2 + \frac m 2 = m,
+  \end{align*}
+  desse modo, $F_{m}^{(n)} \subseteq A_{m/2}^{(n)} \cup F_{m/2}$.  
+  De $\eqref{eq:5.5.3}$ e sabendo que $f_n \cvex \mu f$, existe $N_1 \in \bN$ 
+  tal que
+  \begin{align*}
+    n\ge N_1 \implies \mu(F_{m}^{(n)}) \le \mu(A^{n}_{m/2}) + \mu(F_{m/2})
+    < \frac{\epsilon}{8} +\frac{\epsilon}{8} = \frac{\epsilon} 4.
+    \tag{IV}
+    \label{eq:5.5.4}
+  \end{align*}
+  Para cada $n \in \bN$, dado $x \in \parth{F_{m}^{(n)} \cup A_{\alpha/2m}^{(n)} 
+  \cup B_{\alpha/2m}^{(n)} \cup G_m }^C = \parth{\mcal A_{\alpha}^{(n)}}^C$,
+  segue que $|f_n(x)|<m$, 
+  $|f_n(x) - f(x)| < \alpha/2m$, $|g(x)| < m$ e $|g_n(x) - g(x)| < \alpha/2m$, 
+  portanto,
 \begin{align*}
-  \mparth{f_ng_n - fg} &= \mparth{f_ng_n - fg +f_ng - f_ng}
-  =\mparth{f_n(g_n - g) + g(f_n -f)}\\
-  &\le\mparth{f_n}\mparth{g_n - g} + \mparth{g}\mparth{f_n - f}.
+  \mparth{(f_ng_n)(x) - (fg)(x)} &= \mparth{(f_ng_n)(x) - (fg)(x) +(f_ng)(x) - (f_ng)(x)}\\ 
+  &=\mparth{f_n(x)(g_n(x) - g(x)) + g(x)(f_n(x) -f(x))}\\
+  &\le\mparth{f_n(x)}\mparth{g_n(x) - g(x)} + \mparth{g(x)}
+  \mparth{f_n(x) - f(x)} \\
+  &< m\frac \alpha {2m} 
+  + m \frac \alpha {2m} = \alpha.
 \end{align*}
-  Definindo $C_\alpha^{(n)} = \set{x \in X \st \mparth{f_n(x)} \ge \alpha}$ 
-  e $D_\alpha = \set{x \in X \st \mparth{g(x)} \ge \alpha}$.\\ 
-De maneira análoga à argumentação apresentada na primeira parte do exercício, 
-temos que dado $x \in E_{\alpha}^{(n)} = 
-\set{x \in X \st \mparth{(f_ng_n)(x) -(fg)(x)}\ge \alpha}$, 
-  temos $x \in A_{\alpha/M}^{(n)}\cup B_{\alpha/M}^{(n)}
-  C_{M}^{(n)}\cup D_{M}$. Portanto,
+Com isso, $P_{\alpha}^{(n)} \subseteq \mcal A_{\alpha}^{(n)}$. 
+Já que $f_n \cvex \mu f$ e $g_n \cvex \mu g$, existe $N_3 \in \bN$ tal que 
 \begin{align*}
-  \mu\parth{E_\alpha^{(n)}} &\le \mu\parth{A_{\alpha/M}^{(n)}\cup B_{\alpha/M}^{(n)}
-  C_{M}^{(n)}\cup D_{M}}\\
-&\le \mu\parth{A_{\alpha/M}^{(n)}} + \mu\parth{B_{\alpha/M}^{(n)}} 
-+ \mu\parth{C_{M}^{(n)}} + \mu\parth{D_{M}}.
+  n\ge N_3 \implies &\mu\parth{\set{A^{(n)}_{\alpha/2m}}}
+  = \mu(\set{x \in X \st |f_n(x) - f(x)|\ge\frac{\alpha}{2m}}) < \frac{\epsilon}{4};\\
+  &\mu\parth{\set{B^{(n)}_{\alpha/2m}}}
+  = \mu(\set{x \in X \st |g_n(x) - g(x)|\ge\frac{\alpha}{2m}}) < \frac{\epsilon}{4}.
+  \tag{V}
+  \label{eq:5.5.5}
 \end{align*}
-Das hipóteses da convergência em medida, temos $f:X \rightarrow \bR$ e $g: X \rightarrow \bR$. 
-  Portanto, existe $M_0>0$ tal que $\mu(D_{M_0})<\frac{\epsilon}{4}$. 
-  Daqui, note que $\mparth{f_n(x)} \le \mparth{f(x)} + \mparth{f_n(x) - f(x)}$, 
-  portanto $C_{M}^{(n)} \subseteq A_{1}^{(n)} \cup F_{M-1}$, onde 
-  $F_M = \set{x\in X \st |f| \ge M}$. Como $f: X \rightarrow \bR$, 
-  existe $M_1 > 0$ tal que $\mu(F_{M_1}) < \frac{\epsilon}{2}$. Definindo 
-  $M = \max\set{M_0, M_1}$
+Por conseguinte,
+considerando $N = \max\set{N_0, N_1, N_3}$, dados $\eqref{eq:5.5.2}$, $\eqref{eq:5.5.4}$ 
+e $\eqref{eq:5.5.5}$
+\begin{align*}
+  n \ge N \implies \mu\parth{P_{\alpha}^{(n)}} &= \mu(\set{x \in X \st 
+  \mparth{(f_ng_n)(x) - (fg)(x)}\ge \alpha})\\
+  &\le \mu\parth{\mcal A_{\alpha}^{(n)}} = \mu\parth{F_{m}^{(n)} \cup A_{\alpha/2m}^{(n)} 
+  \cup B_{\alpha/2m}^{(n)} \cup G_m }\\
+  &=\mu\parth{F_m^{(n)}} +\mu\parth{A_{\alpha/2m}^{(n)}}
+  +\mu\parth{B_{\alpha/2m}^{(n)}} +\mu(G_m)\\
+  &< \frac{\epsilon}{4} + \frac{\epsilon}{4} + \frac{\epsilon}{4} + \frac{\epsilon}{4}
+  = \epsilon,
+\end{align*}
+ou seja, $f_ng_n \cvex \mu fg$.\\
+Para o contraexemplo considere o Espaço $(\bR, \mcal M, m)$ e 
+as sequências $(f_n)$ e $(g_n)$ definidas 
+para cada $n \in \bN$ como 
+$f_n(x) = 1/n$ e $g_n(x) = x$. Note que $f_n$ converge uniformemente e portanto 
+em medida para $f(x) = 0$. E, $g_n \cvex m g$ onde $g(x) = x$, pois, para todo 
+$\epsilon, \alpha> 0$, e qualquer $N \in \bN$, 
+\begin{align*}
+  n \ge N \implies m(\set{x \in X \st \mparth{g(x) - g_n(x)}\ge \alpha}) &=
+m(\set{x \in X \st \mparth{x - x)} = 0 \ge \alpha}) \\ 
+  &= m(\emptyset) = 0.
+\end{align*}
+Com isso, vejamos que $f_ng_n$ não converge em medida para $fg$. Dado $\epsilon, \alpha>0$,
+\begin{align*}
+  m(\set{x \in X \st \mparth{(f_ng_n)(x) - (fg)(x)}}) &= 
+    m\parth{\set{x \in X \st \mparth{x/n} \ge \alpha}}\\ 
+    &= m\parth{(-\alpha/n, \alpha/n)^C}\\
+    &= m(\bR) - m((-\alpha/n, \alpha/n)) = +\infty.
+\end{align*}
+\end{proof}
+
+%ex 4
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de meddia finita. Considere 
+$\mcal M(X, \mcal F, \mu)$ o espaço das classes de equivalências de funções 
+mensuráveis dada pela relação de equivalência em ser igual em $\mu$-quase todo ponto. 
+Defina $\rho: \mcal M \times \mcal M \rightarrow \bR$ dada por 
+\begin{align*}
+  \rho(f, g) \coloneq \int \frac{\mparth{f-g}}{1+\mparth{f - g}} d\mu. 
+\end{align*}
+\begin{enumerate}[label=(\alph*)]
+  \item Mostre que $\rho$ está bem definida e é uma métrica. 
+  \item Mostre que uma sequência $(f_n)$ converge em medida para $f$
+    se, e somente se, $\rho(f_n, f) \rightarrow 0$. 
+  \begin{proof}[\textbf{Dem:}].\\
+  $(\implies)$ Suponhamos que $f_n \cvex \mu f$. Então, para todo $\epsilon>0$,
+    como $\mu(X)<+\infty$, podemos escolher $\alpha$ de modo que,
+    $$\frac{\alpha}{\alpha + 1} \mu\parth{X} < \epsilon/2$$.
+    Desse modo, existe $N=N(\epsilon, \alpha)\in \bN$ tal que 
+    \begin{align*}
+      n \ge N \implies \mu\parth{\set{x \in X \st \mparth{f_n - f}\ge \alpha}}<\epsilon/2.
+    \end{align*}
+    Defina $A_n = \set{x \in X \st \mparth{f_n - f} \ge \alpha}$ e $h(x) = \frac{x}{1+x}$.
+    Note que para todo $x \ge 0$, $h(x)$ é crescente. Com isso, para $n \ge N$, temos,
+    \begin{align*}
+      \rho(f_n, f) &= \int \frac{\mparth{f_n - f}}{1+\mparth{f_n-f}}d\mu
+      = \int_{A_n} \frac{\mparth{f_n- f}}{1+\mparth{f_n-f}} d\mu + 
+      \int_{A_n^C} \frac{\mparth{f_n- f}}{1+\mparth{f_n-f}} d\mu \\
+      &\le \int_{A_n} 1 d\mu + \int_{A_n^C} \frac{\alpha}{\alpha + 1} d\mu
+      = \mu(A_n) + h(\alpha)\mu\parth{A_n^C}\\
+      &< \frac{\epsilon}{2} + h(\alpha) \mu\parth{A_n^C} 
+      \le \frac{\epsilon}{2} + h(\alpha) \mu\parth{X}
+      < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon,
+    \end{align*}
+    ou seja, $\rho(f_n, f) \rightarrow 0$. \\
+    $(\impliedby)$ Suponhamos que $\rho(f_n, f) \rightarrow 0$. 
+    Como $\mu(A_n) \le \mu(X)<+\infty$, então, para todo 
+    $\epsilon, \alpha>0$, existe $N = N(\epsilon) \in \bN$ tal que, 
+    \begin{align*}
+      n \ge N \implies \int \frac{\mparth{f_n - f}}{1+\mparth{f_n-f}}d\mu < h(\alpha)\epsilon.
+    \end{align*}
+    Note que para todo $n \in \bN$, $A_n \subseteq X$, ou seja, para qualquer $\alpha>0$, 
+    \begin{align*}
+      \int \frac{\mparth{f_n - f}}{1+\mparth{f_n-f}}d\mu \ge
+      \int_{A_n} \frac{\mparth{f_n - f}}{1+\mparth{f_n-f}}d\mu \ge 
+      \int_{A_n} h(\alpha) d\mu =h(\alpha)\mu(A_n),
+    \end{align*}
+    portanto, 
+    \begin{align*}
+      n \ge N &\implies h(\alpha)\mu(A_n) \le \rho(f_n , f) < h(\alpha)\epsilon\\
+      &\implies \mu(A_n) = \mu\parth{\set{x \in X \st \mparth{f_n - f}\ge \alpha}}<\epsilon,
+    \end{align*}
+    ou seja, $f_n \cvex \mu f$.
+  \end{proof}
+\end{enumerate}}
+
+%ex 5 
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida. Mostre que se para todo $\epsilon>0$
+tivermos 
+\begin{align*}
+  \sum_{n=1}^\infty \mu\parth{\set{x \in X \st \mparth{f_n(x) - f(x)}}\ge \epsilon}<\infty,
+\end{align*}
+então a sequência $(f_n)$ converge para $f$ em $\mu$-quase todo ponto.}
+\begin{proof}[\textbf{Dem:}] Da convergência da série
+  numérica apresentada, temos para cada $k \in \bN$ que 
+  \begin{align*}
+    \lim_{N \rightarrow \infty} \sum_{n = N}^{\infty} \mu\parth{\set{x \in X \st 
+    \mparth{f_n(x) - f(x)}}\ge 1/k} = 0.
+  \end{align*}
+  Definindo para cada $n, N, k \in \bN$, 
+  $A_{k}^{(n)} = \set{x \in X \st \mparth{f_n(x) - f(x)}\ge 1/k}$
+  e $S_k^{(N)} = \bigcup_{n \ge N} A_{k}^{(n)}$. Note que 
+  $S_k^{(N)} \supseteq S_k^{(N+1)}$, mais ainda, da hipótese dada,
+  \begin{align*}
+    \mu(S_k^{(1)}) &= \mu\parth{\bigcup_{n = 1}^\infty A_{k}^{(n)}} \le \sum_{n=1}^\infty 
+    \mu(A_{k}^{(n)})\\
+    &=\mu\parth{\set{x \in X \st \mparth{f_n(x) - f(x)}\ge 1/k}}<\infty.
+  \end{align*}
+  Portanto, da continuidade da medida,
+  \begin{align*}
+    \mu\parth{\bigcap_{N \in \bN} S_k^{(N)}} &= \lim_{N \rightarrow \infty} \mu(S_k^{(N)}) 
+    = \lim_{N \rightarrow\infty} \mu\parth{\bigcup_{n \ge N} A_{k}^{(n)}}
+    \le \lim_{N \rightarrow\infty} \sum_{n = N}^\infty \mu\parth{A_k^{(n)}}\\ 
+   &= \lim_{N \rightarrow \infty} \sum_{n = N}^{\infty} \mu\parth{\set{x \in X \st 
+    \mparth{f_n(x) - f(x)}}\ge 1/k} = 0.
+  \end{align*}
+  Portanto, para todo $k \in \bN$ temos $\mu\parth{\bigcap S_k^{(N)}} = 0$. 
+  Considerando $S_k = \parth{\bigcap\limits_{N \in \bN} S_k^{(N)}}$, 
+  \begin{align*}
+    \mu\parth{\bigcup_{k \in \bN}S_k} = 
+    \mu\parth{\bigcup_{k \in \bN} \cparth{\bigcap\limits_{N \in \bN} S_k^{(N)}}} 
+    \le \sum_{k \in \bN} 
+    \mu{\parth{\bigcap\limits_{N \in \bN} S_k^{(N)}}} = 0
+  \end{align*}
+  Tomando $x \in 
+  \parth{\bigcup\limits_{k \in \bN} S_k}^C = \parth{\bigcup\limits_{k \in \bN} 
+  \cparth{\bigcap\limits_{N \in \bN} S_k^{(N)}}}^C = \bigcap\limits_{k \in \bN}
+  \cparth{\bigcup\limits_{N \in \bN} 
+  \cparth{\bigcap\limits_{n = N}^\infty \parth{A_{k}^{(n)}}^{C}}}$,
+  para todo $\epsilon>0$, para todo $k > \floor{\frac{1}{\epsilon}}$, 
+  existe $N \in \bN$ tal que, 
+  \begin{align*}
+    n \ge N \implies \mparth{f_n(x) - f(x)} < 1/k < \epsilon,
+  \end{align*}
+  isto é, $f_n \cvtex{$\mu$-q.t.p.} f$.
+\end{proof}
+
+%ex 6 
+\nextexe{cinco}
+\textbf{Mostre que o Lema de Fatou vale se a convergência em quase todo ponto for 
+substituída por convergência em medida.}
+\begin{proof}[\textbf{Dem:}]Vejamos que dada uma sequência mensurável positiva 
+  $(f_n)$ que converge em medida para $f$, temos
+  \begin{align*}
+    \int f d\mu \le \lim\inf \int f_n d\mu = L.
+  \end{align*}
+  Da definição de $\lim\inf$, segue que existe uma subsequência $(g_n)$
+  de $(f_n)$ tal que $(G_n)$ é uma subsequência de $\parth{\int f_n d\mu}$
+  que converge para $L$. Como $(g_n)$ é subsequência de $(f_n)$, temos que 
+  $g_n \cvex \mu f$ e, portanto, existe uma subsequência $(h_n)$ de $(g_n)$
+  que converge $\mu$ quase todo ponto para f. Do Lema de Fatou para 
+  sequências mensuráveis positivas que convergem $\mu$-q.t.p. para uma 
+  função mensurável, segue que, 
+  \begin{align*}
+    \int \lim \inf h_n d\mu &= \int f d\mu \le \lim \inf \int h_n d\mu 
+    = \lim \int h_n d\mu \\
+    &=  \lim \int g_n d\mu= L = \lim \inf \int f_n d\mu.
+  \end{align*}
+  Como queríamos.
+\end{proof}
+
+%ex 7
+\nextexe{cinco}
+\textbf{Mostre que o Teorema da Convergência Dominada de Lebesgue vale se 
+a convergência em quase todo ponto for substituída por convergência em medida}. 
+\begin{proof}[\textbf{Dem:}] Queremos mostrar que, dada uma sequência $(f_n)$ 
+  mensurável que converge em medida para uma função mensurável $f$, se existe 
+  $g \in L^1(X, \mu)$ satisfazendo $|f_n| \le g$ $\mu$-q.t.p. para todo $n \in \bN$, então 
+  \begin{align*}
+    \lim \int f_n d\mu = \int \lim f_n d\mu = \int f d\mu.
+  \end{align*}
+  Como $|f_n| \le g$ $\qtp \mu$, temos $0\le g - f_n$ $\qtp \mu$ para todo $n \in \bN$.
+  Mais ainda, como $f_n \cvex \mu f$, segue que $g - f_n\cvex \mu g- f$. 
+  Do Lema de Fatou para sequências convergentes em medida, segue que, 
+  \begin{align*}
+    \int g - f d\mu \le \lim \inf \int g- f_n  d\mu.
+  \end{align*}
+  Visto que $g \in L^1(X, \mu)$ e $|f_n| \le g$, portanto $f_n \in L^1(X, \mu)$, 
+  mais ainda, como $f_n \cvex \mu f$, existe uma subsequência $(g_n)$ que converge 
+  $\qtp \mu$ para $f$ e, como $|g_n|\le g$ $\qtp \mu$ para todo $n \in \bN$, 
+  temos $|f| \le g$ $\qtp \mu$, ou seja, $f \in L^1(X, \mu)$. 
+  Dito isso,
+  \begin{align*}
+    \int g - f d\mu &= \int g d\mu - \int f d\mu \le \lim \inf \int g -f_n  d\mu\\ 
+    &= \lim \inf  \int g d\mu - \int f_n d\mu = \int g d\mu - \lim\sup \int f_n d\mu,
+  \end{align*} 
+  e, como $g \in L^1(X, \mu)$, segue que 
+  \begin{align*}
+    \lim\sup \int f_n d\mu \le \int f d\mu.
+  \end{align*}
+  Por outro lado, temos também que $0 \le g + f_n$ $\qtp \mu$ para todo 
+  $n \in \bN$ e $g + f_n \cvex \mu g + f$. 
+  Novamente do Lema de Fatou, 
+  \begin{align*}
+    \int g + f d\mu \le \lim \inf \int g + f_n d\mu.
+  \end{align*}
+  Como $g, f, f_n \in L^1(X, \mu)$ para cada $n \in \bN$,
+  \begin{align*}
+    \int g + f d\mu = \int g d\mu + \int f d\mu \le \lim \inf \int g + f_n d\mu = 
+    \int g d\mu + \lim \inf \int f_n d\mu.
+  \end{align*}
+  ou seja, 
+  $$\lim \sup \int f_n d\mu \le \int f d\mu \le \lim \inf \int f_n d\mu,$$
+  e, por conseguinte, $\lim \int f_n d\mu = \int f d\mu$.
+\end{proof}
+
+%ex 8 
+\nextexe{cinco}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 \le p < + \infty$. 
+Se $g \in L^p(X, \mu)$ e $|f_n| \le g$, mostre que as condições 
+$(ii)$ e $(iii)$ do Teorema da Convergência de Vitali são satisfeitas.}
+\begin{proof}[\textbf{Dem:}]Dada uma sequência $(f_n)$, as condições
+  $(ii)$ e $(iii)$ do Teorema 
+  da Convergência de Vitali estão listadas a seguir: 
+  \begin{itemize}
+    \item Para todo $\epsilon > 0$ existe $E_\epsilon \in \mcal F$ satisfazendo 
+      $\mu(E_\epsilon)<+\infty$ tal que, se $F \in \mcal F$ e 
+      $F \cap E_\epsilon = \emptyset$, então 
+      \begin{align*}
+        \cparth{\int_F f_n^p d\mu}^{1/p} = \pnorm p {f_n \chi_F} < \epsilon, 
+        \quad n \in \bN;
+      \end{align*}
+    \item Para todo $\epsilon > 0$, existe $\delta >  0$ tal que, 
+      \begin{align*}
+        E \in \mcal F, \mu(E) < \delta \implies \pnorm p {f_n \chi_{E}} < \epsilon, 
+        \quad n \in \bN.
+      \end{align*}
+  \end{itemize}
+  Vejamos que vale a condição $(ii)$. Para cada 
+  $k \in \bN$ defina $A_k = \set{x \in X \st |g(x)|^p \ge 1/k}$, 
+  da desigualdade de Chebyshev,
+  \begin{align*}
+    \mu(A_k) \le k \pnorm p g^p < +\infty.
+  \end{align*}
+  Mais ainda, note que $A_{k} \subseteq A_{k+1}$, portanto, definindo 
+  $g_n = |g|^p \chi_{A_k}$,
+  segue diretamente que $g_n \le g_{n+1}$ e $g_n \cvex {\qtp \mu} g$, com isso, do Teorema 
+  da Convergência Monótona, 
+  \begin{align*}
+    \int \lim g_n d\mu = \int|g|^p d\mu = \lim \int g_n d\mu 
+    = \lim_{k \rightarrow \infty} \int_{A_k} |g|^p d\mu.
+  \end{align*}
+  Por hipótese, sabemos que $g \in L^p(X, \mu)$, isto é, $\pnorm p g < +\infty$, ou seja,
+  \begin{align*}
+    \int |g|^p d\mu = \lim \int g_n d\mu &\implies \int |g|^p d\mu - \lim \int g_n d\mu = 0\\
+    &\implies \lim_{k \rightarrow \infty} \int_{A_k^C}|g|^p d\mu = 0. 
+  \end{align*}
+  Desse modo, para todo $\epsilon > 0$ existe $N \in \bN$ tal que,  
+  \begin{align*}
+    n \ge N \implies \int_{A_n^C} |g|^p d\mu < \epsilon^p,
+  \end{align*}
+  Ou seja, dado $F \in \mcal F$ satisfazendo $F \cap A_N = \emptyset$, temos 
+  $F \subseteq A_N^C$, e, por conseguinte, já que $|f_n| \le g$, 
+  \begin{align*}
+    \int_F |f_n|^p d\mu \le \int_F |g|^p d\mu \le \int_{A_N^C} |g|^p d\mu < \epsilon^p
+    \implies 
+    \pnorm p {f_n \chi_F} < \epsilon,
+  \end{align*}
+  como queríamos.\\
+  Vejamos que vale a condição $(iii)$. Para 
+  cada $k \in \bN$, considere $E_k = \set{x \in X \st |g(x)|^p \ge k}$.
+  Definindo $h_n = |g|^p \chi_{E_n}$, note que, $h_n$ é decrescente 
+  e converge pontualmente para $0$. Mais ainda, como $g^p \in L^1(X, \mu)$
+  e $|h_n| \le |g|^p$, segue do Teorema da Convergência Dominada que 
+  \begin{align*}
+    \lim_{n \rightarrow \infty} \int h_n d\mu 
+    = \lim_{n \rightarrow \infty} \int_{E_n} |g|^p d\mu 
+    = \int \lim_{n \rightarrow \infty} h_n d\mu = \int 0 d\mu = 0
+  \end{align*}
+  Portanto, para todo $\epsilon> 0$, existe $N \in \bN$ tal que, 
+  \begin{align*}
+    n \ge N \implies \int_{E_n} |g|^p d\mu < \frac{\epsilon^p}{2}.
+  \end{align*}
+  Dado $E \in \mcal F$ e $\delta = \frac{\epsilon^p}{2N}$, com $\mu(E)<\delta$,
+  já que $|f_n|<g$ para todo $n \in \bN$,
+  \begin{align*}
+    \int_E |f_n|^p d\mu \le\int_E |g|^p d\mu &= \int_{E \cap E_N} |g|^p d\mu
+    +  \int_{E \cap E_N^C} |g|^p d\mu \le  \int_{E_N} |g|^p d\mu +
+     \int_{E\cap E_N^C} N d\mu\\
+     &\le \int_{E_N} |g|^p d\mu + N\mu(E) < \frac{\epsilon^p}{2} + N \frac{\epsilon^p}{2N}
+     < \epsilon^p.
+  \end{align*}
+  Com isso, 
+  \begin{align*}
+    \pnorm p {f_n\chi_E} < \epsilon, \quad \forall n \in \bN
+  \end{align*}
+\end{proof}
+
+%ex 9 
+\nextexe{cinco}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida. Mostre que a condição do 
+espaço de medida ser finito no Teorema de Egoroff pode ser substituído 
+pela condição $|f_n| \le g$, para todo $n \in \bN$, para algum $g \in L^1(X, \mu)$.}
+\begin{proof}[\textbf{Dem:}]
+  
+\end{proof}
+
+%ex 10 
+\nextexe{cinco}
+\textbf{Seja $(\bN, \mcal P(\bN), \mu)$ o espaço de medida de contagem em $\bN$. 
+Mostre que uma sequência $(f_n)$ converge em medida para $f$ se, e somente se, 
+converge uniformemente para $f$.}
+\begin{proof}[\textbf{Dem:}] .\\
+  $(\implies)$ Suponhamos que $f_n \cvex \mu f$. Então, para todo $\epsilon,\alpha> 0$, 
+  existe $N = N(\epsilon, \alpha) \in \bN$ tal que 
+  \begin{align*}
+    n \ge N \implies \mu\parth{\set{x \in \bN \st \mparth{f_n - f} \ge \epsilon}}<\alpha.
+  \end{align*}
+  Tomando $\alpha = 1$, já que para todo $E \in \mcal P (\bN)$, $\mu(E) \in \bN_0$,
+  como $\mu(x \in \bN \st \mparth{f_n - f}\ge \epsilon) < \alpha$, temos que 
+  a medida do conjunto em questão deve ser nula, ou seja,
+  \begin{align*}
+    \set{x \in \bN \st |f_n(x) - f(x)| \ge \epsilon} = \emptyset.
+  \end{align*}
+  Ou seja, para todo $\epsilon>0$, existe $N \in \bN$, tal que,
+  \begin{align*}
+    n \ge N \implies |f_n(x) - f(x)| < \epsilon, \quad \forall x \in \bN,
+  \end{align*}
+  isto é, $f_n \cvtex{unif.} f$.\\
+  $(\impliedby)$ Suponhamos que $f_n \cvtex{unif.} f$. Ou seja, para todo $\epsilon>0$,
+  existe $N \in \bN$ tal que 
+  \begin{align*}
+    n \ge N \implies \mparth{f_n(x) - f(x)}< \epsilon,\quad \forall x \in \bN.
+  \end{align*}
+  Desse modo, para todo $n \ge N$,
+  \begin{align*}
+    \set{x \in \bN \st \mparth{f_n(x) - f(x)}\ge \epsilon} &= \emptyset, \\
+    \therefore\mu(\set{x \in \bN \st \mparth{f_n(x) - f(x)}\ge \epsilon}) &= 0.
+  \end{align*}
+  Portanto, dado qualquer $\alpha>0$, 
+  \begin{align*}
+    n \ge N \implies 
+    \mu(\set{x \in \bN \st \mparth{f_n(x) - f(x)}\ge \epsilon}) = 0 <\alpha,
+  \end{align*}
+  isto é, $f_n \cvex \mu f$.
+\end{proof}
+
+%ex 11
+\nextexe{cinco}
+\textbf{seja $(x, \mcal f, \mu)$ um espaço de medida. seja a sequência 
+$(f_n)$ de funções mensuráveis que converge em quase todo ponto para 
+uma função mensurável $f$. dada $\varphi$ contínua em $\bR$ para $\bR$, 
+então a sequência $(\varphi \circ f_n)$ converge em quase todo ponto para 
+$\varphi \circ f$.}
+\begin{proof}[\textbf{dem:}] como $f_n \cvex{\qtp \mu} f$,
+  existe $\eta \in \mcal f$ com medida nula tal que, fixado $x \in \eta^c$, 
+  para todo $\delta > 0$ existe $n \in \bN$ tal que, 
+  \begin{align*}
+    n \ge n \implies \mparth{f_n(x) - f(x)}< \delta.
+  \end{align*}
+  da continuidade de $\varphi$ no ponto $y = f(x)$, 
+  para todo $\epsilon > 0$ 
+  existe $\delta_0 > 0$ tal que,
+  \begin{align*}
+    |y - y_0 | < \delta_0 \implies |\varphi(y) - \varphi(y_0)|< \epsilon,
+    \quad y_0\in \bR.
+  \end{align*}
+  com isso, tomando $\delta = \delta_0$, para todo $n \ge n$
+  \begin{align*}
+    |f_n(x) - f(x)| < \delta \implies |\varphi \circ f_n (x) - 
+    \varphi \circ f(x)| <\epsilon,
+  \end{align*}
+  ou seja, $\varphi \circ f_n \cvex {\qtp \mu} \varphi \circ f$.
+\end{proof}
+
+%ex 12 
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida. Se $\varphi$ é uniformemente 
+contínua em $\bR$ para $\bR$, e se $(f_n)$ converge uniformemente 
+(respectivaemente, quase uniformemente, em medida) para $f$, então 
+$\varphi \circ f_n$ converge uniformemente (respectivamente, quase uniformemente, 
+em medida) para $\varphi \circ f$.}
+\begin{proof}[\textbf{Dem:}] Como $\varphi$ é uniformemente contínua, 
+  para todo $\epsilon > 0$ existe $\delta > 0$ tal que,
+  \begin{align*}
+    |y - y_0| <\delta \implies |\varphi(y) - \varphi(y_0)| < \epsilon, \quad y, y_0 \in \bR.
+  \end{align*}
+  Daqui em diante, a demonstração será divida em cada um dos casos propóstos. \\
+  ($f_n \cvtex{unif.} f$): Por hipótese, para todo $\delta_0 > 0$, existe $n_0 \in \bN$
+  tal que
+  \begin{align*}
+    n \ge n_0 \implies |f_n(x) - f(x)| < \delta_0,\quad x \in X,
+  \end{align*}
+  Tomando $\delta_0 = \delta$, 
+  \begin{align*}
+    n \ge n_0 \implies |f_n(x) - f(x)| < \delta \implies 
+    \mparth{\varphi \circ f_n(x) - \varphi \circ f (x)} < \epsilon, \quad x \in X,
+  \end{align*}
+  como queríamos.\\
+  ($f_n \cvtex{q unif.} f $): Por hipótese, para todo $\delta_0, \alpha > 0$, 
+  existem $E_\alpha \in \mcal F$ e $n_0 = n_0(\alpha, \delta_0) \in \bN$ 
+  tais que $\mu(E_\alpha) < \alpha$, e
+  \begin{align*}
+    n \ge n_0 \implies \mparth{f_n(x) - f(x)}<\delta_0, \quad x \in E_\alpha^C.
+  \end{align*}
+  Desse modo, tomando $\delta_0 = \delta$, 
+  \begin{align*}
+    n \ge n_0 \implies |f_n(x) - f(x)| < \delta \implies 
+    \mparth{\varphi \circ f_n(x) - \varphi \circ f (x)} < \epsilon, \quad x \in E_\alpha^C.
+  \end{align*}
+  Com isso, $n_0$ passa a ser dependente de $\epsilon, \alpha >0$ e por conseguinte
+  segue que $(\varphi \circ f_n)$ converge quase uniformemente para $\varphi \circ f$.\\
+  ($f_n \cvex \mu f$): Sabemos que para todo $\delta_0, \alpha > 0$, existe 
+  $n_0 = n_0(\alpha, \delta_0) \in \bN$ tal que,
+  \begin{align*}
+    n \ge n_0 \implies \mu(E_{\delta_0}^{(n)}) = 
+    \mu(\set{x \in X \st \mparth{f_n(x) - f(x)}\ge \delta_0})< \alpha.
+  \end{align*}
+  Note que, para cada $x \in X$,
+  \begin{align*}
+    \mparth{\varphi\circ f_n (x) - \varphi \circ f(x)} \ge \epsilon 
+    &\implies \mparth{f_n(x) - f(x)} \ge \delta,\\
+    \therefore 
+    \set{x \in X \st \mparth{\varphi \circ f_n(x) - \varphi \circ f(x)}\ge \epsilon}
+    &\subseteq \set{x \in X \st \mparth{f_n(x) - f(x)}\ge \delta} 
+  \end{align*}
+  desse modo, tomando $\delta_0 = \delta$, 
+  \begin{align*}
+    \mu(\set{x \in X \st \mparth{\varphi \circ f_n(x) - \varphi \circ f(x)}\ge \epsilon})
+    \le \mu(E_\delta^{(n)}) <\alpha, 
+  \end{align*}
+  isto é, $\varphi \circ f_n \cvex \mu \varphi \circ f$.
+\end{proof}
+
+%ex 13 
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida finita e 
+seja $1 \le p < \infty$. Seja $\varphi$ contínua em $\bR$ para $\bR$ e 
+satisfaça a condição: 
+\begin{align*}
+  \exists K > 0\quad \text{ tal que } \quad
+  \mparth {\varphi (t)} \le K\mparth t, \quad \mparth t \ge K.
+  \tag{$\Diamond$}
+  \label{5.13.0}
+\end{align*} 
+Mostre que $\varphi \circ f$ pertence a $L^p(X, \mu)$ para cada $f \in L^p(X, \mu)$.}
+\begin{proof}[\textbf{Dem:}] Defina $A = \set{x \in X \st \mparth{f(x)} \ge K}$, então,
+  da continuidade de $\varphi$, segue que $\varphi\parth{[-K, K]}$  
+  assume um valor máximo que denotaremos por $M_A$. Note que, como 
+  $f(A^C) \subseteq [-K, K]$, temos $\varphi \circ f(x) \le M_A$ para todo $x \in A^C$.
+  Com isso,
+  \begin{align*}
+    \int \mparth{\varphi \circ f}^p d\mu 
+    &= \int_A \mparth{\varphi \circ f}^p d\mu + 
+    \int_{A^C} \mparth{\varphi \circ f}^p d\mu\\ 
+    &\le \mparth{M_A}^p\mu(A^C) 
+    + \int_{A} K^p \mparth{f}^p d\mu\\ 
+    &= \mparth{M_A}^p \mu(A^C) + K^p \int_A |f|^p d\mu.   
+  \end{align*}
+  Como $\mu(A^C) \le \mu(X) < +\infty$ e $f \in L^p(X, \mu)$, temos 
+  $\int \mparth{\varphi \circ f}^p d\mu < \infty$, ou seja, 
+  $\varphi \circ f \in L^p(X, \mu)$.
+\end{proof}
+
+%ex 14 
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida finita e seja $1 \le p < \infty$. 
+Se $(f_n)$ converge para $f$ em $L^p(X, \mu)$, e se $\varphi$ é contínua 
+e satisfaz a condição $\eqref{5.13.0}$ do Exercício 13, então $(\varphi \circ f_n)$
+converge em $L^p(X, \mu)$ para $\varphi \circ f$.}
+\begin{proof}[\textbf{Dem:}] Definindo $A_K = \set{x \in X \st |f(x)| \ge K}$. 
+  Por hipótese, sabemos que dado $y_0 \in \bR$
+  para todo $\epsilon>0$, existe $\delta > 0$, tal que 
+  \begin{align*}
+    \mparth{y - y_0}< \delta
+    \implies \mparth{\varphi(y) -\varphi(y_0)}<\epsilon, \quad y \in \bR.
+  \end{align*}
+  Vejamos que $(\varphi \circ f_n)$ satisfaz 
+  as condições do Teorema da Convergência de Vitali. \\ 
+  (i): $\varphi \circ f_n \cvex \mu \varphi \circ f$.\\ 
+  Como $f_n \cvex{L^p} f$, temos $f_n \cvex \mu f$, portanto, para todo 
+  $\delta_0, \epsilon > 0$, existe $N_0 \in \bN$ tal que,
+  \begin{align*}
+    n \ge N_0 \implies  \mu(B_{\delta_0}^{(n)})= \mu\parth{\set{x \in X \st 
+    \mparth{f_n(x) - f(x)}\ge \delta_0}}<\frac{\epsilon}{4}
+    \tag{I}
+    \label{eq:5.14.1}
+  \end{align*}
+  Já que $f \in L^p(X, \mu)$, $|f|$ é finito $\qtp \mu$, isto é, existe um 
+  conjunto $Q \in \mcal F$ com medida nula tal que $|f|$ é finito em $Q^C$.
+  Mais ainda, de $A_K \supseteq A_{K+1}$ e $\mu(A_1) \le \mu(X) < \infty$,
+  segue que, 
+  \begin{align*}
+    \lim \mu(A_k) = \mu\parth{\bigcap A_k} = \mu\parth{Q} = 0.
+  \end{align*}
+  Ou seja, existe $K \in \bN$ tal que, 
+  \begin{align*}
+    k \ge K \implies \mu(A_k) 
+    = \mu\parth{\set{x \in X \st \mparth{f(x)}\ge K}} < \frac{\epsilon}{4}.
+  \end{align*}
+  Daqui, tomando $\delta_0 = K$, existe $N_1 \in \bN$
+  satisfazendo $\eqref{eq:5.14.1}$. Com isso, se $x \in \parth{A_K \cup B_{K}^{n}}^C$,
+  \begin{align*}
+    |f_n(x)| \le |f_n(x) - f(x)| + |f(x)| < K + K = 2K,
+  \end{align*}
+  $C_{2K}^{(n)} = \set{x \in X \st \mparth{f_n(x)}\ge 2K} \subseteq A_K \cup B_{K}^{n}$,
+  ou seja, para $n \ge N_1$,
+  \begin{align*}
+    \mu\parth{C^{(n)}_{2K}} \le \mu(A_K) + \mu(B_K^{n}) < \frac{2\epsilon}{4}.
+  \end{align*}
+  Com isso, defina $D^{(n)}_{\alpha} = \set{x \in X \st 
+  \mparth{\varphi \circ f_n(x) - \varphi\circ f(x)}\ge \alpha}$. Como $I=[-2K, 2K]$
+  é um compacto e $\varphi$ é uma função continua, segue que $\varphi$ é uniformemente
+  continua em $I$. Portanto, para $x \in \parth{A_K 
+  \cup C_{2K}^{(n)} \cup B_{\delta_0}^{(n)}}^C$, temos 
+  $\mparth{f_n(x)}< 2K$, $\mparth{f(x)}<K$ e $\mparth{f_n(x) - f(x)} < \delta_0$,
+  ou seja, $f_n, f \in I$. Por consequência, para todo 
+  $\alpha > 0$ existe 
+  $\delta > 0$ tal que, ao tomar $\delta_0 = \delta$ teremos 
+  $N_2 \in \bN$ satisfazendo $\eqref{eq:5.14.1}$. Para $f_n, f \in I$, 
+  \begin{align*}
+     \mparth{f_n(x) - f(x)}<\delta \implies 
+    \mparth{\varphi\circ f_n(x) -\varphi\circ f(x)} < \alpha.
+  \end{align*}
+  Ou seja, tomando $N = \max\set{N_1, N_2}$,
+  para cada $n \ge N$, temos 
+  $D_{\alpha}^{(n)} \subseteq A_K \cup C_{2K}^{(n)} \cup B_{\delta}^{(n)}$.
+  Sendo assim, para todo $n \ge N$
+  \begin{align*}
+   \mu\parth{D_\alpha^{(n)}} \le \mu(A_k) + \mu\parth{C_{2K}^{(n)}} 
+    + \mu\parth{B_\delta^{(n)}}<
+    \frac{\epsilon}{4} + \frac{2\epsilon}{4} + \frac{\epsilon}{4} = \epsilon.
+  \end{align*}
+  (ii) Para todo $\epsilon>0$ existe $E_\epsilon$ com $\mu(E_\epsilon)<+\infty$
+  tal que, para todo $F \in \mcal F$ satisfazendo $F \cap E_\epsilon = \emptyset$, 
+  \begin{align*}
+    \cparth{\int_F \mparth{\varphi \circ f_n}^p d\mu}^{1/p} 
+    = \pnorm p {\varphi \circ f_n \chi_F} < \epsilon,
+  \end{align*}
+  para todo $n \in \bN$. \\
+  Ora, para demonstrar que o presente caso obedece essa propriedade,
+  note que, como $\mu(X)< +\infty$, basta tomar $E_\epsilon = X$. 
+  Com isso, dado $F \in \mcal F$ e $F \cap E_\epsilon = \emptyset$, temos 
+  $F \subseteq \emptyset$ e, por conseguinte, 
+  \begin{align*}
+    \cparth{\int_F \mparth{\varphi \circ f_n}^p d\mu}^p 
+    = \pnorm p {\varphi \circ f_n \chi_F} = 0 < \epsilon.
+  \end{align*}
+  (iii) Para todo $\epsilon >0$ existe $\delta >0$ tal que, 
+  \begin{align*}
+    E\in \mcal F, \mu(E)< \delta \implies \pnorm p {\varphi \circ f_n\chi_E} < \epsilon, 
+  \end{align*}
+  para todo $n \in \bN$. \\  
+  De $\eqref{5.13.0}$, temos 
+  \begin{align*}
+    \exists K>0, \quad
+    \varphi(t) \le K\mparth{t},\quad \mparth{t}\ge K.
+  \end{align*}
+  Da convexidade de $f(x) = x^p$, dado $\lambda \in (0, 1)$
+  \begin{align*}
+    f(\lambda 1+ (1 - \lambda)|t|) = \lambda f(1) + (1-\lambda)f(|t|) 
+    = \lambda 1 + (1-\lambda)|t|^p.
+  \end{align*}
+  Tomando $\lambda = 1/2$, segue que, 
+  \begin{align*}
+    \parth{\frac{1 + |t|}{2}}^p \le \frac{1+|t|^p}{2} \implies (1+|t|)^p \le 2^{p-1}(1+|t|^p). 
+  \end{align*}
+  Com isso, se $t \ge K$,
+  \begin{align*}
+    |\varphi(t)|^p \le K^p|t|^p \le K^p(1 + |t|)^p \le 2^{p-1}K^p (1 + |t|^p).
+  \end{align*}
+  Por outro lado, se $t < K$, da continuidade de $\varphi$ no compacto  $[-K, K]$,
+  segue que $|\varphi(t)| \le M$, onde $M$ é o máximo valor assumido por $\varphi$
+  no intervalo. Sendo assim,  
+  \begin{align*}
+    |\varphi(t)|^p \le M^p \le M^p (1 + |t|^p). 
+  \end{align*}
+  Definindo $C = \max\set{M^p, 2^{p-1}K^p}$, temos para todo $t \in \bR$,
+  \begin{align*}
+    |\varphi(t)|^P \le C \parth{1 + |t|^p}.
+  \end{align*}
+  Portanto, dado qualquer $x \in X$,
+  \begin{align*}
+    |\varphi(f_n(x))|^p \le C(1 + \mparth{f_n(x)}^p).
+    \tag{II}
+    \label{eq:5.14.2}
+  \end{align*}
+  Como $f\in L^p(X, \mu)$, segue que $|f|^p$ é finita $\qtp \mu$, isto é, 
+  dado $A_k = \set{x \in X \st \mparth {f(x)} \ge k}$, como temos 
+  um espaço de medida finito, $\mu(A_1)\le \mu(X) < +\infty$.
+  Daqui, definindo $h_k = |f|^p \chi_{A_k}$,
+  temos que $h_k$ é decrescente e converge pontualmente para $0$. Como
+  $|h_k| \le |f|^p$ e $f \in L^p(X, \mu)$, segue do Teorema da Convergência Dominada 
+  que,
+  \begin{align*}
+    \lim \int_{A_k} |f|^p d\mu = \lim \int h_k d\mu = \int \lim h_k d\mu = \int 0 d\mu = 0.
+  \end{align*}
+  ou seja, existe $\delta_0>0$ tal que, 
+  \begin{align*}
+    E \in \mcal F, \mu(E)< \delta_0 
+    \implies \int_{E} |f|^p d\mu < \frac{\epsilon^p}{2^{p+1}C}.
+    \tag{IV}
+    \label{eq:5.14.4}
+  \end{align*}
+  Mais ainda, já que $f_n \cvex {L^p(X, \mu)} f$, temos $f_n - f \cvex{L^p(X, \mu)} 0$,
+  da condição $(iii)$ do Teorema da Convergência de Vitali,
+  existe $\delta_1>0$ tal que
+  \begin{align*}
+    E \in \mcal F,\mu(E) < \delta_1 \implies 
+    \int_{E} \mparth{f_n - f}^p d\mu < \frac{\epsilon^p}{2^{p+1}C}
+  \end{align*}
+  Desse modo, já que $|f_n| \le |f_n - f| + |f|$,
+  \begin{align*}
+    |f_n|^p \le \parth{|f_n - f| + |f|}^p \le 2^{p-1}\parth{|f_n - f|^p + |f|^p}.
+  \end{align*}
+  Sendo assim, tomando $\delta_2 = \min\set{\delta_0, \delta_1}$, 
+  temos que, para todo $E \in \mcal F$ satisfazendo $\mu(E)<\delta_2$, 
+  \begin{align*}
+    \int_{E} |f_n|^p d\mu &\le 2^{p-1}\cparth{\int_{E} |f_n - f|^p d\mu 
+    + \int_{E} |f|^p d\mu}\\
+    &<2^{p-1}\parth{\int_{E} \mparth{f_n - f}^p d\mu + \frac{\epsilon^p}{2^{p+1}C}}\\
+    &<2^{p-1}\parth{ \frac{\epsilon^p}{2^{p+1}C} 
+    +  \frac{\epsilon^p}{2^{p+1}C}} < \frac{\epsilon^p}{2C}.
+  \end{align*}
+  Ou seja, dado $\delta = \min\set{\delta_2, \frac{\epsilon^p}{2C}}$, 
+  para todo $E \in \mcal F$ tal que $\mu(E) < \delta$,
+  \begin{align*}
+    \pnorm p {\varphi \circ f_n \chi_E}^p &= \int_E \mparth{\varphi \circ f_n}^p d\mu
+    \le C \int_E 1 + \mparth{f_n}^pd\mu = C \mu(E) + C\int_{E} \mparth{f_n}^p d\mu\\
+    &< C \mu(E) + C\frac{\epsilon^p}{2C} < C\frac{\epsilon^p}{2C} + \frac{\epsilon^p}{2} 
+    =\epsilon^p
+  \end{align*}
+  Com isso,temos $\pnorm p {\varphi \circ f_n \chi_E} < \epsilon$, para todo $n \in \bN$.
+\end{proof}
+
+%ex 15 
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida e seja $1 \le p < \infty$. 
+Seja $\varphi$ contínua em $\bR$ para $\bR$ que satisfaça 
+\begin{align*}
+  \exists K \ge 0, \quad |\varphi(t)| \le K|t|, \quad \forall t \in \bR
+   \tag{$\clubsuit$}
+    \label{eq:5.15.0}
+\end{align*}
+Mostre que se $f \in L^p(X, \mu)$, então $\varphi \circ f$ pertence a 
+$L^p(X, \mu)$.}
+\begin{proof}[\textbf{Dem:}] Já que $f\in L^p(X, \mu)$, $|f|$ é finito $\qtp \mu$, ou seja, 
+  existe $N \in \mcal F$ de medida nula tal que $f(x) \in\bR$ para todo $x \in N^C$. 
+  Portanto, $|\varphi(f(x))| \le K \mparth{f(x)}$ para todo $x \in N^C$. Sendo assim,
+  sabendo que $\varphi$ é continua e $f$ mensurável, temos $\varphi \circ f$ mensurável, 
+  e, por conseguinte,
+  \begin{align*}
+    \int |\varphi \circ f|^p d\mu \le \int K^p \mparth{f}^p d\mu < +\infty.  
+     \end{align*}
+  Desse modo, $\varphi \circ f \in L^p(X, \mu)$
+\end{proof}
+
+%ex 16 
+\nextexe{cinco}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida e seja $1 \le p < \infty$. 
+Prove que se $(f_n)$ converge para $f$ em $L^p(X, \mu)$, e se $\varphi$ 
+é contínua e satisfaz $\eqref{eq:5.15.0}$, então $(\varphi \circ f_n)$
+converge para $\varphi \circ f$ em $L^p(X, \mu)$.}
+\begin{proof}[\textbf{Dem:}] Vejamos que $\varphi \circ f_n$ satisfaz 
+  as condições do Teorema da Convergência de Vitali. 
+  (i) $\varphi \circ f_n \cvex \mu \varphi \circ f$: \\
+  Vejamos que para todo $\epsilon, \alpha > 0$, existe $N = N(\epsilon, \alpha) \in \bN$
+  tal que, 
+  \begin{align*}
+    n \ge N \implies \mu(\set{x \in X \st \mparth{\varphi \circ f_n
+    - \varphi \circ f}\ge \alpha})<\epsilon.
+  \end{align*}
+  Como vmos anteriormente, existe $C > 0$ tal que
+  \begin{align*}
+    \varphi \circ f(x) \le C (1 + |f(x)|)
+  \end{align*}
 \end{proof}
