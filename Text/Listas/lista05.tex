@@ -782,20 +782,12 @@ converge em $L^p(X, \mu)$ para $\varphi \circ f$.}
     \tag{II}
     \label{eq:5.14.2}
   \end{align*}
-  Como $f\in L^p(X, \mu)$, segue que $|f|^p$ é finita $\qtp \mu$, isto é, 
-  dado $A_k = \set{x \in X \st \mparth {f(x)} \ge k}$, como temos 
-  um espaço de medida finito, $\mu(A_1)\le \mu(X) < +\infty$.
-  Daqui, definindo $h_k = |f|^p \chi_{A_k}$,
-  temos que $h_k$ é decrescente e converge pontualmente para $0$. Como
-  $|h_k| \le |f|^p$ e $f \in L^p(X, \mu)$, segue do Teorema da Convergência Dominada 
-  que,
-  \begin{align*}
-    \lim \int_{A_k} |f|^p d\mu = \lim \int h_k d\mu = \int \lim h_k d\mu = \int 0 d\mu = 0.
-  \end{align*}
-  ou seja, existe $\delta_0>0$ tal que, 
+  Como $f\in L^p(X, \mu)$, dada a sequência $h_n = f$, segue que 
+  $h_n \cvex {L^p(X, \mu)} f$, e, por conseguinte, da condição 
+  $(iii)$ do Teorema da Convergência de Vitali, existe $\delta_0>0$ tal que, 
   \begin{align*}
     E \in \mcal F, \mu(E)< \delta_0 
-    \implies \int_{E} |f|^p d\mu < \frac{\epsilon^p}{2^{p+1}C}.
+    \implies \int_{E} |h_n|^p d\mu = \int_{E} |f|^p d\mu < \frac{\epsilon^p}{2^{p+1}C}.
     \tag{IV}
     \label{eq:5.14.4}
   \end{align*}
